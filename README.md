@@ -1,2 +1,1 @@
-<<<<<<< HEAD
 # FireWall_manager
