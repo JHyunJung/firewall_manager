@@ -1,13 +1,10 @@
 package com.crosscert.firewall.entity;
 
-import javax.persistence.CollectionTable;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
-public class User {
+public class User extends BaseTimeEntity{
 
     @Id
     private Long id;
@@ -18,10 +15,13 @@ public class User {
     @Column
     private String password;
 
+    @OneToOne
     private IP devIp;
 
+    @OneToOne
     private IP netIp;
 
+    @OneToMany
     private List<FireWall> fireWallList;
 
 }
