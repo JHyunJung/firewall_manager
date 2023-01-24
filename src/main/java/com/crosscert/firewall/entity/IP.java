@@ -1,10 +1,10 @@
 package com.crosscert.firewall.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
+
+@NoArgsConstructor
 @Entity
 public class IP extends BaseTimeEntity{
 
@@ -12,8 +12,8 @@ public class IP extends BaseTimeEntity{
     @GeneratedValue
     private Long id;
 
-    @Column
-    private String address;
+    @Embedded
+    private IpAddress address;
 
     @Column
     private String domain;
