@@ -16,8 +16,8 @@ public class FireWall extends BaseTimeEntity{
     @ManyToOne
     private IP destination;
 
-    @Column
-    private int port;
+    @Embedded
+    private IpPort port;
 
     @Column
     private LocalDate endDate;
