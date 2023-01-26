@@ -9,7 +9,7 @@ import javax.persistence.*;
 public class IP extends BaseTimeEntity{
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Embedded
@@ -20,4 +20,10 @@ public class IP extends BaseTimeEntity{
 
     @Column
     private String description;
+
+    @OneToOne(mappedBy = "devIp")
+    private Member devMember;
+
+    @OneToOne(mappedBy = "netIp")
+    private Member netMember;
 }
