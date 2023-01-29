@@ -1,23 +1,30 @@
 package com.crosscert.firewall.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class FireWall extends BaseTimeEntity{
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @ManyToOne
+    @ManyToOne()
+    @JoinColumn(name = "start_ip")
     private IP start;
 
     @ManyToOne
+    @JoinColumn(name = "destination_ip")
     private IP destination;
 
-    @Column
-    private int port;
+    @Embedded
+    private IpPort port;
 
     @Column
     private LocalDate endDate;
@@ -25,7 +32,8 @@ public class FireWall extends BaseTimeEntity{
     @Column
     private Boolean isEnded;
 
-    @ManyToOne
-    private User user;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "member_id")
+    private Member member;
 
 }
