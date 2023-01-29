@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>스프링시큐리티 테스트</h1>
+    <a sec:authorize="isAnonymous()" th:href="@{/login}">로그인</a>
+    <a sec:authorize="isAuthenticated()" th:href="@{/logout}">로그아웃</a>
+    <a th:href="@{sec/user/testpage}">로그인이 필요한 페이지 접근할때</a>
+    <a th:href="@{sec/testpage}">로그인이 필요없는 페이지 접근할때</a>
+    <p th:text="${message}">message</p>
+</body>
+</html>

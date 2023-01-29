@@ -9,7 +9,7 @@ public class LoginController {
 
     @GetMapping("/")
     public String index(Model model){
-        model.addAttribute("hello","서버에서 온 값");
+        model.addAttribute("message","메인페이지입니다.");
         return "/index";
     }
 

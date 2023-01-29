@@ -1,14 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
     <h1>Main페이지</h1>
-    <a th:href="">로그인 하기</a>
-    <a th:href="">로그인이 필요한 페이지 접근할때</a>
-    <a th:href="">로그인이 필요없는 페이지 접근할때</a>
-    <p th:text="${hello}">message</p>
+    <p th:text="${message}">message</p>
 </body>
 </html>
