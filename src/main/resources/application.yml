@@ -1,5 +1,12 @@
 server:
   port: 7777
+  servlet:
+    session:
+#      timeout: 10  #로그인 세션 타임아웃 : 10초
+      timeout: 180m  #로그인 세션 타임아웃 : 180분
+      cookie:
+        max-age: 180m
+        http-only: true
 
 spring:
   datasource:
@@ -10,7 +17,7 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: create  #주의
     properties:
       hibernate:
         #        show_sql: true
