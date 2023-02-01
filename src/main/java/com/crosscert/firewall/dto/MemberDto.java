@@ -2,16 +2,16 @@ package com.crosscert.firewall.dto;
 
 import com.crosscert.firewall.entity.Member;
 import com.crosscert.firewall.entity.Role;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
-@Getter
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
+
 public class MemberDto {
+
+    @Getter
+    @NoArgsConstructor
+    @ToString
     public static class FindAllMemberDto {
         private Long id;
         private String name;

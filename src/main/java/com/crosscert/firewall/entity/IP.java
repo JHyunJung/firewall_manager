@@ -1,11 +1,15 @@
 package com.crosscert.firewall.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @NoArgsConstructor
 @Entity
+@Builder
+@AllArgsConstructor
 public class IP extends BaseTimeEntity{
 
     @Id
