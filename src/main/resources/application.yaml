@@ -1,0 +1,44 @@
+server:
+  port: ${APPLICATION_HTTP_PORT:8080}
+  max-http-header-size: 64KB
+
+#mybatis:
+#  configuration:
+#    map-underscore-to-camel-case: true
+#  mapper-locations: mybatis/mapper/**/*.xml
+
+
+spring:
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  profiles:
+    active: ${APPLICATION_PROFILE:test}
+  application:
+    name: firewall-manager #consul-service name
+  jpa:
+    database: mysql
+    show-sql: false
+    hibernate:
+      ddl-auto: none
+
+  freemarker:
+    charset: utf-8
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+
+logging:
+  config: classpath:logback-spring.xml
+
+
+---
+logging:
+  config: classpath:logback-spring.xml
+
+datasource:
+  master:
+    username:
+    password:
+    jdbcUrl: jdbc:mysql://
