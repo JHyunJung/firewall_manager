@@ -2,7 +2,9 @@ package com.crosscert.firewall.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
 
@@ -10,6 +12,7 @@ import javax.persistence.*;
 @Entity
 @Builder
 @AllArgsConstructor
+@Getter
 public class IP extends BaseTimeEntity{
 
     @Id
@@ -17,6 +20,7 @@ public class IP extends BaseTimeEntity{
     private Long id;
 
     @Embedded
+    @Column(nullable = false)
     private IpAddress address;
 
     @Column

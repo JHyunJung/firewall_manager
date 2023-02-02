@@ -3,7 +3,7 @@ const member_contents = document.querySelector(".member_contents");
 window.addEventListener('DOMContentLoaded', getMemberList);
 
 async function getMemberList() {
-    const url ="/firewall/get/member/all"
+    const url ="/members"
     const response = await fetch(url, {
         method: 'GET', // *GET, POST, PUT, DELETE, etc.
         mode: 'no-cors', // no-cors, *cors, same-origin

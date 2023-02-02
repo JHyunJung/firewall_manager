@@ -12,7 +12,7 @@ public class MemberDto {
     @Getter
     @NoArgsConstructor
     @ToString
-    public static class FindAllMemberDto {
+    public static class ResFindAll {
         private Long id;
         private String name;
         private String email;
@@ -20,13 +20,13 @@ public class MemberDto {
         private String devIp;
         private String netIp;
 
-        public FindAllMemberDto(Member member) {
+        public ResFindAll(Member member) {
             this.id = member.getId();
             this.name = member.getName();
             this.email = member.getEmail();
             this.role = member.getRole();
-            this.devIp = member.getDevIp().toString();
-            this.netIp = member.getNetIp().toString();
+            this.devIp = member.getDevIp().getAddress().getAddress();
+            this.netIp = member.getNetIp().getAddress().getAddress();
         }
     }
 
