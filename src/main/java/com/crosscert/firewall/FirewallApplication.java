@@ -17,23 +17,4 @@ public class FirewallApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(FirewallApplication.class, args);
 	}
-
-	//개발용 인메모리 사용자
-	@Bean
-	public UserDetailsService users(){
-		UserDetails user = User.builder()
-				.username("member")
-				.password("{noop}asdasd")
-				.roles("MEMBER")
-				.build();
-
-		UserDetails admin = User.builder()
-				.username("leader")
-				.password("{noop}asdasd")
-				.roles("MEMBER","LEADER")
-				.build();
-
-		return new InMemoryUserDetailsManager(user,admin);
-	}
-
 }
