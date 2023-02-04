@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>회원 리스트</title>
@@ -16,18 +16,24 @@
                     <th scope="col">이름</th>
                     <th scope="col">이메일</th>
                     <th scope="col">Role</th>
-                    <th scope="col" style="width: 350px;" >개발망 Ip</th>
+                    <th scope="col" style="width: 350px;">개발망 Ip</th>
                     <th scope="col">인터넷망 Ip</th>
                 </tr>
                 </thead>
-                <tbody class="member_contents">
+                <tbody>
+                <tr th:each="m: ${members}">
+                    <td th:text="${m.id}"></td>
+                    <td th:text="${m.name}"></td>
+                    <td th:text="${m.email}"></td>
+                    <td th:text="${m.role}"></td>
+                    <td th:text="${m.devIp}"></td>
+                    <td th:text="${m.netIp}"></td>
+                </tr>
                 </tbody>
             </table>
         </div>
     </div>
 
-
-<script src="/js/js_member.js"> </script>
 <script src="/js/bootstrap.bundle.min.js"> </script>
 </body>
 </html>

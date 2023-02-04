@@ -1,6 +1,6 @@
 package com.crosscert.firewall.service;
 
-import com.crosscert.firewall.dto.MemberDto;
+import com.crosscert.firewall.dto.MemberDTO;
 import com.crosscert.firewall.entity.IP;
 import com.crosscert.firewall.entity.IpAddress;
 import com.crosscert.firewall.entity.Member;
@@ -30,7 +30,7 @@ class MemberServiceTest {
     MemberService memberService;
 
     @Test
-    @DisplayName("Member FindAll 20명")
+    @DisplayName("Member FindAll 5명")
     public void findAll() {
         //given
         IpAddress ipAddress = new IpAddress("172.12.40.52");
@@ -42,7 +42,9 @@ class MemberServiceTest {
                 .build();
         ipRepository.save(ip);
 
-        for (int i = 0; i < 20; i++) {
+        List<MemberDTO.Response.Public> members = new ArrayList<>();
+
+        for (int i = 0; i < 5; i++) {
             Member member = Member.builder()
                     .name("name"+i)
                     .email("testData"+i+"@naver.com")
@@ -54,15 +56,22 @@ class MemberServiceTest {
                     .build();
 
             memberRepository.save(member);
+
+            members.add(new MemberDTO.Response.Public(
+                    member.getId(),
+                    member.getName(),
+                    member.getEmail(),
+                    member.getRole(),
+                    member.getDevIp().getAddress().getAddress(),
+                    member.getNetIp().getAddress().getAddress()));
         }
 
         //when
-        List<MemberDto.ResFindAll> memberList = memberService.findMemberList();
+        List<MemberDTO.Response.Public> memberList = memberService.findAll();
 
         //then
-        Assertions.assertEquals(20, memberList.size());
-        Assertions.assertEquals("172.12.40.52", memberList.get(0).getDevIp());
-
+        Assertions.assertEquals(5, memberList.size());
+        Assertions.assertTrue(members.equals(memberList));
     }
 
     @Test
@@ -72,9 +81,11 @@ class MemberServiceTest {
         //
 
         //when
-        List<MemberDto.ResFindAll> memberList = memberService.findMemberList();
+        List<MemberDTO.Response.Public> members = memberService.findAll();
 
         //then
-        Assertions.assertEquals(0, memberList.size());
+        Assertions.assertEquals(0, members.size());
     }
+
+
 }

@@ -1,33 +1,40 @@
 package com.crosscert.firewall.dto;
 
-import com.crosscert.firewall.entity.Member;
 import com.crosscert.firewall.entity.Role;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.Value;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Positive;
+
+public enum MemberDTO {;
+    private interface Id { @Positive Long getId(); }
+    private interface Name { @NotBlank String getName(); }
+    private interface Email { @Positive String getEmail(); }
+    private interface Password { @Positive String getPassword(); }
+    private interface MemberRole {@NotBlank Role getRole();}
+    private interface DevIP {@NotBlank String getDevIp(); }
+    private interface NetIP {@NotBlank String getNetIp();}
+//    private interface FireWall { List<FireWall> getFireWall();}
 
 
-public class MemberDto {
-
-    @Getter
-    @NoArgsConstructor
-    @ToString
-    public static class ResFindAll {
-        private Long id;
-        private String name;
-        private String email;
-        private Role role;
-        private String devIp;
-        private String netIp;
-
-        public ResFindAll(Member member) {
-            this.id = member.getId();
-            this.name = member.getName();
-            this.email = member.getEmail();
-            this.role = member.getRole();
-            this.devIp = member.getDevIp().getAddress().getAddress();
-            this.netIp = member.getNetIp().getAddress().getAddress();
+    public enum Request{;
+        @Value public static class Create implements Name, Email, Password, MemberRole, DevIP, NetIP{
+            String name;
+            String email;
+            String password;
+            Role role;
+            String devIp;
+            String netIp;
         }
     }
 
+    public enum Response{;
+        @Value public static class Public implements Id, Name, Email, MemberRole, DevIP, NetIP {
+            Long id;
+            String name;
+            String email;
+            Role role;
+            String devIp;
+            String netIp;
+        }
+    }
 }
