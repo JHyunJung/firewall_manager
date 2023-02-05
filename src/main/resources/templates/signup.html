@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>회원가입</title>
+</head>
+<body>
+<h1>회원가입 페이지</h1>
+<form action="/signup" method="POST">
+    <input type="text" name="email" placeholder="아이디(이메일)"/><br>
+    <input type="password" name="password" placeholder="비밀번호"/><br>
+    <input type="text" name="name" placeholder="이름"/><br>
+    <input type="text" name="devIp" placeholder="개발망IP"/><br>
+    <input type="text" name="netIp" placeholder="인터넷망IP"/><br>
+    <!--TODO: 클라이언트가 role을 조작할수도 있으므로 서버단에서도 막기-->
+    <input type="text" name="role" value="MEMBER" readonly/><br>
+    <input type="submit"/><br>
+</form>
+</body>
+</html>
