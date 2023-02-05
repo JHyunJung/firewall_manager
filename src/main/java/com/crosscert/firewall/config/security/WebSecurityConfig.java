@@ -1,4 +1,4 @@
-package com.crosscert.firewall.security;
+package com.crosscert.firewall.config.security;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -28,14 +28,9 @@ public class WebSecurityConfig {
                     .antMatchers("/").permitAll()           //홈화면
                     .antMatchers("/signup").anonymous()     //회원가입
                     .antMatchers("/login").anonymous()      //로그인
-//                    .antMatchers("/member/**").hasRole("LEADER")
 //                    .antMatchers("/leader/**").hasRole("LEADER")
-                    //테스트용
-                    .antMatchers("/sec").permitAll()
-                    .antMatchers("/sec/member/**").hasRole("MEMBER")
-                    .antMatchers("/sec/leader/**").hasRole("LEADER")
-//                    .antMatchers("/sec/**").permitAll()
-                .anyRequest().authenticated()
+//                .anyRequest().authenticated() //그 외 로그인 필요
+                .anyRequest().permitAll() //개발용 임시 모두허용
                 .and()
                 .formLogin()
                 .and()
