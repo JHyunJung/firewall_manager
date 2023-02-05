@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>회원 수정</title>
+    <link rel="stylesheet" href="/css/css_member.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="memberEdit-wrap">
+        <div class="memberEdit-container">
+            <form th:action="@{/member/{id}(id=${member.id})}" th:object="${member}" th:method="PUT">
+                <div>
+                    <label for="name">이름</label>
+                    <input type="text" id=name th:field="*{name}">
+                </div>
+                <div>
+                    <label for="email">이메일</label>
+                    <input type="email" id=email th:field="*{email}">
+                </div>
+                <div>
+                    <label for="role">Role</label>
+                    <input type="text" id=role th:field="*{role}">
+                </div>
+                <div>
+                    <label for="devIp">개발망 Ip</label>
+                    <input type="text" id=devIp th:field="*{devIp}">
+                </div>
+                <div>
+                    <label for="netIp">인터넷망 Ip</label>
+                    <input type="text" id=netIp th:field="*{netIp}">
+                </div>
+                <button type="submit" class="btn btn-primary">정보 수정</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="/js/bootstrap.bundle.min.js"> </script>
+</body>
+</html>

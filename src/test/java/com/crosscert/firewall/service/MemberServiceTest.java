@@ -16,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @SpringBootTest
 @Transactional
@@ -46,9 +47,9 @@ class MemberServiceTest {
 
         for (int i = 0; i < 5; i++) {
             Member member = Member.builder()
-                    .name("name"+i)
-                    .email("testData"+i+"@naver.com")
-                    .password("123456"+i)
+                    .name("name" + i)
+                    .email("testData" + i + "@naver.com")
+                    .password("123456" + i)
                     .role(Role.MEMBER)
                     .devIp(ip)
                     .netIp(ip)
@@ -76,7 +77,7 @@ class MemberServiceTest {
 
     @Test
     @DisplayName("Member FindAll 0명")
-    public void findAll_0() {
+    void findAll_0() {
         //given
         //
 
@@ -87,5 +88,47 @@ class MemberServiceTest {
         Assertions.assertEquals(0, members.size());
     }
 
+    @Test
+    @DisplayName("editMember Test")
+    void editMemberTest() {
+        //given
+        IpAddress ipAddress = new IpAddress("172.12.40.52");
 
+        IP ip = IP.builder()
+                .domain("domain")
+                .description("description")
+                .address(ipAddress)
+                .build();
+        ipRepository.save(ip);
+
+        Member member = Member.builder()
+                .name("name")
+                .email("hi"+"@naver.com")
+                .password("123456")
+                .role(Role.MEMBER)
+                .devIp(ip)
+                .netIp(ip)
+                .fireWallList(new ArrayList<>())
+                .build();
+
+        Member saveMember = memberRepository.save(member);
+
+
+        String name = "testName";
+        String testEmail = "test@naver.com";
+        String testIpAddress = "177.77.77.77";
+        MemberDTO.Request.EditInfo memberDTO = new MemberDTO.Request.EditInfo(name, testEmail, Role.LEADER, testIpAddress, testIpAddress);
+
+        //when
+        memberService.editMember(saveMember.getId(), memberDTO);
+        Member findMember = memberRepository.findById(saveMember.getId()).get();
+
+        //then
+        Assertions.assertEquals(name,findMember.getName());
+        Assertions.assertEquals(testEmail,findMember.getEmail());
+        Assertions.assertEquals(Role.LEADER,findMember.getRole());
+        Assertions.assertEquals(testIpAddress,findMember.getDevIp().getAddress().getAddress());
+        Assertions.assertEquals(testIpAddress, findMember.getNetIp().getAddress().getAddress());
+
+    }
 }
