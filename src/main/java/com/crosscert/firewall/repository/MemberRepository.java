@@ -10,4 +10,6 @@ public interface MemberRepository extends JpaRepository<Member, Long> {
 
     @Query(value = "select m from Member m left join fetch m.devIp")
     List<Member> findMemberFetchJoin();
+
+    List<Member> findByEmail(String email);
 }
