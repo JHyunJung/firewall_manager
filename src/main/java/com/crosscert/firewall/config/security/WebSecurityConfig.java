@@ -1,4 +1,4 @@
-package com.crosscert.firewall.security;
+package com.crosscert.firewall.config.security;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
