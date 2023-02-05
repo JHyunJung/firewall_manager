@@ -22,15 +22,15 @@ public class FirewallApplication {
 	@Bean
 	public UserDetailsService users(){
 		UserDetails user = User.builder()
-				.username("ycshin")
+				.username("member")
 				.password("{noop}asdasd")
-				.roles("USER")
+				.roles("MEMBER")
 				.build();
 
 		UserDetails admin = User.builder()
-				.username("admin")
+				.username("leader")
 				.password("{noop}asdasd")
-				.roles("USER","ADMIN")
+				.roles("MEMBER","LEADER")
 				.build();
 
 		return new InMemoryUserDetailsManager(user,admin);

@@ -6,7 +6,7 @@ plugins {
 
 group = 'com.crosscert'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '8'
+sourceCompatibility = '11'
 
 repositories {
 	mavenCentral()
@@ -25,10 +25,12 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
-	//로그인 스프링시큐리티 jwt
+	//스프링시큐리티
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.security:spring-security-test'
 	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
+
+	//jwt
 //	implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
 
 

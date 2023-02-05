@@ -5,26 +5,32 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.security.Principal;
+
 @Controller
 @RequestMapping("/sec")
 public class SecurityTestController {
 
     @GetMapping("")
-    public String index(Model model){
-        model.addAttribute("message","스프링 시큐리티 메인페이지입니다.");
+    public String index(Model model, Principal principal){
+        if(principal != null){
+            model.addAttribute("message","현재 로그인 된 분 : "+principal.getName());
+        }else {
+            model.addAttribute("message","비 로그인 상태입니다.");
+        }
         return "/securitytest/index";
     }
 
-    @GetMapping("/user/testpage")
-    public String userTestpage(Model model){
-        model.addAttribute("message","로그인이 필요한 페이지 입니다.");
-        return "/securitytest/usertestpage";
+    @GetMapping("/member/test")
+    public String memberTestpage(Model model, Principal principal){
+        model.addAttribute("message","현재 로그인 된 분 : "+principal.getName());
+        return "/securitytest/membertestpage";
     }
 
-    @GetMapping("/testpage")
-    public String testpage(Model model){
-        model.addAttribute("message","로그인 안해도 들어올수있는 페이지 입니다.");
-        return "/securitytest/testpage";
+    @GetMapping("/leader/test")
+    public String leaderTestpage(Model model, Principal principal){
+        model.addAttribute("message","현재 로그인 된 분 : "+principal.getName());
+        return "/securitytest/leadertestpage";
     }
 
 }
