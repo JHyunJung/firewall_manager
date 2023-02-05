@@ -37,4 +37,8 @@ public class IpAddress {
     public int hashCode() {
         return Objects.hash(address);
     }
+
+    public void editIpAddress(String address) {
+        this.address = address;
+    }
 }
