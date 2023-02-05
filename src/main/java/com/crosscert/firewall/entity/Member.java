@@ -2,6 +2,7 @@ package com.crosscert.firewall.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
@@ -12,6 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 @Entity
+@Getter
 public class Member extends BaseTimeEntity{
 
     @Id
