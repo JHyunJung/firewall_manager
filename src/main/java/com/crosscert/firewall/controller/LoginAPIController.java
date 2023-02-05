@@ -20,7 +20,8 @@ public class LoginAPIController {
 
     //회원가입 진행   //TODO: MemberApiController에서 진행할지 결정 필요.
     @PostMapping("/signup")
-    public Object signup(SignUpDTO signUpDTO){  //비밀번호 암호화 진행
+    @ResponseBody
+    public String signup(SignUpDTO signUpDTO){  //비밀번호 암호화 진행
         log.info("{}.signup",this.getClass());
         log.info("signUpDTO : "+signUpDTO);
 
@@ -38,7 +39,7 @@ public class LoginAPIController {
 
         log.info("newMemberEmail : "+newMemberEmail);
 
-        return "redirect:/login";
+        return newMemberEmail+" 가입 성공!";
     }
 
 
