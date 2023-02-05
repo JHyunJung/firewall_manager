@@ -30,26 +30,38 @@ public class TestDataInit {
     public void initData() {
 
         IpAddress ipAddress = new IpAddress("172.12.40.52");
+        IpAddress ipAddress2 = new IpAddress("172.12.40.53");
 
         IP ip = IP.builder()
                 .domain("domain")
                 .description("description")
                 .address(ipAddress)
                 .build();
-        ipRepository.save(ip);
+        IP save1 = ipRepository.save(ip);
 
-        for (int i = 0; i < 20; i++) {
+        IP ip2 = IP.builder()
+                .domain("domain2")
+                .description("description2")
+                .address(ipAddress2)
+                .build();
+        IP save2 = ipRepository.save(ip2);
+
+        for (int i = 0; i < 1; i++) {
             Member member = Member.builder()
                     .name("name"+i)
                     .email("testData"+i+"@naver.com")
                     .password("123456"+i)
                     .role(Role.MEMBER)
-                    .devIp(ip)
-                    .netIp(ip)
+                    .devIp(save1)
+                    .netIp(save2)
                     .fireWallList(new ArrayList<>())
                     .build();
 
-            memberRepository.save(member);
+            Member save = memberRepository.save(member);
+            log.info(save.toString());
+            save1.memberUpdate(save);
+            save2.memberUpdate(save);
+
         }
         log.info("testData 완료");
     }
