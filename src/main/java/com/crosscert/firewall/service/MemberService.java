@@ -5,6 +5,7 @@ import com.crosscert.firewall.entity.Member;
 import com.crosscert.firewall.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,6 +16,8 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class MemberService {
     private final MemberRepository memberRepository;
+
+    private final PasswordEncoder passwordEncoder;
 
     public List<MemberDTO.Response.Public> findAll() {
         return memberRepository.findMemberFetchJoin().stream()
@@ -42,12 +45,14 @@ public class MemberService {
 
         //TODO : IP 정보 저장
 
+        //비밀번호 암호화
+        String encPassword = passwordEncoder.encode(memberDTO.getPassword());
+
         //DTO -> Entity
-        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         Member member = Member.builder()
                 .name(memberDTO.getName())
                 .email(memberDTO.getEmail())
-                .password(encoder.encode(memberDTO.getPassword()))  //비밀번호 암호화
+                .password(encPassword)
                 .role(memberDTO.getRole()).build();
 
         //DB 저장

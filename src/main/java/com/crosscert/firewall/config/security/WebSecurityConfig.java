@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
@@ -22,7 +23,9 @@ public class WebSecurityConfig {
     //스프링 시큐리티 설정
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
-        return httpSecurity.csrf().disable()
+        return httpSecurity
+                .cors().disable()
+                .csrf().disable()
                 .authorizeRequests()
                     .antMatchers("/assets/**").permitAll()  //정적 리소스
                     .antMatchers("/").permitAll()//홈화면
@@ -40,6 +43,12 @@ public class WebSecurityConfig {
                     .deleteCookies("JESSIONID")
                     .logoutSuccessUrl("/login")
                 .and().build();
+    }
+
+
+    @Bean
+    public PasswordEncoder passwordEncoder(){
+        return new BCryptPasswordEncoder();
     }
 
     
