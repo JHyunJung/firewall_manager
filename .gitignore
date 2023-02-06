@@ -89,7 +89,7 @@ atlassian-ide-plugin.xml
 # Crashlytics plugin (for Android Studio and IntelliJ)
 com_crashlytics_export_strings.xml
 crashlytics.properties
-crashlytics-build.properties
+crashlytics-build.1
 fabric.properties
 
 # Editor-based Rest Client
