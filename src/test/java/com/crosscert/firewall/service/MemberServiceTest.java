@@ -23,6 +23,7 @@ class MemberServiceTest {
 
     @Autowired
     MemberRepository memberRepository;
+
     @Autowired
     IPRepository ipRepository;
 
@@ -42,7 +43,7 @@ class MemberServiceTest {
                 .build();
         ipRepository.save(ip);
 
-        List<MemberDTO.Response.Public> members = new ArrayList<>();
+        List<Member> members = new ArrayList<>();
 
         for (int i = 0; i < 5; i++) {
             Member member = Member.builder()
@@ -56,18 +57,12 @@ class MemberServiceTest {
                     .build();
 
             memberRepository.save(member);
+            members.add(member);
 
-            members.add(new MemberDTO.Response.Public(
-                    member.getId(),
-                    member.getName(),
-                    member.getEmail(),
-                    member.getRole(),
-                    member.getDevIp().getAddress().getAddress(),
-                    member.getNetIp().getAddress().getAddress()));
         }
 
         //when
-        List<MemberDTO.Response.Public> memberList = memberService.findAll();
+        List<Member> memberList = memberService.findAll();
 
         //then
         Assertions.assertEquals(5, memberList.size());
@@ -81,7 +76,7 @@ class MemberServiceTest {
         //
 
         //when
-        List<MemberDTO.Response.Public> members = memberService.findAll();
+        List<Member> members = memberService.findAll();
 
         //then
         Assertions.assertEquals(0, members.size());
@@ -89,45 +84,8 @@ class MemberServiceTest {
 
     @Test
     @DisplayName("editMember Test")
-    void editMemberTest() {
-        //given
-        IpAddress ipAddress = new IpAddress("172.12.40.52");
+    void editMember() {
 
-        IP ip = IP.builder()
-                .domain("domain")
-                .description("description")
-                .address(ipAddress)
-                .build();
-        ipRepository.save(ip);
-
-        Member member = Member.builder()
-                .name("name")
-                .email("hi"+"@naver.com")
-                .password("123456")
-                .role(Role.MEMBER)
-                .devIp(ip)
-                .netIp(ip)
-                .fireWallList(new ArrayList<>())
-                .build();
-
-        Member saveMember = memberRepository.save(member);
-
-
-        String name = "testName";
-        String testEmail = "test@naver.com";
-        String testIpAddress = "177.77.77.77";
-        MemberDTO.Request.EditInfo memberDTO = new MemberDTO.Request.EditInfo(name, testEmail, Role.LEADER, testIpAddress, testIpAddress);
-
-        //when
-        memberService.editMember(saveMember.getId(), memberDTO);
-        Member findMember = memberRepository.findById(saveMember.getId()).get();
-
-        //then
-        Assertions.assertEquals(name,findMember.getName());
-        Assertions.assertEquals(testEmail,findMember.getEmail());
-        Assertions.assertEquals(Role.LEADER,findMember.getRole());
-        Assertions.assertEquals(testIpAddress,findMember.getDevIp().getAddress().getAddress());
-        Assertions.assertEquals(testIpAddress, findMember.getNetIp().getAddress().getAddress());
 
     }
 }

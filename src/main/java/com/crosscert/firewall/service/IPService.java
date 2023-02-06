@@ -17,26 +17,12 @@ public class IPService {
 
     private final IPRepository ipRepository;
 
-    /**
-     * 해당 IP가 없으면 생성 후 리턴
-     * 해당 IP가 있으면 해당 IP에 address가 요청 address와 맞는지 확인 후 변경
-     */
-    public IP findIpForEdit(Member member, String address) {
+    public Optional<IP> findWithAddress(String address) {
         IpAddress ipAddress = new IpAddress(address);
-        Optional<IP> ip = ipRepository.findByAddress(ipAddress);
-        if (ip.isEmpty()) {
-            return createIpForEdit(member, address);
-        }
-
-        IP findIp = ip.get();
-        if (!findIp.getAddress().getAddress().equals(address)) {
-            findIp.getAddress().editIpAddress(address);
-        }
-
-        return findIp;
+        return ipRepository.findByAddress(ipAddress);
     }
 
-    private IP createIpForEdit(Member member, String address) {
+    public IP create(Member member, String address) {
         IpAddress ipAddress = new IpAddress(address);
         IP ip = new IP(ipAddress, "domain", "description", member, member);
         return ipRepository.save(ip);

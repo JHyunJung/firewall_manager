@@ -14,6 +14,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 
 @SpringBootTest
@@ -21,19 +22,14 @@ import java.util.ArrayList;
 class IPServiceTest {
 
     @Autowired
-    MemberRepository memberRepository;
-    @Autowired
     IPRepository ipRepository;
-
-    @Autowired
-    MemberService memberService;
 
     @Autowired
     IPService ipService;
 
     @Test
-    @DisplayName("findIpForEdit, 변경 요청 ipAddress 존재하지 않을 때")
-    void findIpForEditTest() {
+    @DisplayName("ipAddress 존재하지 않을 때")
+    void findWithAddressNO() {
         //given
         IpAddress ipAddress = new IpAddress("172.12.40.52");
 
@@ -44,64 +40,36 @@ class IPServiceTest {
                 .build();
         ipRepository.save(ip);
 
-        Member member = Member.builder()
-                .name("name")
-                .email("hi"+"@naver.com")
-                .password("123456")
-                .role(Role.MEMBER)
-                .devIp(ip)
-                .netIp(ip)
-                .fireWallList(new ArrayList<>())
-                .build();
 
-        Member saveMember = memberRepository.save(member);
         String testIpAddress = "172.12.40.53";
 
         //when
-        IP returnIp = ipService.findIpForEdit(saveMember, testIpAddress);
+        Optional<IP> returnIp = ipService.findWithAddress(testIpAddress);
 
         //then
-        Assertions.assertEquals(testIpAddress,returnIp.getAddress().getAddress());
+        Assertions.assertTrue(returnIp.isEmpty());
     }
 
     @Test
-    @DisplayName("findIpForEdit, 변경 요청 ipAddress 존재할 때")
-    void findIpForEditTest2() {
+    @DisplayName("ipAddress 존재할 때")
+    void findWithAddressOK() {
         //given
         IpAddress ipAddress = new IpAddress("172.12.40.52");
-        IpAddress ipAddress2 = new IpAddress("172.12.40.53");
 
         IP ip = IP.builder()
                 .domain("domain")
                 .description("description")
                 .address(ipAddress)
                 .build();
-
-        IP ip2 = IP.builder()
-                .domain("domain")
-                .description("description")
-                .address(ipAddress2)
-                .build();
         ipRepository.save(ip);
-        ipRepository.save(ip2);
 
-        Member member = Member.builder()
-                .name("name")
-                .email("hi"+"@naver.com")
-                .password("123456")
-                .role(Role.MEMBER)
-                .devIp(ip)
-                .netIp(ip)
-                .fireWallList(new ArrayList<>())
-                .build();
 
-        Member saveMember = memberRepository.save(member);
-        String testIpAddress = "172.12.40.53";
+        String testIpAddress = "172.12.40.52";
 
         //when
-        IP returnIp = ipService.findIpForEdit(saveMember, testIpAddress);
+        Optional<IP> returnIp = ipService.findWithAddress(testIpAddress);
 
         //then
-        Assertions.assertEquals(testIpAddress,returnIp.getAddress().getAddress());
+        Assertions.assertTrue(returnIp.isPresent());
     }
 }

@@ -7,9 +7,7 @@ import com.crosscert.firewall.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -17,11 +15,14 @@ import java.util.stream.Collectors;
 @Transactional
 public class MemberService {
     private final MemberRepository memberRepository;
-    private final IPService ipService;
 
     @Transactional(readOnly = true)
-    public List<MemberDTO.Response.Public> findAll() {
-        return memberRepository.findMemberFetchJoin().stream()
+    public List<Member> findAll() {
+        return memberRepository.findMemberFetchJoin();
+    }
+
+    public List<MemberDTO.Response.Public> changeResDtos(List<Member> memberList) {
+        return memberList.stream()
                 .map(m -> new MemberDTO.Response.Public(
                         m.getId(),
                         m.getName(),
@@ -32,8 +33,12 @@ public class MemberService {
                 .collect(Collectors.toList());
     }
 
-    public MemberDTO.Response.Public findMember(Long id) {
-        Member m = memberRepository.findById(id).orElseThrow(() -> new RuntimeException("해당 Member 가 없습니다"));
+
+    public Member findMember(Long id) {
+        return memberRepository.findById(id).orElseThrow(() -> new RuntimeException("해당 Member 가 없습니다"));
+    }
+
+    public MemberDTO.Response.Public changeResDto(Member m) {
         return new MemberDTO.Response.Public(
                 m.getId(),
                 m.getName(),
@@ -43,21 +48,12 @@ public class MemberService {
                 m.getNetIp().getAddress().getAddress());
     }
 
-    public boolean editMember(Long id, MemberDTO.Request.EditInfo memberDTO) {
-        Optional<Member> findMember = memberRepository.findById(id);
-
-        if (findMember.isEmpty()) {
-            throw new RuntimeException("해당 Member 존재하지 않습니다");
-        }
-
-        IP devIP = ipService.findIpForEdit(findMember.get(),memberDTO.getDevIp());
-        IP netIP = ipService.findIpForEdit(findMember.get(),memberDTO.getNetIp());
-
-        Member member = findMember.get();
+    public boolean editMember(Member member, MemberDTO.Request.EditInfo memberDTO,IP devIP, IP netIP) {
         member.editMember(memberDTO, devIP, netIP);
-
         return true;
     }
+
+
 }
 
 

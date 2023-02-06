@@ -1,6 +1,7 @@
 package com.crosscert.firewall.controller;
 
 import com.crosscert.firewall.dto.MemberDTO;
+import com.crosscert.firewall.entity.Member;
 import com.crosscert.firewall.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -17,15 +18,19 @@ public class MemberController {
 
     @GetMapping("/members")
     public String members (Model model) {
-        List<MemberDTO.Response.Public> members = memberService.findAll();
+        List<Member> memberList = memberService.findAll();
+        List<MemberDTO.Response.Public> members = memberService.changeResDtos(memberList);
+
         model.addAttribute("members", members);
         return "members";
     }
 
     @GetMapping("/member/{id}")
-    public String memberEdit(Model model, @PathVariable("id") Long id) {
-        MemberDTO.Response.Public member = memberService.findMember(id);
-        model.addAttribute("member", member);
+    public String edit(Model model, @PathVariable("id") Long id) {
+        Member member = memberService.findMember(id);
+        MemberDTO.Response.Public memberDto = memberService.changeResDto(member);
+
+        model.addAttribute("member", memberDto);
         return "memberEdit";
     }
 }
