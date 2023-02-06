@@ -1,7 +1,9 @@
 package com.crosscert.firewall.dto;
 
 import com.crosscert.firewall.entity.Role;
+import lombok.ToString;
 import lombok.Value;
+
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Positive;
 
@@ -21,6 +23,15 @@ public enum MemberDTO {;
             String name;
             String email;
             String password;
+            Role role;
+            String devIp;
+            String netIp;
+        }
+
+        @ToString
+        @Value public static class EditInfo implements Name, Email, MemberRole, DevIP, NetIP {
+            String name;
+            String email;
             Role role;
             String devIp;
             String netIp;
