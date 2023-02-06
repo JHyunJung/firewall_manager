@@ -4,6 +4,7 @@ import com.crosscert.firewall.dto.MemberDTO;
 import com.crosscert.firewall.entity.Member;
 import com.crosscert.firewall.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -27,27 +28,32 @@ public class MemberService {
                 .collect(Collectors.toList());
     }
 
+    private void isPresentMember(String email) {
+        memberRepository.findByEmail(email).ifPresent(m -> {
+            throw new IllegalStateException("이미 존재하는 회원입니다.");
+        });
+    }
+
     @Transactional
     public String signup(MemberDTO.Request.Create memberDTO) {
 
         //중복 회원 검증
-        List<Member> findMembers = memberRepository.findByEmail(memberDTO.getEmail());
-        if (!findMembers.isEmpty()) {
-            throw new IllegalStateException("이미 존재하는 회원입니다.");
-        }
-
-        Member member = Member.builder()
-                .name(memberDTO.getName())
-                .email(memberDTO.getEmail())
-                .password(memberDTO.getPassword())
-                .role(memberDTO.getRole()).build();
-
-        memberRepository.save(member);
+        isPresentMember(memberDTO.getEmail());
 
         //TODO : IP 정보 저장
 
-        return member.getEmail();
+        //DTO -> Entity
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        Member member = Member.builder()
+                .name(memberDTO.getName())
+                .email(memberDTO.getEmail())
+                .password(encoder.encode(memberDTO.getPassword()))  //비밀번호 암호화
+                .role(memberDTO.getRole()).build();
 
+        //DB 저장
+        Member savedMember = memberRepository.save(member);
+
+        return savedMember.getEmail();
     }
 }
 

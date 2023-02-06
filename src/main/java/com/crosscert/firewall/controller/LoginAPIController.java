@@ -21,10 +21,6 @@ public class LoginAPIController {
     public String signup(MemberDTO.Request.Create memberDTO){
         log.info("{}.signup",this.getClass());
 
-        //:TODO 비밀번호 암호화
-
-        log.info("memberDTO : "+memberDTO);
-
         String newMemberEmail = memberService.signup(memberDTO);
 
         log.info("newMemberEmail : "+newMemberEmail);
