@@ -1,5 +1,6 @@
 package com.crosscert.firewall.entity;
 
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Embeddable;
@@ -8,6 +9,7 @@ import java.util.regex.Pattern;
 
 @NoArgsConstructor
 @Embeddable
+@Getter
 public class IpAddress {
 
     private String address;
