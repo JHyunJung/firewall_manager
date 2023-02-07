@@ -1,7 +1,6 @@
 package com.crosscert.firewall.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -36,4 +35,8 @@ public class FireWall extends BaseTimeEntity{
     @JoinColumn(name = "member_id")
     private Member member;
 
+
+    public void setEnded(Boolean ended) {
+        isEnded = ended;
+    }
 }
