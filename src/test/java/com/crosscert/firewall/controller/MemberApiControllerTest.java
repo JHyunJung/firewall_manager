@@ -1,4 +1,4 @@
-package com.crosscert.firewall.Impl;
+package com.crosscert.firewall.controller;
 
 import com.crosscert.firewall.dto.MemberDTO;
 import com.crosscert.firewall.entity.IP;
@@ -7,18 +7,19 @@ import com.crosscert.firewall.entity.Member;
 import com.crosscert.firewall.entity.Role;
 import com.crosscert.firewall.repository.IPRepository;
 import com.crosscert.firewall.repository.MemberRepository;
-import org.junit.jupiter.api.Assertions;
+import com.crosscert.firewall.service.MemberService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
+import org.junit.jupiter.api.Assertions;
 
 import java.util.ArrayList;
 
 @SpringBootTest
 @Transactional
-class MemberServiceImplTest {
+class MemberApiControllerTest {
 
     @Autowired
     MemberRepository memberRepository;
@@ -27,7 +28,7 @@ class MemberServiceImplTest {
     IPRepository ipRepository;
 
     @Autowired
-    MemberServiceImpl memberService;
+    MemberApiController memberController;
 
     @Test
     @DisplayName("멤버 수정 테스트")
@@ -62,7 +63,7 @@ class MemberServiceImplTest {
         MemberDTO.Request.EditInfo memberDTO = new MemberDTO.Request.EditInfo(name, testEmail, Role.LEADER, testIpAddress, testIpAddress);
 
         //when
-        memberService.editMember(saveMember.getId(), memberDTO);
+        memberController.editMember(saveMember.getId(), memberDTO);
         Member findMember = memberRepository.findById(saveMember.getId()).get();
 
         //then
