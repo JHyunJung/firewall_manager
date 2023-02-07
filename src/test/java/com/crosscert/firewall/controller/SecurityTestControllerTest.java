@@ -26,6 +26,10 @@ class SecurityTestControllerTest {
     @Autowired
     MockMvc mockMvc;
 
+    void test(){
+        
+    }
+
 //    @Test
 //    @DisplayName("모두 접근 가능한 페이지")
 //    void index() throws Exception {
