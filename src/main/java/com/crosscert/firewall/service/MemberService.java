@@ -1,8 +1,10 @@
 package com.crosscert.firewall.service;
 
 import com.crosscert.firewall.dto.MemberDTO;
+import com.crosscert.firewall.dto.ResDTO;
 import com.crosscert.firewall.entity.IP;
 import com.crosscert.firewall.entity.Member;
+import com.crosscert.firewall.entity.ResultType;
 import com.crosscert.firewall.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -48,9 +50,9 @@ public class MemberService {
                 m.getNetIp().getAddress().getAddress());
     }
 
-    public boolean editMember(Member member, MemberDTO.Request.EditInfo memberDTO,IP devIP, IP netIP) {
+    public ResDTO.Public editMember(Member member, MemberDTO.Request.EditInfo memberDTO, IP devIP, IP netIP) {
         member.editMember(memberDTO, devIP, netIP);
-        return true;
+        return new ResDTO.Public(ResultType.OK);
     }
 
 

@@ -1,7 +1,11 @@
 package com.crosscert.firewall.controller;
 
 import com.crosscert.firewall.dto.MemberDTO;
+import com.crosscert.firewall.entity.IP;
 import com.crosscert.firewall.entity.Member;
+import com.crosscert.firewall.repository.IPRepository;
+import com.crosscert.firewall.repository.MemberRepository;
+import com.crosscert.firewall.service.IPService;
 import com.crosscert.firewall.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -15,9 +19,12 @@ import java.util.List;
 @RequiredArgsConstructor
 public class MemberController {
     private final MemberService memberService;
+    private final IPService ipService;
+    private final MemberRepository memberRepository;
+    private final IPRepository ipRepository;
 
     @GetMapping("/members")
-    public String members (Model model) {
+    public String members(Model model) {
         List<Member> memberList = memberService.findAll();
         List<MemberDTO.Response.Public> members = memberService.changeResDtos(memberList);
 
@@ -30,7 +37,12 @@ public class MemberController {
         Member member = memberService.findMember(id);
         MemberDTO.Response.Public memberDto = memberService.changeResDto(member);
 
+        List<IP> ipList = ipService.findAll();
+        List<String> addresses = ipService.getAddresses(ipList);
+        System.out.println(addresses.size());
+
         model.addAttribute("member", memberDto);
+        model.addAttribute("addresses", addresses);
         return "memberEdit";
     }
 }

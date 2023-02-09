@@ -24,11 +24,27 @@
                 </div>
                 <div>
                     <label for="devIp">개발망 Ip</label>
-                    <input type="text" id=devIp th:field="*{devIp}">
+                    <div class="dropdown ip-div">
+                        <input type="text" class="devIp" id=devIp style="display: none">
+                        <button class="btn btn-outline-primary dropdown-toggle devBtn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                            IP List
+                        </button>
+                        <ul class="dropdown-menu ip-menu-div" aria-labelledby="dropdownMenuButton1" >
+                            <li class="dropdown-item" th:each="address : ${addresses}" th:text="${address}"></li>
+                        </ul>
+                    </div>
                 </div>
                 <div>
                     <label for="netIp">인터넷망 Ip</label>
-                    <input type="text" id=netIp th:field="*{netIp}">
+                    <div class="dropdown ip-div">
+                        <input type="text" class="netIp" id=netIp style="display: none">
+                        <button class="btn btn-outline-primary dropdown-toggle netBtn" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+                            IP List
+                        </button>
+                        <ul class="dropdown-menu ip-menu-net" aria-labelledby="dropdownMenuButton1" >
+                            <li class="dropdown-item" th:each="address : ${addresses}" th:text="${address}"></li>
+                        </ul>
+                    </div>
                 </div>
                 <button type="submit" class="btn btn-primary">정보 수정</button>
             </form>
@@ -36,5 +52,6 @@
     </div>
 
     <script src="/js/bootstrap.bundle.min.js"> </script>
+    <script src="/js/member.js"> </script>
 </body>
 </html>
