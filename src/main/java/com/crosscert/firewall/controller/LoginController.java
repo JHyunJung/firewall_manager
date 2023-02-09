@@ -32,23 +32,18 @@ public class LoginController {
     @PostMapping("/signup")
     public String signup(MemberDTO.Request.Create memberDTO){
         log.info("{}.signup",this.getClass());
-
         String newMemberEmail = memberService.signup(memberDTO);
-
         log.info("newMemberEmail : "+newMemberEmail);
-
         return "redirect:/";
     }
 
 
-    //비동기 이메일 중복 체크
+    //비동기식 이메일 중복 체크
     @GetMapping("/checkDuplicateEmail")
     @ResponseBody
-    public Map<String, Object> checkEmail(@RequestParam String email) {
-        log.info("비동기 이메일 중복체크");
-        Map<String, Object> data = new HashMap<>();
-        data.put("result", memberService.isPresentMember(email));
-        return data;
+    public boolean checkDuplicateEmail(@RequestParam String email) {
+        log.info("{}.checkDuplicateEmail",this.getClass());
+        return memberService.isPresentMember(email);
     }
 
 }
