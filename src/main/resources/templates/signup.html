@@ -8,7 +8,7 @@
 <body>
 <h1>회원가입 페이지</h1>
 <form action="/signup" method="POST">
-    <input type="text" name="email" placeholder="아이디(이메일)"/><br>
+    <input type="text" id="email" onfocusout="checkEmail();" name="email" placeholder="아이디(이메일)"/><br>
     <input type="password" name="password" placeholder="비밀번호"/><br>
     <input type="text" name="name" placeholder="이름"/><br>
     <input type="text" name="devIp" placeholder="개발망IP"/><br>
@@ -17,5 +17,25 @@
     <input type="text" name="role" value="MEMBER" readonly/><br>
     <input type="submit"/><br>
 </form>
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script>
+function checkEmail(){
+    let email = document.getElementById("email").value;
+    $.ajax({
+        url: '/checkDuplicateEmail',
+        type: 'GET',
+        data: { 'email': email },
+        success: function(data) {
+            console.log(data);
+            console.log(data.result);
+            if(data.result === true) {
+                alert('중복된 아이디(이메일)입니다.');
+                document.getElementById("email").value = "";
+                document.getElementById("email").focus();
+            }
+        }
+    });
+}
+</script>
 </body>
 </html>

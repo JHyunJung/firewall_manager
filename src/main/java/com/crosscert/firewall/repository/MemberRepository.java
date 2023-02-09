@@ -12,5 +12,5 @@ public interface MemberRepository extends JpaRepository<Member, Long> {
     @Query(value = "select m from Member m left join fetch m.devIp")
     List<Member> findMemberFetchJoin();
 
-    Optional<Member> findByEmail(String email);
+    boolean existsByEmail(String email);
 }

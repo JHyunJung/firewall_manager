@@ -31,17 +31,17 @@ public class MemberService {
                 .collect(Collectors.toList());
     }
 
-    private void isPresentMember(String email) {
-        memberRepository.findByEmail(email).ifPresent(m -> {
-            throw new IllegalStateException("이미 존재하는 회원입니다.");
-        });
+    public boolean isPresentMember(String email) {
+        return memberRepository.existsByEmail(email);
     }
 
     @Transactional
     public String signup(MemberDTO.Request.Create memberDTO) {
 
         //중복 회원 검증
-        isPresentMember(memberDTO.getEmail());
+        if(isPresentMember(memberDTO.getEmail())){
+            throw new IllegalStateException("이미 존재하는 회원입니다.");
+        }
 
         //TODO : IP 정보 저장
 
