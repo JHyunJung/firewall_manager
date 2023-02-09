@@ -21,7 +21,7 @@ public class MemberApiController {
     private final IPService ipService;
 
     @PutMapping("/member/{id}")
-    public ResDTO.Public editMember(@PathVariable("id") Long id, MemberDTO.Request.EditInfo memberDTO) {
+    public ResDTO.Public edit(@PathVariable("id") Long id, MemberDTO.Request.EditInfo memberDTO) {
         Member findMember = memberService.findMember(id);
 
         IP devIP = ipService.findWithAddress(memberDTO.getDevIp())
@@ -30,7 +30,7 @@ public class MemberApiController {
         IP netIP = ipService.findWithAddress(memberDTO.getNetIp())
                 .orElseThrow(() -> new CustomException(ErrorCode.NOT_EXIST_IP));
 
-        return memberService.editMember(findMember,memberDTO, devIP, netIP);
+        return memberService.edit(findMember,memberDTO, devIP, netIP);
     }
 
 }

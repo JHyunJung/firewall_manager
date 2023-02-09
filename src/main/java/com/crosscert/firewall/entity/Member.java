@@ -44,7 +44,7 @@ public class Member extends BaseTimeEntity{
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private List<FireWall> fireWallList = new ArrayList<>();
 
-    public void editMember(MemberDTO.Request.EditInfo memberDTO,IP devIp, IP netIp) {
+    public void edit(MemberDTO.Request.EditInfo memberDTO, IP devIp, IP netIp) {
         this.name = memberDTO.getName();
         this.email = memberDTO.getEmail();
         this.role = memberDTO.getRole();

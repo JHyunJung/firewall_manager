@@ -50,8 +50,8 @@ public class MemberService {
                 m.getNetIp().getAddress().getAddress());
     }
 
-    public ResDTO.Public editMember(Member member, MemberDTO.Request.EditInfo memberDTO, IP devIP, IP netIP) {
-        member.editMember(memberDTO, devIP, netIP);
+    public ResDTO.Public edit(Member member, MemberDTO.Request.EditInfo memberDTO, IP devIP, IP netIP) {
+        member.edit(memberDTO, devIP, netIP);
         return new ResDTO.Public(ResultType.OK);
     }
 

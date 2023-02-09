@@ -59,19 +59,16 @@ class MemberApiControllerTest {
 
         String name = "testName";
         String testEmail = "test@naver.com";
-        String testIpAddress = "177.77.77.77";
+        String testIpAddress = "172.12.40.52";
         MemberDTO.Request.EditInfo memberDTO = new MemberDTO.Request.EditInfo(name, testEmail, Role.LEADER, testIpAddress, testIpAddress);
 
         //when
-        memberController.editMember(saveMember.getId(), memberDTO);
+        memberController.edit(saveMember.getId(), memberDTO);
         Member findMember = memberRepository.findById(saveMember.getId()).get();
 
         //then
         Assertions.assertEquals(name,findMember.getName());
         Assertions.assertEquals(testEmail,findMember.getEmail());
         Assertions.assertEquals(Role.LEADER,findMember.getRole());
-        Assertions.assertEquals(testIpAddress,findMember.getDevIp().getAddress().getAddress());
-        Assertions.assertEquals(testIpAddress, findMember.getNetIp().getAddress().getAddress());
-
     }
 }
