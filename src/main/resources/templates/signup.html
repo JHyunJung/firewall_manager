@@ -57,7 +57,7 @@
 
                         <div class="col-12">
                             <label for="password" class="form-label">비밀번호</label>
-                            <input type="password" class="form-control" id="password" name="password" required/>
+                            <input type="password" onfocus="checkEmail();" class="form-control" id="password" name="password" required/>
                             <div class="invalid-feedback">
                                 비밀번호를 올바르게 입력하세요.
                             </div>
@@ -110,9 +110,7 @@
 <script src="/js/form-validation.js"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script>
-
     const emailNotOkMsg = document.getElementById("emailNotOkMsg");
-
     //중복 회원 검증
     function checkEmail(){
         let email = document.getElementById("email").value;
@@ -122,12 +120,13 @@
                 type: 'GET',
                 data: { 'email': email },
                 success: function(data) {
-                    console.log(data);
-                    if(data === true) {
+                    if(data.result === true) {
+                        console.log("중복된 아이디(이메일)")
                         emailNotOkMsg.style.display = "block";
                         document.getElementById("email").value = "";
                         document.getElementById("email").focus();
                     }else {
+                        console.log("사용가능한 아이디(이메일)")
                         emailNotOkMsg.style.display = "none";
                     }
                 }

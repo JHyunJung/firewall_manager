@@ -4,6 +4,8 @@ import com.crosscert.firewall.dto.MemberDTO;
 import com.crosscert.firewall.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,16 +36,18 @@ public class LoginController {
         log.info("{}.signup",this.getClass());
         String newMemberEmail = memberService.signup(memberDTO);
         log.info("newMemberEmail : "+newMemberEmail);
-        return "redirect:/";
+        return "redirect:/login";
     }
 
 
-    //비동기식 이메일 중복 체크
+    //이메일 중복체크
     @GetMapping("/checkDuplicateEmail")
     @ResponseBody
-    public boolean checkDuplicateEmail(@RequestParam String email) {
+    public ResponseEntity<Object> checkDuplicateEmail(@RequestParam String email) {
         log.info("{}.checkDuplicateEmail",this.getClass());
-        return memberService.isPresentMember(email);
+        Map<String, Object> data = new HashMap<>();
+        data.put("result", memberService.isPresentMember(email));
+        return ResponseEntity.ok(data);
     }
 
 }
