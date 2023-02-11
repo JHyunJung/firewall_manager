@@ -46,10 +46,10 @@ public class Member extends BaseTimeEntity{
     private List<FireWall> fireWallList = new ArrayList<>();
 
     public void setDevIpByAddress(String devIp) {
-        this.devIp = IP.builder().address(new IpAddress(devIp)).build();
+        this.devIp = new IP(new IpAddress(devIp));
     }
 
     public void setNetIpByAddress(String netIp) {
-        this.netIp = IP.builder().address(new IpAddress(netIp)).build();
+        this.netIp = new IP(new IpAddress(netIp));
     }
 }

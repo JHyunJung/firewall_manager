@@ -34,8 +34,9 @@ public class LoginController {
     @PostMapping("/signup")
     public String signup(MemberDTO.Request.Create memberDTO){
         log.info("{}.signup",this.getClass());
+        log.info(memberDTO);
         memberService.signup(memberDTO);
-        return "redirect:/login?signup=done";   //회원가입 완료 alert를 위한 값
+        return "redirect:/login";
     }
 
 

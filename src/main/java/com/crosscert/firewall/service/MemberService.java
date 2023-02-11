@@ -58,21 +58,26 @@ public class MemberService {
                 .password(encPassword)
                 .role(memberDTO.getRole()).build();
 
-        //개발망 IP정보
-        if(memberDTO.getDevIp()!=null && !memberDTO.getDevIp().equals("")){
-            log.info("devIp : {}",memberDTO.getDevIp());
-            member.setDevIpByAddress(memberDTO.getDevIp());
-        }
 
-        //인터넷망 IP정보
-        if(memberDTO.getNetIp()!=null && !memberDTO.getNetIp().equals("")){
-            log.info("devIp : {}",memberDTO.getNetIp());
-            member.setNetIpByAddress(memberDTO.getNetIp());
-        }
+        //개발망 IP정보, 인터넷망 IP정보
+        setIpAddress("devIp",memberDTO.getDevIp(),member);
+        setIpAddress("netIp",memberDTO.getNetIp(),member);
 
         //DB 저장
         memberRepository.save(member);
     }
+
+    public void setIpAddress(String type, String ipAddress,Member member) {
+        if(ipAddress!=null && !ipAddress.equals("")){
+            if(type.equals("devIp")){
+                member.setDevIpByAddress(ipAddress);
+            }else if(type.equals("netIp")){
+                member.setNetIpByAddress(ipAddress);
+            }
+        }
+    }
+
+
 }
 
 

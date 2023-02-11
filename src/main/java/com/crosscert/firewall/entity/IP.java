@@ -34,4 +34,8 @@ public class IP extends BaseTimeEntity{
 
     @OneToOne(mappedBy = "netIp")
     private Member netMember;
+
+    public IP(IpAddress ipAddress) {
+        address = ipAddress;
+    }
 }
