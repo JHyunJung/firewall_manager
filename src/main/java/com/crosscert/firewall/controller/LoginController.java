@@ -34,9 +34,8 @@ public class LoginController {
     @PostMapping("/signup")
     public String signup(MemberDTO.Request.Create memberDTO){
         log.info("{}.signup",this.getClass());
-        String newMemberEmail = memberService.signup(memberDTO);
-        log.info("newMemberEmail : "+newMemberEmail);
-        return "redirect:/login";
+        memberService.signup(memberDTO);
+        return "redirect:/login?signup=done";   //회원가입 완료 alert를 위한 값
     }
 
 

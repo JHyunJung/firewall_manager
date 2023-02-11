@@ -40,7 +40,7 @@ public class MemberService {
     }
 
     @Transactional
-    public String signup(MemberDTO.Request.Create memberDTO) {
+    public void signup(MemberDTO.Request.Create memberDTO) {
         log.info("{}.signup",this.getClass());
 
         //중복 회원 검증
@@ -71,9 +71,7 @@ public class MemberService {
         }
 
         //DB 저장
-        Member savedMember = memberRepository.save(member);
-
-        return savedMember.getEmail();
+        memberRepository.save(member);
     }
 }
 
