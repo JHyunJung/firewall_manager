@@ -26,10 +26,14 @@ class SecurityTestControllerTest {
     @Autowired
     MockMvc mockMvc;
 
+<<<<<<< HEAD
     void test(){
-        
+        System.out.println("test");
+
     }
 
+=======
+>>>>>>> parent of 2c0cf2c (젠킨스 auto build test)
 //    @Test
 //    @DisplayName("모두 접근 가능한 페이지")
 //    void index() throws Exception {
