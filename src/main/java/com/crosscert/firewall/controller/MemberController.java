@@ -30,7 +30,7 @@ public class MemberController {
         return "members";
     }
 
-    @GetMapping("/test2")
+    @GetMapping("/test3")
     @ResponseBody
     public String test(){
         return "test";
