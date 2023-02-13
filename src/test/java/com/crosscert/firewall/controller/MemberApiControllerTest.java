@@ -1,13 +1,12 @@
 package com.crosscert.firewall.controller;
 
-import com.crosscert.firewall.dto.MemberDTO;
 import com.crosscert.firewall.entity.IP;
 import com.crosscert.firewall.entity.IpAddress;
 import com.crosscert.firewall.entity.Member;
 import com.crosscert.firewall.entity.Role;
 import com.crosscert.firewall.repository.IPRepository;
 import com.crosscert.firewall.repository.MemberRepository;
-import com.crosscert.firewall.service.MemberService;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -20,13 +19,11 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.transaction.annotation.Transactional;
-import org.junit.jupiter.api.Assertions;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 
 import java.util.ArrayList;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 

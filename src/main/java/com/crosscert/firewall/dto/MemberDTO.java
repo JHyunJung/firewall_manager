@@ -19,7 +19,7 @@ public enum MemberDTO {;
 //    private interface FireWall { List<FireWall> getFireWall();}
 
     public enum Request{;
-        @Value public static class Create implements Name, Email, Password, Role, DevIP, NetIP{
+        @Value public static class Create implements Name, Email, Password, MemberRole, DevIP, NetIP{
              String name;
              String email;
              String password;
@@ -39,7 +39,7 @@ public enum MemberDTO {;
     }
 
     public enum Response{;
-        @Value public static class Public implements Id, Name, Email, Role, DevIP, NetIP {
+        @Value public static class Public implements Id, Name, Email, MemberRole, DevIP, NetIP {
             Long id;
             String name;
             String email;
