@@ -15,7 +15,7 @@ import javax.persistence.*;
 public class IP extends BaseTimeEntity{
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Embedded

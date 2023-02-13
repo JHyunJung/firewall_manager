@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.crosscert.firewall.service.LogServiceTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-02-05T08:44:09" hostname="JaeHyunui-MacBookPro.local" time="0.056">
+  <properties/>
+  <testcase name="find_exception" classname="com.crosscert.firewall.service.LogServiceTest" time="0.056"/>
+  <system-out><![CDATA[2023-02-05 17:44:09.583  INFO 2520 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.crosscert.firewall.service.LogServiceTest], using SpringBootContextLoader
+2023-02-05 17:44:09.584  INFO 2520 --- [    Test worker] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [com.crosscert.firewall.service.LogServiceTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+2023-02-05 17:44:09.584  INFO 2520 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.crosscert.firewall.service.LogServiceTest]: LogServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-02-05 17:44:09.588  INFO 2520 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.crosscert.firewall.FirewallApplication for test class com.crosscert.firewall.service.LogServiceTest
+2023-02-05 17:44:09.590  INFO 2520 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+2023-02-05 17:44:09.590  INFO 2520 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@5ef48b08, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@7a1878d, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@2b625e82, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@22657db1, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@58b30e3e, org.springframework.test.context.support.DirtiesContextTestExecutionListener@5325674a, org.springframework.test.context.transaction.TransactionalTestExecutionListener@6a0aa5e2, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@630bd5e7, org.springframework.test.context.event.EventPublishingTestExecutionListener@2389f546, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@5b6ec94a, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@64745270, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@596d17f4, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@35a2ea5a, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@18ab513d, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@5e8a678a]
+2023-02-05 17:44:09.622 DEBUG 2520 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        log0_.id as id1_2_0_,
+        log0_.body as body2_2_0_,
+        log0_.method as method3_2_0_,
+        log0_.param as param4_2_0_,
+        log0_.status as status5_2_0_,
+        log0_.url as url6_2_0_ 
+    from
+        log log0_ 
+    where
+        log0_.id=?
+2023-02-05 17:44:09.631 TRACE 2520 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [2]
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

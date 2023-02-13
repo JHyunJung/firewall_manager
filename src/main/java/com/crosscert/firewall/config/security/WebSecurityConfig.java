@@ -25,7 +25,7 @@ public class WebSecurityConfig {
         return httpSecurity.csrf().disable()
                 .authorizeRequests()
                     .antMatchers("/assets/**").permitAll()  //정적 리소스
-                    .antMatchers("/").permitAll()           //홈화면
+                    .antMatchers("/").permitAll()//홈화면
                     .antMatchers("/signup").anonymous()     //회원가입
                     .antMatchers("/login").anonymous()      //로그인
 //                    .antMatchers("/leader/**").hasRole("LEADER")

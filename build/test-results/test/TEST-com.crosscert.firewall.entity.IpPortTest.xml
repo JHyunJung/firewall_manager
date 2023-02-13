@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="IpPort 클래스 테스트" tests="2" skipped="0" failures="0" errors="0" timestamp="2023-02-05T08:44:09" hostname="JaeHyunui-MacBookPro.local" time="0.003">
+  <properties/>
+  <testcase name="생성자_valid_테스트" classname="com.crosscert.firewall.entity.IpPortTest" time="0.001"/>
+  <testcase name="생성자_테스트" classname="com.crosscert.firewall.entity.IpPortTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

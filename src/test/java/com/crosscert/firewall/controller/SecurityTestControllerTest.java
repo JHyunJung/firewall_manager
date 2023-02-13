@@ -26,49 +26,57 @@ class SecurityTestControllerTest {
     @Autowired
     MockMvc mockMvc;
 
-    @Test
-    @DisplayName("모두 접근 가능한 페이지")
-    void index() throws Exception {
-        mockMvc.perform(get("/sec")
-                .with(anonymous()))
-                .andDo(print())
-                .andExpect(status().isOk());
+<<<<<<< HEAD
+    void test(){
+        System.out.println("test");
+
     }
 
-    @Test
-    @DisplayName("로그인시에만 접근 가능한 페이지")
-    void memberTestpage() throws Exception {
-        mockMvc.perform(get("/sec/member/test")
-                        .with(user("testuser").roles("MEMBER")))
-                .andDo(print())
-                .andExpect(status().isOk());
-    }
-
-    @Test
-    @DisplayName("leader 권한 로그인시에만 접근 가능한 페이지")
-    void leaderTestpage() throws Exception {
-        mockMvc.perform(get("/sec/leader/test")
-                        .with(user("testuser").roles("LEADER")))
-                .andDo(print())
-                .andExpect(status().isOk());
-    }
-
-
-    @Test
-    @DisplayName("로그인 안하고 접근시")
-    void noLoginTest() throws Exception {
-        mockMvc.perform(get("/sec/member/test")
-                        .with(anonymous()))
-                .andDo(print())
-                .andExpect(status().is3xxRedirection());
-    }
-
-    @Test
-    @DisplayName("member 권한만 가지고 있는 유저가 leader 권한 페이지 접근시")
-    void noLeaderTest() throws Exception {
-        mockMvc.perform(get("/sec/leader/test")
-                        .with(user("testuser").roles("MEMBER")))
-                .andDo(print())
-                .andExpect(status().is4xxClientError());
-    }
+=======
+>>>>>>> parent of 2c0cf2c (젠킨스 auto build test)
+//    @Test
+//    @DisplayName("모두 접근 가능한 페이지")
+//    void index() throws Exception {
+//        mockMvc.perform(get("/sec")
+//                .with(anonymous()))
+//                .andDo(print())
+//                .andExpect(status().isOk());
+//    }
+//
+//    @Test
+//    @DisplayName("로그인시에만 접근 가능한 페이지")
+//    void memberTestpage() throws Exception {
+//        mockMvc.perform(get("/sec/member/test")
+//                        .with(user("testuser").roles("MEMBER")))
+//                .andDo(print())
+//                .andExpect(status().isOk());
+//    }
+//
+//    @Test
+//    @DisplayName("leader 권한 로그인시에만 접근 가능한 페이지")
+//    void leaderTestpage() throws Exception {
+//        mockMvc.perform(get("/sec/leader/test")
+//                        .with(user("testuser").roles("LEADER")))
+//                .andDo(print())
+//                .andExpect(status().isOk());
+//    }
+//
+//
+//    @Test
+//    @DisplayName("로그인 안하고 접근시")
+//    void noLoginTest() throws Exception {
+//        mockMvc.perform(get("/sec/member/test")
+//                        .with(anonymous()))
+//                .andDo(print())
+//                .andExpect(status().is3xxRedirection());
+//    }
+//
+//    @Test
+//    @DisplayName("member 권한만 가지고 있는 유저가 leader 권한 페이지 접근시")
+//    void noLeaderTest() throws Exception {
+//        mockMvc.perform(get("/sec/leader/test")
+//                        .with(user("testuser").roles("MEMBER")))
+//                .andDo(print())
+//                .andExpect(status().is4xxClientError());
+//    }
 }

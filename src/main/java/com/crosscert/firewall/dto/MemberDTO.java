@@ -6,6 +6,7 @@ import lombok.Value;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Positive;
+import java.util.List;
 
 public enum MemberDTO {;
     private interface Id { @Positive Long getId(); }
@@ -17,15 +18,14 @@ public enum MemberDTO {;
     private interface NetIP {@NotBlank String getNetIp();}
 //    private interface FireWall { List<FireWall> getFireWall();}
 
-
     public enum Request{;
-        @Value public static class Create implements Name, Email, Password, MemberRole, DevIP, NetIP{
-            String name;
-            String email;
-            String password;
-            Role role;
-            String devIp;
-            String netIp;
+        @Value public static class Create implements Name, Email, Password, Role, DevIP, NetIP{
+             String name;
+             String email;
+             String password;
+             Role role;
+             String devIp;
+             String netIp;
         }
 
         @ToString
@@ -39,7 +39,7 @@ public enum MemberDTO {;
     }
 
     public enum Response{;
-        @Value public static class Public implements Id, Name, Email, MemberRole, DevIP, NetIP {
+        @Value public static class Public implements Id, Name, Email, Role, DevIP, NetIP {
             Long id;
             String name;
             String email;

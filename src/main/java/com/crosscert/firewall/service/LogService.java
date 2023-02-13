@@ -18,7 +18,7 @@ public class LogService {
 
     public Log findById(Long id){
         return logRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("없는 아이디 입니다."));
+                .orElseThrow(() -> new IllegalArgumentException("없는 아이디 입니다."));
     }
 
     public void delete(Long id){
