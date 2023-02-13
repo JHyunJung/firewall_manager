@@ -11,7 +11,7 @@ import java.time.LocalDate;
 public class FireWall extends BaseTimeEntity{
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne()
