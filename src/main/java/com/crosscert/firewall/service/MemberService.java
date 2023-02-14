@@ -1,13 +1,10 @@
 package com.crosscert.firewall.service;
 
 import com.crosscert.firewall.dto.MemberDTO;
-import com.crosscert.firewall.entity.IP;
-import com.crosscert.firewall.entity.IpAddress;
 import com.crosscert.firewall.entity.Member;
 import com.crosscert.firewall.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -59,22 +56,20 @@ public class MemberService {
                 .role(memberDTO.getRole()).build();
 
 
-        //개발망 IP정보, 인터넷망 IP정보
-        setIpAddress("devIp",memberDTO.getDevIp(),member);
-        setIpAddress("netIp",memberDTO.getNetIp(),member);
+        //가입시 개발망 IP정보, 인터넷망 IP정보가 있을 경우 함께 저장
+        if(isEmptyIpAddress(memberDTO.getDevIp())){
+            member.setDevIpByAddress(memberDTO.getDevIp());
+        }
+        if(isEmptyIpAddress(memberDTO.getNetIp())){
+            member.setNetIpByAddress(memberDTO.getNetIp());
+        }
 
         //DB 저장
         memberRepository.save(member);
     }
 
-    public void setIpAddress(String type, String ipAddress,Member member) {
-        if(ipAddress!=null && !ipAddress.equals("")){
-            if(type.equals("devIp")){
-                member.setDevIpByAddress(ipAddress);
-            }else if(type.equals("netIp")){
-                member.setNetIpByAddress(ipAddress);
-            }
-        }
+    public boolean isEmptyIpAddress(String ipAddress) {
+        return ipAddress != null && !ipAddress.equals("");
     }
 
 

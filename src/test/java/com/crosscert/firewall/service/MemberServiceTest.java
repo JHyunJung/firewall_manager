@@ -146,19 +146,6 @@ class MemberServiceTest {
                 .hasMessage("이미 존재하는 회원입니다.");
     }
 
-
-    @Test
-    public void 이메일중복체크_중복아닐때_false() {
-        // Given
-        String email = "test3@crosscert.com";
-
-        // When
-        boolean result = memberService.isPresentMember(email);
-
-        // Then
-        assertFalse(result);
-    }
-
     @Test
     public void 이메일중복체크_중복일때_true() {
         // Given
@@ -172,13 +159,16 @@ class MemberServiceTest {
                 .build();
         memberService.signup(createDto);
 
-        String email = "test4@crosscert.com";   //이메일 중복
+        String email =  "test5@crosscert.com";
+        String email2 = "test4@crosscert.com";   //이메일 중복
 
         // When
         boolean result = memberService.isPresentMember(email);
+        boolean result2 = memberService.isPresentMember(email2);
 
         // Then
-        assertTrue(result);
+        assertFalse(result);
+        assertTrue(result2);
     }
 
 }
