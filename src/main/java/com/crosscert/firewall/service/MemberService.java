@@ -57,10 +57,10 @@ public class MemberService {
 
 
         //가입시 개발망 IP정보, 인터넷망 IP정보가 있을 경우 함께 저장
-        if(isEmptyIpAddress(memberDTO.getDevIp())){
+        if(isNotEmptyIpAddress(memberDTO.getDevIp())){
             member.setDevIpByAddress(memberDTO.getDevIp());
         }
-        if(isEmptyIpAddress(memberDTO.getNetIp())){
+        if(isNotEmptyIpAddress(memberDTO.getNetIp())){
             member.setNetIpByAddress(memberDTO.getNetIp());
         }
 
@@ -68,7 +68,7 @@ public class MemberService {
         memberRepository.save(member);
     }
 
-    public boolean isEmptyIpAddress(String ipAddress) {
+    public boolean isNotEmptyIpAddress(String ipAddress) {
         return ipAddress != null && !ipAddress.equals("");
     }
 
