@@ -45,4 +45,11 @@ public class Member extends BaseTimeEntity{
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private List<FireWall> fireWallList = new ArrayList<>();
 
+    public void setDevIpByAddress(String devIp) {
+        this.devIp = new IP(devIp);
+    }
+
+    public void setNetIpByAddress(String netIp) {
+        this.netIp = new IP(netIp);
+    }
 }
