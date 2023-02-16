@@ -1,5 +1,6 @@
 package com.crosscert.firewall.config.security;
 
+import com.crosscert.firewall.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,9 +17,6 @@ import org.thymeleaf.extras.springsecurity5.dialect.SpringSecurityDialect;
 
 @Configuration
 @EnableWebSecurity
-//@RequiredArgsConstructor
-//@EnableGlobalMethodSecurity(prePostEnabled = true)
-//public class WebSecurityConfig extends WebSecurityConfigurerAdapter {     //deprecated
 public class WebSecurityConfig {
 
     //스프링 시큐리티 설정
