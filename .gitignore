@@ -239,5 +239,4 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-/src/main/resources/*.properties
-!application.properties
+application-prod.properties
