@@ -238,3 +238,5 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+/src/main/resources/*.properties
