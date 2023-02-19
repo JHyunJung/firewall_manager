@@ -3,15 +3,13 @@ package com.crosscert.firewall.service;
 import com.crosscert.firewall.entity.FireWall;
 import com.crosscert.firewall.entity.search.SearchFirewall;
 import com.crosscert.firewall.repository.FirewallRepository;
+import com.querydsl.core.util.StringUtils;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.Date;
-import java.util.Optional;
 
 @Service
 public class FirewallService {
@@ -41,6 +39,24 @@ public class FirewallService {
     @ApiOperation(value = "firewall 등록")
     @Transactional
     public FireWall saveFireWall(FireWall fireWall) {
+        return firewallRepository.save(fireWall);
+    }
+
+    /**
+     * firewall 수정
+     */
+    @ApiOperation(value = "firewall 수정")
+    @Transactional
+    public FireWall updateFireWall(FireWall fireWall) {
+        FireWall vo = firewallRepository.getReferenceById(fireWall.getId());
+        if(fireWall.getPort() != null){
+            fireWall.setPort(vo.getPort());
+        };
+        if (vo.getEndDate() != null) {
+
+            fireWall.getEndDate();
+        }
+
         return firewallRepository.save(fireWall);
     }
 

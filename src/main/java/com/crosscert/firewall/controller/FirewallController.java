@@ -46,6 +46,14 @@ public class FirewallController {
         return  new RtnValue(firewallService.saveFireWall(fireWall), true, "FireWall 등록");
     }
 
+    /**
+     * firewall 수
+     */
+    @ApiOperation(value = "firewall 수정")
+    @PutMapping("")
+    public RtnValue<FireWall> updateFireWall(@RequestBody FireWall fireWall) {
+        return  new RtnValue(firewallService.updateFireWall(fireWall), true, "FireWall 등록");
+    }
 
     @ApiOperation(value = "firewall 삭제")
     @DeleteMapping("/{id}")
