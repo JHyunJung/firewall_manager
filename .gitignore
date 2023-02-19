@@ -240,3 +240,4 @@ $RECYCLE.BIN/
 *.lnk
 
 /src/main/resources/*.properties
+!application.properties
