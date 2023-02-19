@@ -240,3 +240,4 @@ $RECYCLE.BIN/
 *.lnk
 
 application-prod.properties
+application.properties
