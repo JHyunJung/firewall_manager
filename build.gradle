@@ -30,6 +30,7 @@ dependencies {
 	compile "io.springfox:springfox-swagger2:3.0.0"
 	compile "io.springfox:springfox-swagger-ui:3.0.0"
 
+
 	implementation "com.querydsl:querydsl-jpa:5.0.0"
 	implementation "com.querydsl:querydsl-apt:5.0.0"
 
