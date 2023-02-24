@@ -51,7 +51,7 @@ public class MemberService implements UserDetailsService {
         //중복 회원 검증
         if(isPresentMember(memberDTO.getEmail())){
             throw new IllegalStateException("이미 존재하는 회원입니다.");
-        }
+        };
 
         //비밀번호 암호화
         String encPassword = passwordEncoder.encode(memberDTO.getPassword());
