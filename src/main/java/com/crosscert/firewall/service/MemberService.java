@@ -89,6 +89,17 @@ public class MemberService implements UserDetailsService {
         authorities.add(new SimpleGrantedAuthority(member.getRole().name()));
         return new User(member.getEmail(), member.getPassword(), authorities);
     }
+
+    @Transactional
+    public void deleteByEmail(String email) {
+        log.info("{}.deleteByEmail",this.getClass());
+
+        //유저 정보 갖고 오기
+        Member member = memberRepository.findByEmail(email).orElseThrow(() -> new UsernameNotFoundException("없는 회원 정보 입니다."));
+
+        //DB삭제
+        memberRepository.delete(member);
+    }
 }
 
 
