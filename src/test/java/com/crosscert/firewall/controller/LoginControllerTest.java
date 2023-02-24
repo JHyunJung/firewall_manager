@@ -28,8 +28,8 @@ public class LoginControllerTest {
     @Autowired
     private MemberService memberService;
 
-    @BeforeEach //TODO : AfterEach로 DB값 삭제 필요.
-    public void beforeEash() {
+    @BeforeEach
+    public void beforeEach() {
         MemberDTO.Request.Create createDto = MemberDTO.Request.Create.builder()
                 .email("test@crosscert.com")
                 .name("test")
@@ -39,6 +39,11 @@ public class LoginControllerTest {
                 .role(Role.MEMBER)
                 .build();
         memberService.signup(createDto);
+    }
+
+    @AfterEach
+    public void afterEach(){
+        memberService.deleteByEmail("test@crosscert.com");
     }
 
     @Test

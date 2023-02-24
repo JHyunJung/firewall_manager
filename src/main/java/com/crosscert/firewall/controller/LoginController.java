@@ -23,6 +23,12 @@ public class LoginController {
 
     private final MemberService memberService;
 
+    //로그인 페이지
+    @GetMapping("/login")
+    public String loginPage(){
+        return "login";
+    }
+
     //회원가입 페이지
     @GetMapping("/signup")
     public String signUpPage(){
