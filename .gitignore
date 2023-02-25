@@ -241,3 +241,8 @@ $RECYCLE.BIN/
 
 application-prod.properties
 application.properties
+
+
+.gradle
+/build/classes/*
+/build/test-results/*

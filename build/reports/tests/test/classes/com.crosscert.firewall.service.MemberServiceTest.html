@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">8.116s</div>
+<div class="counter">10.281s</div>
 <p>duration</p>
 </div>
 </td>
@@ -81,31 +81,31 @@
 <tr>
 <td class="success">Member FindAll 5명</td>
 <td class="success">findAll()</td>
-<td class="success">1.948s</td>
+<td class="success">2.616s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">Member FindAll 0명</td>
 <td class="success">findAll_0()</td>
-<td class="success">0.772s</td>
+<td class="success">1.048s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">이메일중복체크_중복일때_true()</td>
 <td class="success">이메일중복체크_중복일때_true()</td>
-<td class="success">1.817s</td>
+<td class="success">2.431s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">정상적인_회원가입()</td>
 <td class="success">정상적인_회원가입()</td>
-<td class="success">1.885s</td>
+<td class="success">2.089s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">중복회원가입시_IllegalStateException()</td>
 <td class="success">중복회원가입시_IllegalStateException()</td>
-<td class="success">1.694s</td>
+<td class="success">2.097s</td>
 <td class="success">passed</td>
 </tr>
 </table>
@@ -113,272 +113,14 @@
 <div id="tab1" class="tab">
 <h2>Standard output</h2>
 <span class="code">
-<pre>2023-02-22 23:44:45.720  INFO 16791 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.crosscert.firewall.service.MemberServiceTest], using SpringBootContextLoader
-2023-02-22 23:44:45.721  INFO 16791 --- [    Test worker] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [com.crosscert.firewall.service.MemberServiceTest]: no resource found for suffixes {-context.xml, Context.groovy}.
-2023-02-22 23:44:45.721  INFO 16791 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.crosscert.firewall.service.MemberServiceTest]: MemberServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2023-02-22 23:44:45.732  INFO 16791 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.crosscert.firewall.FirewallApplication for test class com.crosscert.firewall.service.MemberServiceTest
-2023-02-22 23:44:45.733  INFO 16791 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener, org.springframework.security.test.context.support.ReactorContextTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
-2023-02-22 23:44:45.734  INFO 16791 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@676beb9f, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@3a892b9f, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@c88a842, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@d436e51, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@35cc5b75, org.springframework.test.context.support.DirtiesContextTestExecutionListener@466a5b80, org.springframework.test.context.transaction.TransactionalTestExecutionListener@f6921b7, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@19cee7ed, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener@4e8e0052, org.springframework.test.context.event.EventPublishingTestExecutionListener@5a2ce458, org.springframework.security.test.context.support.ReactorContextTestExecutionListener@1c8e1233, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@72117fc0, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@4ca37d40, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@71904ea8, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@1d63c523, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@64f55630, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@336b6e93]
-
-  .   ____          _            __ _ _
- /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
-( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
- \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
-  '  |____| .__|_| |_|_| |_\__, | / / / /
- =========|_|==============|___/=/_/_/_/
- :: Spring Boot ::                (v2.7.7)
-
-2023-02-22 23:44:45.755  INFO 16791 --- [    Test worker] c.c.firewall.service.MemberServiceTest   : Starting MemberServiceTest using Java 11.0.17 on JaeHyunui-MacBookPro.local with PID 16791 (started by jhyun in /Users/jhyun/Git/FireWall_manager)
-2023-02-22 23:44:45.755  INFO 16791 --- [    Test worker] c.c.firewall.service.MemberServiceTest   : No active profile set, falling back to 1 default profile: &quot;default&quot;
-2023-02-22 23:44:45.875  INFO 16791 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2023-02-22 23:44:45.884  INFO 16791 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 9 ms. Found 4 JPA repository interfaces.
-2023-02-22 23:44:45.973  INFO 16791 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2023-02-22 23:44:45.975 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration boolean -&gt; org.hibernate.type.BooleanType@34549979
-2023-02-22 23:44:45.975 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration boolean -&gt; org.hibernate.type.BooleanType@34549979
-2023-02-22 23:44:45.975 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Boolean -&gt; org.hibernate.type.BooleanType@34549979
-2023-02-22 23:44:45.975 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration numeric_boolean -&gt; org.hibernate.type.NumericBooleanType@6dece1f9
-2023-02-22 23:44:45.975 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration true_false -&gt; org.hibernate.type.TrueFalseType@5c5c7cc4
-2023-02-22 23:44:45.975 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration yes_no -&gt; org.hibernate.type.YesNoType@1214d23c
-2023-02-22 23:44:45.975 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration byte -&gt; org.hibernate.type.ByteType@696174d3
-2023-02-22 23:44:45.975 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration byte -&gt; org.hibernate.type.ByteType@696174d3
-2023-02-22 23:44:45.975 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Byte -&gt; org.hibernate.type.ByteType@696174d3
-2023-02-22 23:44:45.975 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration character -&gt; org.hibernate.type.CharacterType@714f1a44
-2023-02-22 23:44:45.975 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration char -&gt; org.hibernate.type.CharacterType@714f1a44
-2023-02-22 23:44:45.976 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Character -&gt; org.hibernate.type.CharacterType@714f1a44
-2023-02-22 23:44:45.976 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration short -&gt; org.hibernate.type.ShortType@45bd4753
-2023-02-22 23:44:45.976 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration short -&gt; org.hibernate.type.ShortType@45bd4753
-2023-02-22 23:44:45.976 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Short -&gt; org.hibernate.type.ShortType@45bd4753
-2023-02-22 23:44:45.976 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration integer -&gt; org.hibernate.type.IntegerType@58aa5c94
-2023-02-22 23:44:45.976 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration int -&gt; org.hibernate.type.IntegerType@58aa5c94
-2023-02-22 23:44:45.976 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Integer -&gt; org.hibernate.type.IntegerType@58aa5c94
-2023-02-22 23:44:45.976 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration long -&gt; org.hibernate.type.LongType@473847fb
-2023-02-22 23:44:45.976 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration long -&gt; org.hibernate.type.LongType@473847fb
-2023-02-22 23:44:45.976 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Long -&gt; org.hibernate.type.LongType@473847fb
-2023-02-22 23:44:45.976 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration float -&gt; org.hibernate.type.FloatType@74b97416
-2023-02-22 23:44:45.976 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration float -&gt; org.hibernate.type.FloatType@74b97416
-2023-02-22 23:44:45.976 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Float -&gt; org.hibernate.type.FloatType@74b97416
-2023-02-22 23:44:45.976 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration double -&gt; org.hibernate.type.DoubleType@606d6d2c
-2023-02-22 23:44:45.976 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration double -&gt; org.hibernate.type.DoubleType@606d6d2c
-2023-02-22 23:44:45.976 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Double -&gt; org.hibernate.type.DoubleType@606d6d2c
-2023-02-22 23:44:45.977 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration big_decimal -&gt; org.hibernate.type.BigDecimalType@16b76858
-2023-02-22 23:44:45.977 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.math.BigDecimal -&gt; org.hibernate.type.BigDecimalType@16b76858
-2023-02-22 23:44:45.977 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration big_integer -&gt; org.hibernate.type.BigIntegerType@18c820d2
-2023-02-22 23:44:45.977 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.math.BigInteger -&gt; org.hibernate.type.BigIntegerType@18c820d2
-2023-02-22 23:44:45.977 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration string -&gt; org.hibernate.type.StringType@699d96bc
-2023-02-22 23:44:45.977 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.String -&gt; org.hibernate.type.StringType@699d96bc
-2023-02-22 23:44:45.977 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration nstring -&gt; org.hibernate.type.StringNVarcharType@52909a97
-2023-02-22 23:44:45.977 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration ncharacter -&gt; org.hibernate.type.CharacterNCharType@7bbdb220
-2023-02-22 23:44:45.977 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration url -&gt; org.hibernate.type.UrlType@5df64b2a
-2023-02-22 23:44:45.977 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.net.URL -&gt; org.hibernate.type.UrlType@5df64b2a
-2023-02-22 23:44:45.977 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration Duration -&gt; org.hibernate.type.DurationType@4a9bce99
-2023-02-22 23:44:45.977 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.Duration -&gt; org.hibernate.type.DurationType@4a9bce99
-2023-02-22 23:44:45.977 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration Instant -&gt; org.hibernate.type.InstantType@59a2d756
-2023-02-22 23:44:45.977 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.Instant -&gt; org.hibernate.type.InstantType@59a2d756
-2023-02-22 23:44:45.977 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration LocalDateTime -&gt; org.hibernate.type.LocalDateTimeType@295b07e0
-2023-02-22 23:44:45.977 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.LocalDateTime -&gt; org.hibernate.type.LocalDateTimeType@295b07e0
-2023-02-22 23:44:45.977 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration LocalDate -&gt; org.hibernate.type.LocalDateType@79604abe
-2023-02-22 23:44:45.977 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.LocalDate -&gt; org.hibernate.type.LocalDateType@79604abe
-2023-02-22 23:44:45.978 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration LocalTime -&gt; org.hibernate.type.LocalTimeType@44eb2452
-2023-02-22 23:44:45.978 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.LocalTime -&gt; org.hibernate.type.LocalTimeType@44eb2452
-2023-02-22 23:44:45.978 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration OffsetDateTime -&gt; org.hibernate.type.OffsetDateTimeType@273aaab7
-2023-02-22 23:44:45.978 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.OffsetDateTime -&gt; org.hibernate.type.OffsetDateTimeType@273aaab7
-2023-02-22 23:44:45.978 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration OffsetTime -&gt; org.hibernate.type.OffsetTimeType@184de357
-2023-02-22 23:44:45.978 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.OffsetTime -&gt; org.hibernate.type.OffsetTimeType@184de357
-2023-02-22 23:44:45.978 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration ZonedDateTime -&gt; org.hibernate.type.ZonedDateTimeType@7433ca19
-2023-02-22 23:44:45.978 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.ZonedDateTime -&gt; org.hibernate.type.ZonedDateTimeType@7433ca19
-2023-02-22 23:44:45.978 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration date -&gt; org.hibernate.type.DateType@2dd3d39d
-2023-02-22 23:44:45.978 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Date -&gt; org.hibernate.type.DateType@2dd3d39d
-2023-02-22 23:44:45.978 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration time -&gt; org.hibernate.type.TimeType@7eae55
-2023-02-22 23:44:45.978 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Time -&gt; org.hibernate.type.TimeType@7eae55
-2023-02-22 23:44:45.978 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration timestamp -&gt; org.hibernate.type.TimestampType@6c6379c
-2023-02-22 23:44:45.978 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Timestamp -&gt; org.hibernate.type.TimestampType@6c6379c
-2023-02-22 23:44:45.978 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.Date -&gt; org.hibernate.type.TimestampType@6c6379c
-2023-02-22 23:44:45.978 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration dbtimestamp -&gt; org.hibernate.type.DbTimestampType@559fd5ec
-2023-02-22 23:44:45.978 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration calendar -&gt; org.hibernate.type.CalendarType@40fe8fd5
-2023-02-22 23:44:45.978 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.Calendar -&gt; org.hibernate.type.CalendarType@40fe8fd5
-2023-02-22 23:44:45.978 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.GregorianCalendar -&gt; org.hibernate.type.CalendarType@40fe8fd5
-2023-02-22 23:44:45.978 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration calendar_date -&gt; org.hibernate.type.CalendarDateType@5c8b10b4
-2023-02-22 23:44:45.978 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration calendar_time -&gt; org.hibernate.type.CalendarTimeType@640a8f93
-2023-02-22 23:44:45.978 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration locale -&gt; org.hibernate.type.LocaleType@4e6cbdf1
-2023-02-22 23:44:45.978 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.Locale -&gt; org.hibernate.type.LocaleType@4e6cbdf1
-2023-02-22 23:44:45.978 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration currency -&gt; org.hibernate.type.CurrencyType@2dc21583
-2023-02-22 23:44:45.978 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.Currency -&gt; org.hibernate.type.CurrencyType@2dc21583
-2023-02-22 23:44:45.978 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration timezone -&gt; org.hibernate.type.TimeZoneType@786ff0ea
-2023-02-22 23:44:45.978 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.TimeZone -&gt; org.hibernate.type.TimeZoneType@786ff0ea
-2023-02-22 23:44:45.979 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration class -&gt; org.hibernate.type.ClassType@4751cd3
-2023-02-22 23:44:45.979 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Class -&gt; org.hibernate.type.ClassType@4751cd3
-2023-02-22 23:44:45.979 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration uuid-binary -&gt; org.hibernate.type.UUIDBinaryType@45297e7
-2023-02-22 23:44:45.979 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.UUID -&gt; org.hibernate.type.UUIDBinaryType@45297e7
-2023-02-22 23:44:45.979 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration uuid-char -&gt; org.hibernate.type.UUIDCharType@1f42366
-2023-02-22 23:44:45.979 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration binary -&gt; org.hibernate.type.BinaryType@3f06ebe0
-2023-02-22 23:44:45.979 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration byte[] -&gt; org.hibernate.type.BinaryType@3f06ebe0
-2023-02-22 23:44:45.979 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration [B -&gt; org.hibernate.type.BinaryType@3f06ebe0
-2023-02-22 23:44:45.979 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration wrapper-binary -&gt; org.hibernate.type.WrapperBinaryType@121ddca4
-2023-02-22 23:44:45.979 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration Byte[] -&gt; org.hibernate.type.WrapperBinaryType@121ddca4
-2023-02-22 23:44:45.979 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration [Ljava.lang.Byte; -&gt; org.hibernate.type.WrapperBinaryType@121ddca4
-2023-02-22 23:44:45.979 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration row_version -&gt; org.hibernate.type.RowVersionType@1e471884
-2023-02-22 23:44:45.979 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration image -&gt; org.hibernate.type.ImageType@48632f69
-2023-02-22 23:44:45.979 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration characters -&gt; org.hibernate.type.CharArrayType@e521067
-2023-02-22 23:44:45.979 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration char[] -&gt; org.hibernate.type.CharArrayType@e521067
-2023-02-22 23:44:45.979 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration [C -&gt; org.hibernate.type.CharArrayType@e521067
-2023-02-22 23:44:45.979 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration wrapper-characters -&gt; org.hibernate.type.CharacterArrayType@8851ec
-2023-02-22 23:44:45.979 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration [Ljava.lang.Character; -&gt; org.hibernate.type.CharacterArrayType@8851ec
-2023-02-22 23:44:45.979 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration Character[] -&gt; org.hibernate.type.CharacterArrayType@8851ec
-2023-02-22 23:44:45.980 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration text -&gt; org.hibernate.type.TextType@25109608
-2023-02-22 23:44:45.980 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration ntext -&gt; org.hibernate.type.NTextType@42ecc554
-2023-02-22 23:44:45.980 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration blob -&gt; org.hibernate.type.BlobType@38d42ab7
-2023-02-22 23:44:45.980 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Blob -&gt; org.hibernate.type.BlobType@38d42ab7
-2023-02-22 23:44:45.980 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration materialized_blob -&gt; org.hibernate.type.MaterializedBlobType@464400b3
-2023-02-22 23:44:45.980 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration clob -&gt; org.hibernate.type.ClobType@6723cce7
-2023-02-22 23:44:45.980 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Clob -&gt; org.hibernate.type.ClobType@6723cce7
-2023-02-22 23:44:45.980 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration nclob -&gt; org.hibernate.type.NClobType@10bdfbcc
-2023-02-22 23:44:45.980 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.NClob -&gt; org.hibernate.type.NClobType@10bdfbcc
-2023-02-22 23:44:45.980 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration materialized_clob -&gt; org.hibernate.type.MaterializedClobType@60ed0b9d
-2023-02-22 23:44:45.980 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration materialized_nclob -&gt; org.hibernate.type.MaterializedNClobType@34beadce
-2023-02-22 23:44:45.980 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration serializable -&gt; org.hibernate.type.SerializableType@52d9d817
-2023-02-22 23:44:45.980 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration object -&gt; org.hibernate.type.ObjectType@6dd20ec9
-2023-02-22 23:44:45.980 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Object -&gt; org.hibernate.type.ObjectType@6dd20ec9
-2023-02-22 23:44:45.980 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_date -&gt; org.hibernate.type.AdaptedImmutableType@7b031f53
-2023-02-22 23:44:45.980 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_time -&gt; org.hibernate.type.AdaptedImmutableType@1b42eb0f
-2023-02-22 23:44:45.981 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_timestamp -&gt; org.hibernate.type.AdaptedImmutableType@6e92f150
-2023-02-22 23:44:45.981 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_dbtimestamp -&gt; org.hibernate.type.AdaptedImmutableType@4268c16
-2023-02-22 23:44:45.981 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_calendar -&gt; org.hibernate.type.AdaptedImmutableType@673ce246
-2023-02-22 23:44:45.981 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_calendar_date -&gt; org.hibernate.type.AdaptedImmutableType@6baa673d
-2023-02-22 23:44:45.981 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_binary -&gt; org.hibernate.type.AdaptedImmutableType@124b1369
-2023-02-22 23:44:45.981 DEBUG 16791 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_serializable -&gt; org.hibernate.type.AdaptedImmutableType@22bd6b0a
-2023-02-22 23:44:45.984  INFO 16791 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
-2023-02-22 23:44:48.275  INFO 16791 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
-2023-02-22 23:44:48.275  INFO 16791 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
-2023-02-22 23:44:48.276 DEBUG 16791 --- [    Test worker] o.h.type.spi.TypeConfiguration$Scope     : Scoping TypeConfiguration [org.hibernate.type.spi.TypeConfiguration@27bd124a] to MetadataBuildingContext [org.hibernate.boot.internal.MetadataBuildingContextRootImpl@7902a4d7]
-2023-02-22 23:44:48.304 DEBUG 16791 --- [    Test worker] org.hibernate.type.EnumType              : Using NAMED-based conversion for Enum com.crosscert.firewall.entity.Role
-2023-02-22 23:44:48.305 DEBUG 16791 --- [    Test worker] org.hibernate.type.EnumType              : Using NAMED-based conversion for Enum com.crosscert.firewall.entity.Method
-2023-02-22 23:44:48.305 DEBUG 16791 --- [    Test worker] org.hibernate.type.EnumType              : Using NAMED-based conversion for Enum org.springframework.http.HttpStatus
-2023-02-22 23:44:48.305 DEBUG 16791 --- [    Test worker] o.h.type.spi.TypeConfiguration$Scope     : Scoping TypeConfiguration [org.hibernate.type.spi.TypeConfiguration@27bd124a] to SessionFactoryImpl [org.hibernate.internal.SessionFactoryImpl@14b3976]
-Hibernate: 
-    
-    alter table fire_wall 
-       drop 
-       foreign key FK6lkcjc18y4re6vvdfed1gldv8
-Hibernate: 
-    
-    alter table fire_wall 
-       drop 
-       foreign key FKqlskr1ai6equa37q9ql51i7dl
-Hibernate: 
-    
-    alter table fire_wall 
-       drop 
-       foreign key FKpfunuj4pn71pfpqeqrp0e1ixs
-Hibernate: 
-    
-    alter table member 
-       drop 
-       foreign key FKaowsaw541yyf4rf3na3fiot8s
-Hibernate: 
-    
-    alter table member 
-       drop 
-       foreign key FKiw8d74yv6dlu3w1v3cniyqopn
-Hibernate: 
-    
-    drop table if exists fire_wall
-Hibernate: 
-    
-    drop table if exists ip
-Hibernate: 
-    
-    drop table if exists log
-Hibernate: 
-    
-    drop table if exists member
-Hibernate: 
-    
-    create table fire_wall (
-       id bigint not null auto_increment,
-        create_date datetime(6) not null,
-        modified_date datetime(6) not null,
-        end_date date,
-        is_ended bit,
-        port integer not null,
-        destination_ip bigint,
-        member_id bigint,
-        start_ip bigint,
-        primary key (id)
-    ) engine=InnoDB
-Hibernate: 
-    
-    create table ip (
-       id bigint not null auto_increment,
-        create_date datetime(6) not null,
-        modified_date datetime(6) not null,
-        address varchar(255),
-        description varchar(255),
-        domain varchar(255),
-        primary key (id)
-    ) engine=InnoDB
-Hibernate: 
-    
-    create table log (
-       id bigint not null auto_increment,
-        body varchar(255),
-        method varchar(255) not null,
-        param varchar(255),
-        status varchar(255) not null,
-        url varchar(255) not null,
-        primary key (id)
-    ) engine=InnoDB
-Hibernate: 
-    
-    create table member (
-       id bigint not null auto_increment,
-        create_date datetime(6) not null,
-        modified_date datetime(6) not null,
-        email varchar(255) not null,
-        name varchar(10) not null,
-        password varchar(255) not null,
-        role varchar(255) not null,
-        dev_ip_id bigint,
-        net_ip_id bigint,
-        primary key (id)
-    ) engine=InnoDB
-Hibernate: 
-    
-    alter table fire_wall 
-       add constraint FK6lkcjc18y4re6vvdfed1gldv8 
-       foreign key (destination_ip) 
-       references ip (id)
-Hibernate: 
-    
-    alter table fire_wall 
-       add constraint FKqlskr1ai6equa37q9ql51i7dl 
-       foreign key (member_id) 
-       references member (id)
-Hibernate: 
-    
-    alter table fire_wall 
-       add constraint FKpfunuj4pn71pfpqeqrp0e1ixs 
-       foreign key (start_ip) 
-       references ip (id)
-Hibernate: 
-    
-    alter table member 
-       add constraint FKaowsaw541yyf4rf3na3fiot8s 
-       foreign key (dev_ip_id) 
-       references ip (id)
-Hibernate: 
-    
-    alter table member 
-       add constraint FKiw8d74yv6dlu3w1v3cniyqopn 
-       foreign key (net_ip_id) 
-       references ip (id)
-2023-02-22 23:44:55.800  INFO 16791 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2023-02-22 23:44:55.801 TRACE 16791 --- [    Test worker] o.h.type.spi.TypeConfiguration$Scope     : Handling #sessionFactoryCreated from [org.hibernate.internal.SessionFactoryImpl@14b3976] for TypeConfiguration
-2023-02-22 23:44:55.801  INFO 16791 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2023-02-22 23:44:55.938  INFO 16791 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@3a7e13c0, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5188c0f2, org.springframework.security.web.context.SecurityContextPersistenceFilter@43e7ca6f, org.springframework.security.web.header.HeaderWriterFilter@4ed096cc, org.springframework.security.web.authentication.logout.LogoutFilter@6554f841, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@2d487df4, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@480b785a, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@5524e471, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2e3fdf30, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@64934acd, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3b6d94fc, org.springframework.security.web.session.SessionManagementFilter@b24e21f, org.springframework.security.web.access.ExceptionTranslationFilter@4235e01b, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@4d992634]
-2023-02-22 23:44:56.005  WARN 16791 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2023-02-22 23:44:56.260  INFO 16791 --- [    Test worker] c.c.firewall.service.MemberServiceTest   : Started MemberServiceTest in 10.524 seconds (JVM running for 30.141)
-2023-02-22 23:44:56.647  INFO 16791 --- [    Test worker] o.s.t.c.transaction.TransactionContext   : Began transaction (1) for test context [DefaultTestContext@7432cb37 testClass = MemberServiceTest, testInstance = com.crosscert.firewall.service.MemberServiceTest@7602da1a, testMethod = 정상적인_회원가입@MemberServiceTest, testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@6d985720 testClass = MemberServiceTest, locations = '{}', classes = '{class com.crosscert.firewall.FirewallApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@502f1f4c, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@6f2cb653, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@5ce33a58, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@7a527389, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@56ace400, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@1e13529a], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -&gt; true, 'org.springframework.test.context.web.ServletTestExecutionListener.populatedRequestContextHolder' -&gt; true, 'org.springframework.test.context.web.ServletTestExecutionListener.resetRequestContextHolder' -&gt; true, 'org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -&gt; false]]; transaction manager [org.springframework.orm.jpa.JpaTransactionManager@331b0bfd]; rollback [true]
-2023-02-22 23:44:56.649  INFO 16791 --- [    Test worker] c.c.firewall.service.MemberService       : class com.crosscert.firewall.service.MemberService.signup
+<pre>2023-02-24 20:03:46.369  INFO 65851 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.crosscert.firewall.service.MemberServiceTest], using SpringBootContextLoader
+2023-02-24 20:03:46.369  INFO 65851 --- [    Test worker] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [com.crosscert.firewall.service.MemberServiceTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+2023-02-24 20:03:46.369  INFO 65851 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.crosscert.firewall.service.MemberServiceTest]: MemberServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-02-24 20:03:46.370  INFO 65851 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.crosscert.firewall.FirewallApplication for test class com.crosscert.firewall.service.MemberServiceTest
+2023-02-24 20:03:46.371  INFO 65851 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener, org.springframework.security.test.context.support.ReactorContextTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+2023-02-24 20:03:46.371  INFO 65851 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@6f3d33bc, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@3299cc9f, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@6e44825e, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@2e8488f4, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@2822ee4b, org.springframework.test.context.support.DirtiesContextTestExecutionListener@54a332e4, org.springframework.test.context.transaction.TransactionalTestExecutionListener@1e3f0c5c, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@1476e447, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener@2b991034, org.springframework.test.context.event.EventPublishingTestExecutionListener@666033b1, org.springframework.security.test.context.support.ReactorContextTestExecutionListener@db9ecd, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@23ac164d, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@4057babc, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@274de4bc, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@7bbc3b6e, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@38e1442a, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@451e8bd0]
+2023-02-24 20:03:46.697  INFO 65851 --- [    Test worker] o.s.t.c.transaction.TransactionContext   : Began transaction (1) for test context [DefaultTestContext@559d9517 testClass = MemberServiceTest, testInstance = com.crosscert.firewall.service.MemberServiceTest@7f69a16b, testMethod = 정상적인_회원가입@MemberServiceTest, testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@7d461450 testClass = MemberServiceTest, locations = '{}', classes = '{class com.crosscert.firewall.FirewallApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@726e5805, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@41813449, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@1080b026, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@dcfda20, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@5bfa8cc5, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@4c5ae43b], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -&gt; true, 'org.springframework.test.context.web.ServletTestExecutionListener.populatedRequestContextHolder' -&gt; true, 'org.springframework.test.context.web.ServletTestExecutionListener.resetRequestContextHolder' -&gt; true, 'org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -&gt; false]]; transaction manager [org.springframework.orm.jpa.JpaTransactionManager@5166fe7a]; rollback [true]
+2023-02-24 20:03:46.698  INFO 65851 --- [    Test worker] c.c.firewall.service.MemberService       : class com.crosscert.firewall.service.MemberService.signup
 Hibernate: 
     select
         member0_.id as col_0_0_ 
@@ -386,7 +128,7 @@ Hibernate:
         member member0_ 
     where
         member0_.email=? limit ?
-2023-02-22 23:44:56.651 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [VARCHAR] - [test@crosscert.com]
+2023-02-24 20:03:46.700 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [VARCHAR] - [test@crosscert.com]
 Hibernate: 
     insert 
     into
@@ -394,11 +136,11 @@ Hibernate:
         (create_date, modified_date, address, description, domain) 
     values
         (?, ?, ?, ?, ?)
-2023-02-22 23:44:56.915 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [TIMESTAMP] - [2023-02-22T23:44:56.913694]
-2023-02-22 23:44:56.916 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [TIMESTAMP] - [2023-02-22T23:44:56.913694]
-2023-02-22 23:44:56.916 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [VARCHAR] - [172.77.0.1]
-2023-02-22 23:44:56.916 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [VARCHAR] - [null]
-2023-02-22 23:44:56.916 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [VARCHAR] - [null]
+2023-02-24 20:03:46.958 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [TIMESTAMP] - [2023-02-24T20:03:46.957340]
+2023-02-24 20:03:46.959 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [TIMESTAMP] - [2023-02-24T20:03:46.957340]
+2023-02-24 20:03:46.959 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [VARCHAR] - [172.77.0.1]
+2023-02-24 20:03:46.959 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [VARCHAR] - [null]
+2023-02-24 20:03:46.959 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [VARCHAR] - [null]
 Hibernate: 
     insert 
     into
@@ -406,11 +148,11 @@ Hibernate:
         (create_date, modified_date, address, description, domain) 
     values
         (?, ?, ?, ?, ?)
-2023-02-22 23:44:57.108 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [TIMESTAMP] - [2023-02-22T23:44:57.107627]
-2023-02-22 23:44:57.108 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [TIMESTAMP] - [2023-02-22T23:44:57.107627]
-2023-02-22 23:44:57.108 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [VARCHAR] - [172.77.0.2]
-2023-02-22 23:44:57.108 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [VARCHAR] - [null]
-2023-02-22 23:44:57.108 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [VARCHAR] - [null]
+2023-02-24 20:03:47.223 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [TIMESTAMP] - [2023-02-24T20:03:47.222454]
+2023-02-24 20:03:47.223 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [TIMESTAMP] - [2023-02-24T20:03:47.222454]
+2023-02-24 20:03:47.223 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [VARCHAR] - [172.77.0.2]
+2023-02-24 20:03:47.223 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [VARCHAR] - [null]
+2023-02-24 20:03:47.223 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [VARCHAR] - [null]
 Hibernate: 
     insert 
     into
@@ -418,14 +160,14 @@ Hibernate:
         (create_date, modified_date, dev_ip_id, email, name, net_ip_id, password, role) 
     values
         (?, ?, ?, ?, ?, ?, ?, ?)
-2023-02-22 23:44:57.299 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [TIMESTAMP] - [2023-02-22T23:44:56.911116]
-2023-02-22 23:44:57.299 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [TIMESTAMP] - [2023-02-22T23:44:56.911116]
-2023-02-22 23:44:57.299 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [BIGINT] - [1]
-2023-02-22 23:44:57.299 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [VARCHAR] - [test@crosscert.com]
-2023-02-22 23:44:57.299 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [VARCHAR] - [test]
-2023-02-22 23:44:57.299 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [6] as [BIGINT] - [2]
-2023-02-22 23:44:57.300 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [7] as [VARCHAR] - [$2a$10$jm5K.8bJhb5YLmoTyaeQJ.AXg1bfzJbBiZg8qd0u5sXcKUsPF7D7C]
-2023-02-22 23:44:57.300 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [8] as [VARCHAR] - [MEMBER]
+2023-02-24 20:03:47.415 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [TIMESTAMP] - [2023-02-24T20:03:46.955052]
+2023-02-24 20:03:47.416 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [TIMESTAMP] - [2023-02-24T20:03:46.955052]
+2023-02-24 20:03:47.416 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [BIGINT] - [5]
+2023-02-24 20:03:47.416 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [VARCHAR] - [test@crosscert.com]
+2023-02-24 20:03:47.416 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [VARCHAR] - [test]
+2023-02-24 20:03:47.416 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [6] as [BIGINT] - [6]
+2023-02-24 20:03:47.416 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [7] as [VARCHAR] - [$2a$10$l/yWMuhbKDhnas9FQD14JeIf55QfPEs9G6GeVv5lLtwzKaWt6bJPm]
+2023-02-24 20:03:47.416 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [8] as [VARCHAR] - [MEMBER]
 Hibernate: 
     select
         member0_.id as id1_3_,
@@ -441,10 +183,10 @@ Hibernate:
         member member0_ 
     where
         member0_.email=?
-2023-02-22 23:44:57.494 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [VARCHAR] - [test@crosscert.com]
-2023-02-22 23:44:57.685 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([id1_3_] : [BIGINT]) - [1]
-2023-02-22 23:44:58.147  INFO 16791 --- [    Test worker] o.s.t.c.transaction.TransactionContext   : Rolled back transaction for test: [DefaultTestContext@7432cb37 testClass = MemberServiceTest, testInstance = com.crosscert.firewall.service.MemberServiceTest@7602da1a, testMethod = 정상적인_회원가입@MemberServiceTest, testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@6d985720 testClass = MemberServiceTest, locations = '{}', classes = '{class com.crosscert.firewall.FirewallApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@502f1f4c, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@6f2cb653, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@5ce33a58, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@7a527389, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@56ace400, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@1e13529a], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -&gt; true, 'org.springframework.test.context.web.ServletTestExecutionListener.populatedRequestContextHolder' -&gt; true, 'org.springframework.test.context.web.ServletTestExecutionListener.resetRequestContextHolder' -&gt; true, 'org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -&gt; false]]
-2023-02-22 23:44:58.339  INFO 16791 --- [    Test worker] o.s.t.c.transaction.TransactionContext   : Began transaction (1) for test context [DefaultTestContext@7432cb37 testClass = MemberServiceTest, testInstance = com.crosscert.firewall.service.MemberServiceTest@67e03fe4, testMethod = findAll@MemberServiceTest, testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@6d985720 testClass = MemberServiceTest, locations = '{}', classes = '{class com.crosscert.firewall.FirewallApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@502f1f4c, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@6f2cb653, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@5ce33a58, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@7a527389, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@56ace400, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@1e13529a], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -&gt; true, 'org.springframework.test.context.web.ServletTestExecutionListener.populatedRequestContextHolder' -&gt; true, 'org.springframework.test.context.web.ServletTestExecutionListener.resetRequestContextHolder' -&gt; true, 'org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -&gt; false]]; transaction manager [org.springframework.orm.jpa.JpaTransactionManager@331b0bfd]; rollback [true]
+2023-02-24 20:03:47.750 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [VARCHAR] - [test@crosscert.com]
+2023-02-24 20:03:47.942 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([id1_3_] : [BIGINT]) - [3]
+2023-02-24 20:03:48.462  INFO 65851 --- [    Test worker] o.s.t.c.transaction.TransactionContext   : Rolled back transaction for test: [DefaultTestContext@559d9517 testClass = MemberServiceTest, testInstance = com.crosscert.firewall.service.MemberServiceTest@7f69a16b, testMethod = 정상적인_회원가입@MemberServiceTest, testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@7d461450 testClass = MemberServiceTest, locations = '{}', classes = '{class com.crosscert.firewall.FirewallApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@726e5805, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@41813449, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@1080b026, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@dcfda20, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@5bfa8cc5, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@4c5ae43b], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -&gt; true, 'org.springframework.test.context.web.ServletTestExecutionListener.populatedRequestContextHolder' -&gt; true, 'org.springframework.test.context.web.ServletTestExecutionListener.resetRequestContextHolder' -&gt; true, 'org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -&gt; false]]
+2023-02-24 20:03:48.793  INFO 65851 --- [    Test worker] o.s.t.c.transaction.TransactionContext   : Began transaction (1) for test context [DefaultTestContext@559d9517 testClass = MemberServiceTest, testInstance = com.crosscert.firewall.service.MemberServiceTest@6e5dc02d, testMethod = findAll@MemberServiceTest, testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@7d461450 testClass = MemberServiceTest, locations = '{}', classes = '{class com.crosscert.firewall.FirewallApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@726e5805, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@41813449, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@1080b026, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@dcfda20, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@5bfa8cc5, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@4c5ae43b], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -&gt; true, 'org.springframework.test.context.web.ServletTestExecutionListener.populatedRequestContextHolder' -&gt; true, 'org.springframework.test.context.web.ServletTestExecutionListener.resetRequestContextHolder' -&gt; true, 'org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -&gt; false]]; transaction manager [org.springframework.orm.jpa.JpaTransactionManager@5166fe7a]; rollback [true]
 Hibernate: 
     insert 
     into
@@ -452,11 +194,11 @@ Hibernate:
         (create_date, modified_date, address, description, domain) 
     values
         (?, ?, ?, ?, ?)
-2023-02-22 23:44:58.343 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [TIMESTAMP] - [2023-02-22T23:44:58.342693]
-2023-02-22 23:44:58.343 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [TIMESTAMP] - [2023-02-22T23:44:58.342693]
-2023-02-22 23:44:58.343 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [VARCHAR] - [172.12.40.52]
-2023-02-22 23:44:58.343 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [VARCHAR] - [description]
-2023-02-22 23:44:58.343 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [VARCHAR] - [domain]
+2023-02-24 20:03:48.797 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [TIMESTAMP] - [2023-02-24T20:03:48.797329]
+2023-02-24 20:03:48.798 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [TIMESTAMP] - [2023-02-24T20:03:48.797329]
+2023-02-24 20:03:48.798 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [VARCHAR] - [172.12.40.52]
+2023-02-24 20:03:48.798 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [VARCHAR] - [description]
+2023-02-24 20:03:48.798 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [VARCHAR] - [domain]
 Hibernate: 
     insert 
     into
@@ -464,14 +206,14 @@ Hibernate:
         (create_date, modified_date, dev_ip_id, email, name, net_ip_id, password, role) 
     values
         (?, ?, ?, ?, ?, ?, ?, ?)
-2023-02-22 23:44:58.540 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [TIMESTAMP] - [2023-02-22T23:44:58.539588]
-2023-02-22 23:44:58.540 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [TIMESTAMP] - [2023-02-22T23:44:58.539588]
-2023-02-22 23:44:58.540 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [BIGINT] - [3]
-2023-02-22 23:44:58.540 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [VARCHAR] - [testData0@naver.com]
-2023-02-22 23:44:58.540 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [VARCHAR] - [name0]
-2023-02-22 23:44:58.540 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [6] as [BIGINT] - [3]
-2023-02-22 23:44:58.540 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [7] as [VARCHAR] - [1234560]
-2023-02-22 23:44:58.541 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [8] as [VARCHAR] - [MEMBER]
+2023-02-24 20:03:48.993 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [TIMESTAMP] - [2023-02-24T20:03:48.992888]
+2023-02-24 20:03:48.993 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [TIMESTAMP] - [2023-02-24T20:03:48.992888]
+2023-02-24 20:03:48.993 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [BIGINT] - [7]
+2023-02-24 20:03:48.993 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [VARCHAR] - [testData0@naver.com]
+2023-02-24 20:03:48.993 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [VARCHAR] - [name0]
+2023-02-24 20:03:48.994 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [6] as [BIGINT] - [7]
+2023-02-24 20:03:48.994 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [7] as [VARCHAR] - [1234560]
+2023-02-24 20:03:48.994 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [8] as [VARCHAR] - [MEMBER]
 Hibernate: 
     insert 
     into
@@ -479,14 +221,14 @@ Hibernate:
         (create_date, modified_date, dev_ip_id, email, name, net_ip_id, password, role) 
     values
         (?, ?, ?, ?, ?, ?, ?, ?)
-2023-02-22 23:44:58.733 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [TIMESTAMP] - [2023-02-22T23:44:58.732315]
-2023-02-22 23:44:58.733 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [TIMESTAMP] - [2023-02-22T23:44:58.732315]
-2023-02-22 23:44:58.733 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [BIGINT] - [3]
-2023-02-22 23:44:58.733 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [VARCHAR] - [testData1@naver.com]
-2023-02-22 23:44:58.733 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [VARCHAR] - [name1]
-2023-02-22 23:44:58.733 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [6] as [BIGINT] - [3]
-2023-02-22 23:44:58.733 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [7] as [VARCHAR] - [1234561]
-2023-02-22 23:44:58.733 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [8] as [VARCHAR] - [MEMBER]
+2023-02-24 20:03:49.320 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [TIMESTAMP] - [2023-02-24T20:03:49.319404]
+2023-02-24 20:03:49.320 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [TIMESTAMP] - [2023-02-24T20:03:49.319404]
+2023-02-24 20:03:49.320 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [BIGINT] - [7]
+2023-02-24 20:03:49.320 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [VARCHAR] - [testData1@naver.com]
+2023-02-24 20:03:49.320 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [VARCHAR] - [name1]
+2023-02-24 20:03:49.320 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [6] as [BIGINT] - [7]
+2023-02-24 20:03:49.320 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [7] as [VARCHAR] - [1234561]
+2023-02-24 20:03:49.320 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [8] as [VARCHAR] - [MEMBER]
 Hibernate: 
     insert 
     into
@@ -494,14 +236,14 @@ Hibernate:
         (create_date, modified_date, dev_ip_id, email, name, net_ip_id, password, role) 
     values
         (?, ?, ?, ?, ?, ?, ?, ?)
-2023-02-22 23:44:58.925 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [TIMESTAMP] - [2023-02-22T23:44:58.925084]
-2023-02-22 23:44:58.926 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [TIMESTAMP] - [2023-02-22T23:44:58.925084]
-2023-02-22 23:44:58.926 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [BIGINT] - [3]
-2023-02-22 23:44:58.926 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [VARCHAR] - [testData2@naver.com]
-2023-02-22 23:44:58.926 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [VARCHAR] - [name2]
-2023-02-22 23:44:58.926 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [6] as [BIGINT] - [3]
-2023-02-22 23:44:58.926 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [7] as [VARCHAR] - [1234562]
-2023-02-22 23:44:58.926 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [8] as [VARCHAR] - [MEMBER]
+2023-02-24 20:03:49.512 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [TIMESTAMP] - [2023-02-24T20:03:49.511978]
+2023-02-24 20:03:49.513 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [TIMESTAMP] - [2023-02-24T20:03:49.511978]
+2023-02-24 20:03:49.513 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [BIGINT] - [7]
+2023-02-24 20:03:49.513 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [VARCHAR] - [testData2@naver.com]
+2023-02-24 20:03:49.513 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [VARCHAR] - [name2]
+2023-02-24 20:03:49.513 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [6] as [BIGINT] - [7]
+2023-02-24 20:03:49.513 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [7] as [VARCHAR] - [1234562]
+2023-02-24 20:03:49.513 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [8] as [VARCHAR] - [MEMBER]
 Hibernate: 
     insert 
     into
@@ -509,14 +251,14 @@ Hibernate:
         (create_date, modified_date, dev_ip_id, email, name, net_ip_id, password, role) 
     values
         (?, ?, ?, ?, ?, ?, ?, ?)
-2023-02-22 23:44:59.119 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [TIMESTAMP] - [2023-02-22T23:44:59.118058]
-2023-02-22 23:44:59.119 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [TIMESTAMP] - [2023-02-22T23:44:59.118058]
-2023-02-22 23:44:59.119 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [BIGINT] - [3]
-2023-02-22 23:44:59.119 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [VARCHAR] - [testData3@naver.com]
-2023-02-22 23:44:59.119 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [VARCHAR] - [name3]
-2023-02-22 23:44:59.119 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [6] as [BIGINT] - [3]
-2023-02-22 23:44:59.119 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [7] as [VARCHAR] - [1234563]
-2023-02-22 23:44:59.119 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [8] as [VARCHAR] - [MEMBER]
+2023-02-24 20:03:49.844 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [TIMESTAMP] - [2023-02-24T20:03:49.843222]
+2023-02-24 20:03:49.844 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [TIMESTAMP] - [2023-02-24T20:03:49.843222]
+2023-02-24 20:03:49.844 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [BIGINT] - [7]
+2023-02-24 20:03:49.844 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [VARCHAR] - [testData3@naver.com]
+2023-02-24 20:03:49.844 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [VARCHAR] - [name3]
+2023-02-24 20:03:49.844 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [6] as [BIGINT] - [7]
+2023-02-24 20:03:49.844 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [7] as [VARCHAR] - [1234563]
+2023-02-24 20:03:49.844 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [8] as [VARCHAR] - [MEMBER]
 Hibernate: 
     insert 
     into
@@ -524,14 +266,14 @@ Hibernate:
         (create_date, modified_date, dev_ip_id, email, name, net_ip_id, password, role) 
     values
         (?, ?, ?, ?, ?, ?, ?, ?)
-2023-02-22 23:44:59.312 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [TIMESTAMP] - [2023-02-22T23:44:59.311163]
-2023-02-22 23:44:59.312 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [TIMESTAMP] - [2023-02-22T23:44:59.311163]
-2023-02-22 23:44:59.312 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [BIGINT] - [3]
-2023-02-22 23:44:59.312 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [VARCHAR] - [testData4@naver.com]
-2023-02-22 23:44:59.312 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [VARCHAR] - [name4]
-2023-02-22 23:44:59.312 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [6] as [BIGINT] - [3]
-2023-02-22 23:44:59.312 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [7] as [VARCHAR] - [1234564]
-2023-02-22 23:44:59.313 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [8] as [VARCHAR] - [MEMBER]
+2023-02-24 20:03:50.037 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [TIMESTAMP] - [2023-02-24T20:03:50.036290]
+2023-02-24 20:03:50.037 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [TIMESTAMP] - [2023-02-24T20:03:50.036290]
+2023-02-24 20:03:50.037 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [BIGINT] - [7]
+2023-02-24 20:03:50.037 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [VARCHAR] - [testData4@naver.com]
+2023-02-24 20:03:50.037 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [VARCHAR] - [name4]
+2023-02-24 20:03:50.037 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [6] as [BIGINT] - [7]
+2023-02-24 20:03:50.037 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [7] as [VARCHAR] - [1234564]
+2023-02-24 20:03:50.037 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [8] as [VARCHAR] - [MEMBER]
 Hibernate: 
     select
         member0_.id as id1_3_0_,
@@ -554,19 +296,19 @@ Hibernate:
     left outer join
         ip ip1_ 
             on member0_.dev_ip_id=ip1_.id
-2023-02-22 23:44:59.697 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([id1_3_0_] : [BIGINT]) - [2]
-2023-02-22 23:44:59.697 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([id1_1_1_] : [BIGINT]) - [3]
-2023-02-22 23:44:59.698 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([id1_3_0_] : [BIGINT]) - [3]
-2023-02-22 23:44:59.698 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([id1_1_1_] : [BIGINT]) - [3]
-2023-02-22 23:44:59.698 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([id1_3_0_] : [BIGINT]) - [4]
-2023-02-22 23:44:59.698 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([id1_1_1_] : [BIGINT]) - [3]
-2023-02-22 23:44:59.698 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([id1_3_0_] : [BIGINT]) - [5]
-2023-02-22 23:44:59.698 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([id1_1_1_] : [BIGINT]) - [3]
-2023-02-22 23:44:59.698 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([id1_3_0_] : [BIGINT]) - [6]
-2023-02-22 23:44:59.698 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([id1_1_1_] : [BIGINT]) - [3]
-2023-02-22 23:45:00.096  INFO 16791 --- [    Test worker] o.s.t.c.transaction.TransactionContext   : Rolled back transaction for test: [DefaultTestContext@7432cb37 testClass = MemberServiceTest, testInstance = com.crosscert.firewall.service.MemberServiceTest@67e03fe4, testMethod = findAll@MemberServiceTest, testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@6d985720 testClass = MemberServiceTest, locations = '{}', classes = '{class com.crosscert.firewall.FirewallApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@502f1f4c, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@6f2cb653, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@5ce33a58, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@7a527389, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@56ace400, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@1e13529a], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -&gt; true, 'org.springframework.test.context.web.ServletTestExecutionListener.populatedRequestContextHolder' -&gt; true, 'org.springframework.test.context.web.ServletTestExecutionListener.resetRequestContextHolder' -&gt; true, 'org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -&gt; false]]
-2023-02-22 23:45:00.290  INFO 16791 --- [    Test worker] o.s.t.c.transaction.TransactionContext   : Began transaction (1) for test context [DefaultTestContext@7432cb37 testClass = MemberServiceTest, testInstance = com.crosscert.firewall.service.MemberServiceTest@1e499f1, testMethod = 이메일중복체크_중복일때_true@MemberServiceTest, testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@6d985720 testClass = MemberServiceTest, locations = '{}', classes = '{class com.crosscert.firewall.FirewallApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@502f1f4c, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@6f2cb653, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@5ce33a58, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@7a527389, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@56ace400, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@1e13529a], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -&gt; true, 'org.springframework.test.context.web.ServletTestExecutionListener.populatedRequestContextHolder' -&gt; true, 'org.springframework.test.context.web.ServletTestExecutionListener.resetRequestContextHolder' -&gt; true, 'org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -&gt; false]]; transaction manager [org.springframework.orm.jpa.JpaTransactionManager@331b0bfd]; rollback [true]
-2023-02-22 23:45:00.291  INFO 16791 --- [    Test worker] c.c.firewall.service.MemberService       : class com.crosscert.firewall.service.MemberService.signup
+2023-02-24 20:03:50.560 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([id1_3_0_] : [BIGINT]) - [4]
+2023-02-24 20:03:50.560 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([id1_1_1_] : [BIGINT]) - [7]
+2023-02-24 20:03:50.561 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([id1_3_0_] : [BIGINT]) - [5]
+2023-02-24 20:03:50.561 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([id1_1_1_] : [BIGINT]) - [7]
+2023-02-24 20:03:50.561 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([id1_3_0_] : [BIGINT]) - [6]
+2023-02-24 20:03:50.561 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([id1_1_1_] : [BIGINT]) - [7]
+2023-02-24 20:03:50.561 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([id1_3_0_] : [BIGINT]) - [7]
+2023-02-24 20:03:50.561 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([id1_1_1_] : [BIGINT]) - [7]
+2023-02-24 20:03:50.561 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([id1_3_0_] : [BIGINT]) - [8]
+2023-02-24 20:03:50.561 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([id1_1_1_] : [BIGINT]) - [7]
+2023-02-24 20:03:51.079  INFO 65851 --- [    Test worker] o.s.t.c.transaction.TransactionContext   : Rolled back transaction for test: [DefaultTestContext@559d9517 testClass = MemberServiceTest, testInstance = com.crosscert.firewall.service.MemberServiceTest@6e5dc02d, testMethod = findAll@MemberServiceTest, testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@7d461450 testClass = MemberServiceTest, locations = '{}', classes = '{class com.crosscert.firewall.FirewallApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@726e5805, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@41813449, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@1080b026, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@dcfda20, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@5bfa8cc5, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@4c5ae43b], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -&gt; true, 'org.springframework.test.context.web.ServletTestExecutionListener.populatedRequestContextHolder' -&gt; true, 'org.springframework.test.context.web.ServletTestExecutionListener.resetRequestContextHolder' -&gt; true, 'org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -&gt; false]]
+2023-02-24 20:03:51.415  INFO 65851 --- [    Test worker] o.s.t.c.transaction.TransactionContext   : Began transaction (1) for test context [DefaultTestContext@559d9517 testClass = MemberServiceTest, testInstance = com.crosscert.firewall.service.MemberServiceTest@57bd0b3c, testMethod = 이메일중복체크_중복일때_true@MemberServiceTest, testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@7d461450 testClass = MemberServiceTest, locations = '{}', classes = '{class com.crosscert.firewall.FirewallApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@726e5805, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@41813449, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@1080b026, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@dcfda20, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@5bfa8cc5, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@4c5ae43b], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -&gt; true, 'org.springframework.test.context.web.ServletTestExecutionListener.populatedRequestContextHolder' -&gt; true, 'org.springframework.test.context.web.ServletTestExecutionListener.resetRequestContextHolder' -&gt; true, 'org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -&gt; false]]; transaction manager [org.springframework.orm.jpa.JpaTransactionManager@5166fe7a]; rollback [true]
+2023-02-24 20:03:51.417  INFO 65851 --- [    Test worker] c.c.firewall.service.MemberService       : class com.crosscert.firewall.service.MemberService.signup
 Hibernate: 
     select
         member0_.id as col_0_0_ 
@@ -574,7 +316,7 @@ Hibernate:
         member member0_ 
     where
         member0_.email=? limit ?
-2023-02-22 23:45:00.292 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [VARCHAR] - [test4@crosscert.com]
+2023-02-24 20:03:51.418 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [VARCHAR] - [test4@crosscert.com]
 Hibernate: 
     insert 
     into
@@ -582,11 +324,11 @@ Hibernate:
         (create_date, modified_date, address, description, domain) 
     values
         (?, ?, ?, ?, ?)
-2023-02-22 23:45:00.570 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [TIMESTAMP] - [2023-02-22T23:45:00.570158]
-2023-02-22 23:45:00.571 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [TIMESTAMP] - [2023-02-22T23:45:00.570158]
-2023-02-22 23:45:00.571 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [VARCHAR] - [172.77.0.1]
-2023-02-22 23:45:00.571 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [VARCHAR] - [null]
-2023-02-22 23:45:00.571 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [VARCHAR] - [null]
+2023-02-24 20:03:51.674 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [TIMESTAMP] - [2023-02-24T20:03:51.674347]
+2023-02-24 20:03:51.675 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [TIMESTAMP] - [2023-02-24T20:03:51.674347]
+2023-02-24 20:03:51.675 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [VARCHAR] - [172.77.0.1]
+2023-02-24 20:03:51.675 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [VARCHAR] - [null]
+2023-02-24 20:03:51.675 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [VARCHAR] - [null]
 Hibernate: 
     insert 
     into
@@ -594,11 +336,11 @@ Hibernate:
         (create_date, modified_date, address, description, domain) 
     values
         (?, ?, ?, ?, ?)
-2023-02-22 23:45:00.763 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [TIMESTAMP] - [2023-02-22T23:45:00.762791]
-2023-02-22 23:45:00.763 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [TIMESTAMP] - [2023-02-22T23:45:00.762791]
-2023-02-22 23:45:00.763 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [VARCHAR] - [172.77.0.2]
-2023-02-22 23:45:00.763 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [VARCHAR] - [null]
-2023-02-22 23:45:00.764 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [VARCHAR] - [null]
+2023-02-24 20:03:51.941 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [TIMESTAMP] - [2023-02-24T20:03:51.940841]
+2023-02-24 20:03:51.941 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [TIMESTAMP] - [2023-02-24T20:03:51.940841]
+2023-02-24 20:03:51.941 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [VARCHAR] - [172.77.0.2]
+2023-02-24 20:03:51.941 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [VARCHAR] - [null]
+2023-02-24 20:03:51.942 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [VARCHAR] - [null]
 Hibernate: 
     insert 
     into
@@ -606,14 +348,14 @@ Hibernate:
         (create_date, modified_date, dev_ip_id, email, name, net_ip_id, password, role) 
     values
         (?, ?, ?, ?, ?, ?, ?, ?)
-2023-02-22 23:45:00.955 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [TIMESTAMP] - [2023-02-22T23:45:00.570026]
-2023-02-22 23:45:00.955 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [TIMESTAMP] - [2023-02-22T23:45:00.570026]
-2023-02-22 23:45:00.955 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [BIGINT] - [4]
-2023-02-22 23:45:00.955 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [VARCHAR] - [test4@crosscert.com]
-2023-02-22 23:45:00.955 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [VARCHAR] - [test4]
-2023-02-22 23:45:00.955 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [6] as [BIGINT] - [5]
-2023-02-22 23:45:00.955 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [7] as [VARCHAR] - [$2a$10$7EqXJtI82m0o5RmL8Buho.EWrJcjEHx2dttWZgQs5Ke7QhNj3pbma]
-2023-02-22 23:45:00.955 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [8] as [VARCHAR] - [MEMBER]
+2023-02-24 20:03:52.133 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [TIMESTAMP] - [2023-02-24T20:03:51.674221]
+2023-02-24 20:03:52.133 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [TIMESTAMP] - [2023-02-24T20:03:51.674221]
+2023-02-24 20:03:52.133 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [BIGINT] - [8]
+2023-02-24 20:03:52.134 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [VARCHAR] - [test4@crosscert.com]
+2023-02-24 20:03:52.134 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [VARCHAR] - [test4]
+2023-02-24 20:03:52.134 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [6] as [BIGINT] - [9]
+2023-02-24 20:03:52.134 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [7] as [VARCHAR] - [$2a$10$TLoKhaRDET96eyo4uAvoyulMyD/eWAQh4FBw9MltkKzLrN4icIig6]
+2023-02-24 20:03:52.134 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [8] as [VARCHAR] - [MEMBER]
 Hibernate: 
     select
         member0_.id as col_0_0_ 
@@ -621,7 +363,7 @@ Hibernate:
         member member0_ 
     where
         member0_.email=? limit ?
-2023-02-22 23:45:01.147 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [VARCHAR] - [test5@crosscert.com]
+2023-02-24 20:03:52.467 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [VARCHAR] - [test5@crosscert.com]
 Hibernate: 
     select
         member0_.id as col_0_0_ 
@@ -629,10 +371,10 @@ Hibernate:
         member member0_ 
     where
         member0_.email=? limit ?
-2023-02-22 23:45:01.338 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [VARCHAR] - [test4@crosscert.com]
-2023-02-22 23:45:01.528 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([col_0_0_] : [BIGINT]) - [7]
-2023-02-22 23:45:01.913  INFO 16791 --- [    Test worker] o.s.t.c.transaction.TransactionContext   : Rolled back transaction for test: [DefaultTestContext@7432cb37 testClass = MemberServiceTest, testInstance = com.crosscert.firewall.service.MemberServiceTest@1e499f1, testMethod = 이메일중복체크_중복일때_true@MemberServiceTest, testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@6d985720 testClass = MemberServiceTest, locations = '{}', classes = '{class com.crosscert.firewall.FirewallApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@502f1f4c, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@6f2cb653, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@5ce33a58, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@7a527389, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@56ace400, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@1e13529a], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -&gt; true, 'org.springframework.test.context.web.ServletTestExecutionListener.populatedRequestContextHolder' -&gt; true, 'org.springframework.test.context.web.ServletTestExecutionListener.resetRequestContextHolder' -&gt; true, 'org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -&gt; false]]
-2023-02-22 23:45:02.106  INFO 16791 --- [    Test worker] o.s.t.c.transaction.TransactionContext   : Began transaction (1) for test context [DefaultTestContext@7432cb37 testClass = MemberServiceTest, testInstance = com.crosscert.firewall.service.MemberServiceTest@3b9d5218, testMethod = findAll_0@MemberServiceTest, testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@6d985720 testClass = MemberServiceTest, locations = '{}', classes = '{class com.crosscert.firewall.FirewallApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@502f1f4c, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@6f2cb653, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@5ce33a58, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@7a527389, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@56ace400, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@1e13529a], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -&gt; true, 'org.springframework.test.context.web.ServletTestExecutionListener.populatedRequestContextHolder' -&gt; true, 'org.springframework.test.context.web.ServletTestExecutionListener.resetRequestContextHolder' -&gt; true, 'org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -&gt; false]]; transaction manager [org.springframework.orm.jpa.JpaTransactionManager@331b0bfd]; rollback [true]
+2023-02-24 20:03:52.661 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [VARCHAR] - [test4@crosscert.com]
+2023-02-24 20:03:52.988 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([col_0_0_] : [BIGINT]) - [9]
+2023-02-24 20:03:53.512  INFO 65851 --- [    Test worker] o.s.t.c.transaction.TransactionContext   : Rolled back transaction for test: [DefaultTestContext@559d9517 testClass = MemberServiceTest, testInstance = com.crosscert.firewall.service.MemberServiceTest@57bd0b3c, testMethod = 이메일중복체크_중복일때_true@MemberServiceTest, testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@7d461450 testClass = MemberServiceTest, locations = '{}', classes = '{class com.crosscert.firewall.FirewallApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@726e5805, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@41813449, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@1080b026, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@dcfda20, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@5bfa8cc5, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@4c5ae43b], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -&gt; true, 'org.springframework.test.context.web.ServletTestExecutionListener.populatedRequestContextHolder' -&gt; true, 'org.springframework.test.context.web.ServletTestExecutionListener.resetRequestContextHolder' -&gt; true, 'org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -&gt; false]]
+2023-02-24 20:03:53.704  INFO 65851 --- [    Test worker] o.s.t.c.transaction.TransactionContext   : Began transaction (1) for test context [DefaultTestContext@559d9517 testClass = MemberServiceTest, testInstance = com.crosscert.firewall.service.MemberServiceTest@3237522b, testMethod = findAll_0@MemberServiceTest, testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@7d461450 testClass = MemberServiceTest, locations = '{}', classes = '{class com.crosscert.firewall.FirewallApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@726e5805, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@41813449, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@1080b026, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@dcfda20, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@5bfa8cc5, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@4c5ae43b], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -&gt; true, 'org.springframework.test.context.web.ServletTestExecutionListener.populatedRequestContextHolder' -&gt; true, 'org.springframework.test.context.web.ServletTestExecutionListener.resetRequestContextHolder' -&gt; true, 'org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -&gt; false]]; transaction manager [org.springframework.orm.jpa.JpaTransactionManager@5166fe7a]; rollback [true]
 Hibernate: 
     select
         member0_.id as id1_3_0_,
@@ -655,9 +397,9 @@ Hibernate:
     left outer join
         ip ip1_ 
             on member0_.dev_ip_id=ip1_.id
-2023-02-22 23:45:02.687  INFO 16791 --- [    Test worker] o.s.t.c.transaction.TransactionContext   : Rolled back transaction for test: [DefaultTestContext@7432cb37 testClass = MemberServiceTest, testInstance = com.crosscert.firewall.service.MemberServiceTest@3b9d5218, testMethod = findAll_0@MemberServiceTest, testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@6d985720 testClass = MemberServiceTest, locations = '{}', classes = '{class com.crosscert.firewall.FirewallApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@502f1f4c, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@6f2cb653, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@5ce33a58, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@7a527389, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@56ace400, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@1e13529a], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -&gt; true, 'org.springframework.test.context.web.ServletTestExecutionListener.populatedRequestContextHolder' -&gt; true, 'org.springframework.test.context.web.ServletTestExecutionListener.resetRequestContextHolder' -&gt; true, 'org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -&gt; false]]
-2023-02-22 23:45:02.879  INFO 16791 --- [    Test worker] o.s.t.c.transaction.TransactionContext   : Began transaction (1) for test context [DefaultTestContext@7432cb37 testClass = MemberServiceTest, testInstance = com.crosscert.firewall.service.MemberServiceTest@76603c44, testMethod = 중복회원가입시_IllegalStateException@MemberServiceTest, testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@6d985720 testClass = MemberServiceTest, locations = '{}', classes = '{class com.crosscert.firewall.FirewallApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@502f1f4c, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@6f2cb653, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@5ce33a58, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@7a527389, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@56ace400, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@1e13529a], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -&gt; true, 'org.springframework.test.context.web.ServletTestExecutionListener.populatedRequestContextHolder' -&gt; true, 'org.springframework.test.context.web.ServletTestExecutionListener.resetRequestContextHolder' -&gt; true, 'org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -&gt; false]]; transaction manager [org.springframework.orm.jpa.JpaTransactionManager@331b0bfd]; rollback [true]
-2023-02-22 23:45:02.881  INFO 16791 --- [    Test worker] c.c.firewall.service.MemberService       : class com.crosscert.firewall.service.MemberService.signup
+2023-02-24 20:03:54.561  INFO 65851 --- [    Test worker] o.s.t.c.transaction.TransactionContext   : Rolled back transaction for test: [DefaultTestContext@559d9517 testClass = MemberServiceTest, testInstance = com.crosscert.firewall.service.MemberServiceTest@3237522b, testMethod = findAll_0@MemberServiceTest, testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@7d461450 testClass = MemberServiceTest, locations = '{}', classes = '{class com.crosscert.firewall.FirewallApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@726e5805, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@41813449, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@1080b026, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@dcfda20, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@5bfa8cc5, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@4c5ae43b], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -&gt; true, 'org.springframework.test.context.web.ServletTestExecutionListener.populatedRequestContextHolder' -&gt; true, 'org.springframework.test.context.web.ServletTestExecutionListener.resetRequestContextHolder' -&gt; true, 'org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -&gt; false]]
+2023-02-24 20:03:54.753  INFO 65851 --- [    Test worker] o.s.t.c.transaction.TransactionContext   : Began transaction (1) for test context [DefaultTestContext@559d9517 testClass = MemberServiceTest, testInstance = com.crosscert.firewall.service.MemberServiceTest@699794d, testMethod = 중복회원가입시_IllegalStateException@MemberServiceTest, testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@7d461450 testClass = MemberServiceTest, locations = '{}', classes = '{class com.crosscert.firewall.FirewallApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@726e5805, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@41813449, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@1080b026, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@dcfda20, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@5bfa8cc5, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@4c5ae43b], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -&gt; true, 'org.springframework.test.context.web.ServletTestExecutionListener.populatedRequestContextHolder' -&gt; true, 'org.springframework.test.context.web.ServletTestExecutionListener.resetRequestContextHolder' -&gt; true, 'org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -&gt; false]]; transaction manager [org.springframework.orm.jpa.JpaTransactionManager@5166fe7a]; rollback [true]
+2023-02-24 20:03:54.755  INFO 65851 --- [    Test worker] c.c.firewall.service.MemberService       : class com.crosscert.firewall.service.MemberService.signup
 Hibernate: 
     select
         member0_.id as col_0_0_ 
@@ -665,7 +407,7 @@ Hibernate:
         member member0_ 
     where
         member0_.email=? limit ?
-2023-02-22 23:45:02.882 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [VARCHAR] - [test2@crosscert.com]
+2023-02-24 20:03:54.755 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [VARCHAR] - [test2@crosscert.com]
 Hibernate: 
     insert 
     into
@@ -673,11 +415,11 @@ Hibernate:
         (create_date, modified_date, address, description, domain) 
     values
         (?, ?, ?, ?, ?)
-2023-02-22 23:45:03.148 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [TIMESTAMP] - [2023-02-22T23:45:03.148082]
-2023-02-22 23:45:03.148 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [TIMESTAMP] - [2023-02-22T23:45:03.148082]
-2023-02-22 23:45:03.148 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [VARCHAR] - [172.77.0.1]
-2023-02-22 23:45:03.148 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [VARCHAR] - [null]
-2023-02-22 23:45:03.149 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [VARCHAR] - [null]
+2023-02-24 20:03:55.145 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [TIMESTAMP] - [2023-02-24T20:03:55.145453]
+2023-02-24 20:03:55.146 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [TIMESTAMP] - [2023-02-24T20:03:55.145453]
+2023-02-24 20:03:55.146 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [VARCHAR] - [172.77.0.1]
+2023-02-24 20:03:55.146 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [VARCHAR] - [null]
+2023-02-24 20:03:55.146 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [VARCHAR] - [null]
 Hibernate: 
     insert 
     into
@@ -685,11 +427,11 @@ Hibernate:
         (create_date, modified_date, address, description, domain) 
     values
         (?, ?, ?, ?, ?)
-2023-02-22 23:45:03.342 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [TIMESTAMP] - [2023-02-22T23:45:03.341411]
-2023-02-22 23:45:03.342 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [TIMESTAMP] - [2023-02-22T23:45:03.341411]
-2023-02-22 23:45:03.342 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [VARCHAR] - [172.77.0.2]
-2023-02-22 23:45:03.342 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [VARCHAR] - [null]
-2023-02-22 23:45:03.342 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [VARCHAR] - [null]
+2023-02-24 20:03:55.341 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [TIMESTAMP] - [2023-02-24T20:03:55.340728]
+2023-02-24 20:03:55.341 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [TIMESTAMP] - [2023-02-24T20:03:55.340728]
+2023-02-24 20:03:55.341 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [VARCHAR] - [172.77.0.2]
+2023-02-24 20:03:55.341 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [VARCHAR] - [null]
+2023-02-24 20:03:55.341 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [VARCHAR] - [null]
 Hibernate: 
     insert 
     into
@@ -697,15 +439,15 @@ Hibernate:
         (create_date, modified_date, dev_ip_id, email, name, net_ip_id, password, role) 
     values
         (?, ?, ?, ?, ?, ?, ?, ?)
-2023-02-22 23:45:03.533 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [TIMESTAMP] - [2023-02-22T23:45:03.147777]
-2023-02-22 23:45:03.534 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [TIMESTAMP] - [2023-02-22T23:45:03.147777]
-2023-02-22 23:45:03.534 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [BIGINT] - [6]
-2023-02-22 23:45:03.534 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [VARCHAR] - [test2@crosscert.com]
-2023-02-22 23:45:03.534 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [VARCHAR] - [test2]
-2023-02-22 23:45:03.534 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [6] as [BIGINT] - [7]
-2023-02-22 23:45:03.534 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [7] as [VARCHAR] - [$2a$10$ON.fKfw/RapwZj6Vj4MIROCUPJ3flgfCc.ZAsM0qsKjqtRUTxL/Sy]
-2023-02-22 23:45:03.534 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [8] as [VARCHAR] - [MEMBER]
-2023-02-22 23:45:03.782  INFO 16791 --- [    Test worker] c.c.firewall.service.MemberService       : class com.crosscert.firewall.service.MemberService.signup
+2023-02-24 20:03:55.609 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [TIMESTAMP] - [2023-02-24T20:03:55.144960]
+2023-02-24 20:03:55.609 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [TIMESTAMP] - [2023-02-24T20:03:55.144960]
+2023-02-24 20:03:55.609 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [BIGINT] - [10]
+2023-02-24 20:03:55.609 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [VARCHAR] - [test2@crosscert.com]
+2023-02-24 20:03:55.610 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [VARCHAR] - [test2]
+2023-02-24 20:03:55.610 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [6] as [BIGINT] - [11]
+2023-02-24 20:03:55.610 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [7] as [VARCHAR] - [$2a$10$qQAIbDaYlmyFzsCO2nSNMuC9dLrVjjeSjekTU73wZm82NKBxmIQdy]
+2023-02-24 20:03:55.610 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [8] as [VARCHAR] - [MEMBER]
+2023-02-24 20:03:55.802  INFO 65851 --- [    Test worker] c.c.firewall.service.MemberService       : class com.crosscert.firewall.service.MemberService.signup
 Hibernate: 
     select
         member0_.id as col_0_0_ 
@@ -713,9 +455,9 @@ Hibernate:
         member member0_ 
     where
         member0_.email=? limit ?
-2023-02-22 23:45:03.783 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [VARCHAR] - [test2@crosscert.com]
-2023-02-22 23:45:03.973 TRACE 16791 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([col_0_0_] : [BIGINT]) - [8]
-2023-02-22 23:45:04.381  INFO 16791 --- [    Test worker] o.s.t.c.transaction.TransactionContext   : Rolled back transaction for test: [DefaultTestContext@7432cb37 testClass = MemberServiceTest, testInstance = com.crosscert.firewall.service.MemberServiceTest@76603c44, testMethod = 중복회원가입시_IllegalStateException@MemberServiceTest, testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@6d985720 testClass = MemberServiceTest, locations = '{}', classes = '{class com.crosscert.firewall.FirewallApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@502f1f4c, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@6f2cb653, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@5ce33a58, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@7a527389, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@56ace400, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@1e13529a], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -&gt; true, 'org.springframework.test.context.web.ServletTestExecutionListener.populatedRequestContextHolder' -&gt; true, 'org.springframework.test.context.web.ServletTestExecutionListener.resetRequestContextHolder' -&gt; true, 'org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -&gt; false]]
+2023-02-24 20:03:55.804 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [VARCHAR] - [test2@crosscert.com]
+2023-02-24 20:03:56.133 TRACE 65851 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([col_0_0_] : [BIGINT]) - [10]
+2023-02-24 20:03:56.658  INFO 65851 --- [    Test worker] o.s.t.c.transaction.TransactionContext   : Rolled back transaction for test: [DefaultTestContext@559d9517 testClass = MemberServiceTest, testInstance = com.crosscert.firewall.service.MemberServiceTest@699794d, testMethod = 중복회원가입시_IllegalStateException@MemberServiceTest, testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@7d461450 testClass = MemberServiceTest, locations = '{}', classes = '{class com.crosscert.firewall.FirewallApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@726e5805, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@41813449, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@1080b026, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@dcfda20, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@5bfa8cc5, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@4c5ae43b], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -&gt; true, 'org.springframework.test.context.web.ServletTestExecutionListener.populatedRequestContextHolder' -&gt; true, 'org.springframework.test.context.web.ServletTestExecutionListener.resetRequestContextHolder' -&gt; true, 'org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -&gt; false]]
 </pre>
 </span>
 </div>
@@ -727,7 +469,7 @@ Hibernate:
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 7.6</a> at Feb 22, 2023, 11:45:09 PM</p>
+<a href="http://www.gradle.org">Gradle 7.6</a> at Feb 24, 2023, 8:04:02 PM</p>
 </div>
 </div>
 </body>
