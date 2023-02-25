@@ -238,3 +238,6 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+application-prod.properties
+application.properties

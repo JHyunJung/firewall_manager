@@ -19,20 +19,10 @@ public class MemberController {
     private final MemberService memberService;
     private final Environment environment;
 
-//    @Value("${spring.datasource.url}")
-//    private String java;
-
-
     @GetMapping("/members")
     public String getMemberPage(Model model) {
         List<MemberDTO.Response.Public> members = memberService.findAll();
         model.addAttribute("members",members);
         return "members";
-    }
-
-    @GetMapping("/test12")
-    @ResponseBody
-    public String test(){
-        return "test";
     }
 }
