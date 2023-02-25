@@ -6,10 +6,7 @@ import com.crosscert.firewall.entity.Member;
 import com.crosscert.firewall.entity.Role;
 import com.crosscert.firewall.repository.IPRepository;
 import com.crosscert.firewall.repository.MemberRepository;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -17,10 +14,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
+import org.springframework.web.util.NestedServletException;
 
 import java.util.ArrayList;
 
@@ -71,27 +70,58 @@ class MemberApiControllerTest {
         memberRepository.save(member);
     }
 
-    @Test
+    @Nested
     @DisplayName("멤버 수정 테스트")
-    void editMember() throws Exception {
+    class editMember {
+        @Test
+        @DisplayName("멤버 수정 테스트 성공")
+        void ok() throws Exception {
 
-        //given
-        MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
-        params.add("name", "testName");
-        params.add("email", "test@naver.com");
-        params.add("role", "LEADER");
-        params.add("devIp", "172.12.40.52");
-        params.add("netIp", "172.12.40.52");
+            //given
+            MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
+            params.add("name", "testName");
+            params.add("email", "test@naver.com");
+            params.add("role", "LEADER");
+            params.add("devIp", "172.12.40.52");
+            params.add("netIp", "172.12.40.52");
 
-        //when then
-        ResultActions result = mockMvc.perform(put("/member/{id}", member.getId())
-                .params(params)
-                .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk());
+            //when then
+            ResultActions result = mockMvc.perform(put("/member/{id}", member.getId())
+                            .params(params)
+                            .accept(MediaType.APPLICATION_JSON))
+                    .andExpect(status().isOk());
 
-        String responseBody = result.andReturn().getResponse().getContentAsString();
-        Assertions.assertEquals("OK",responseBody);
+            String responseBody = result.andReturn().getResponse().getContentAsString();
+            Assertions.assertEquals("OK",responseBody);
+        }
+
+
+        @Test
+        @DisplayName("멤버 수정 테스트 실패 - ip가 없을 때")
+        void fail() {
+
+            //given
+            MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
+            params.add("name", "testName");
+            params.add("email", "test@naver.com");
+            params.add("role", "LEADER");
+            params.add("devIp", "172.12.40.51");
+            params.add("netIp", "172.12.40.51");
+
+            //when then
+            try {
+                mockMvc.perform(put("/member/{id}", member.getId())
+                        .params(params)
+                        .accept(MediaType.APPLICATION_JSON));
+            } catch (Exception e) {
+                Assertions.assertTrue(e.getCause() instanceof NullPointerException);
+                Assertions.assertEquals("해당 IP가 존재하지 않습니다",e.getCause().getMessage());
+            }
+        }
+
     }
+
+
 
 
 }

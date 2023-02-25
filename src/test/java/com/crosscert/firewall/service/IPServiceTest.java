@@ -25,7 +25,7 @@ class IPServiceTest {
 
     @Test
     @DisplayName("ipAddress 존재하지 않을 때")
-    void findWithAddressNO() {
+    void findByAddressNO() {
         //given
         IpAddress ipAddress = new IpAddress("172.12.40.52");
 
@@ -40,7 +40,7 @@ class IPServiceTest {
         String testIpAddress = "172.12.40.53";
 
         //when
-        Optional<IP> returnIp = ipService.findWithAddress(testIpAddress);
+        Optional<IP> returnIp = ipService.findByAddress(testIpAddress);
 
         //then
         Assertions.assertTrue(returnIp.isEmpty());
@@ -48,7 +48,7 @@ class IPServiceTest {
 
     @Test
     @DisplayName("ipAddress 존재할 때")
-    void findWithAddressOK() {
+    void findByAddressOK() {
         //given
         IpAddress ipAddress = new IpAddress("172.12.40.52");
 
@@ -63,7 +63,7 @@ class IPServiceTest {
         String testIpAddress = "172.12.40.52";
 
         //when
-        Optional<IP> returnIp = ipService.findWithAddress(testIpAddress);
+        Optional<IP> returnIp = ipService.findByAddress(testIpAddress);
 
         //then
         Assertions.assertTrue(returnIp.isPresent());

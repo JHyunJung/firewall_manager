@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 @RequiredArgsConstructor
@@ -35,7 +36,7 @@ public class MemberController {
         MemberDTO.Response.Public memberDto = memberService.changeResDto(member);
 
         List<IP> ipList = ipService.findAll();
-        List<String> addresses = ipService.getAddresses(ipList);
+        List<String> addresses = ipList.stream().map(ip -> ip.getAddress().getAddress()).collect(Collectors.toList());
 
         model.addAttribute("member", memberDto);
         model.addAttribute("addresses", addresses);

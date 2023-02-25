@@ -17,9 +17,8 @@ public class IPService {
 
     private final IPRepository ipRepository;
 
-    public Optional<IP> findWithAddress(String address) {
-        IpAddress ipAddress = new IpAddress(address);
-        return ipRepository.findByAddress(ipAddress);
+    public Optional<IP> findByAddress(String address) {
+        return ipRepository.findByAddress(createIpAddress(address));
     }
 
     public IP save (IP ip) {
@@ -39,8 +38,9 @@ public class IPService {
         return ipRepository.findAll();
     }
 
-    public List<String> getAddresses(List<IP> ipList) {
-        return ipList.stream().map(ip -> ip.getAddress().getAddress()).collect(Collectors.toList());
+    private IpAddress createIpAddress(String address) {
+        IpAddress ipAddress = new IpAddress(address);
+        return ipAddress;
     }
 
 }
