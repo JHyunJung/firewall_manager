@@ -1,5 +1,6 @@
 package com.crosscert.firewall.service;
 
+import com.crosscert.firewall.annotation.LogTrace;
 import com.crosscert.firewall.dto.MemberDTO;
 import com.crosscert.firewall.entity.Member;
 import com.crosscert.firewall.repository.MemberRepository;
@@ -40,6 +41,7 @@ public class MemberService implements UserDetailsService {
                 .collect(Collectors.toList());
     }
 
+    @LogTrace
     public boolean isPresentMember(String email) {
         return memberRepository.existsByEmail(email);
     }
@@ -51,7 +53,7 @@ public class MemberService implements UserDetailsService {
         //중복 회원 검증
         if(isPresentMember(memberDTO.getEmail())){
             throw new IllegalStateException("이미 존재하는 회원입니다.");
-        };
+        }
 
         //비밀번호 암호화
         String encPassword = passwordEncoder.encode(memberDTO.getPassword());
@@ -75,6 +77,7 @@ public class MemberService implements UserDetailsService {
         //DB 저장
         memberRepository.save(member);
     }
+
 
     public boolean isNotEmptyIpAddress(String ipAddress) {
         return ipAddress != null && !ipAddress.equals("");
