@@ -65,18 +65,10 @@ class MemberServiceTest {
 
             memberRepository.save(member);
             members.add(member);
-
-            members.add(new MemberDTO.Response.Public(
-                    member.getId(),
-                    member.getName(),
-                    member.getEmail(),
-                    member.getRole(),
-                    member.getDevIp().getAddress().getAddress(),
-                    member.getNetIp().getAddress().getAddress()));
         }
 
         //when
-        List<Member> memberList = memberService.findAll();
+        List<Member> memberList = memberService.findAllFetch();
 
         //then
         Assertions.assertEquals(5, memberList.size());
@@ -90,7 +82,7 @@ class MemberServiceTest {
         //
 
         //when
-        List<Member> members = memberService.findAll();
+        List<Member> members = memberService.findAllFetch();
 
         //then
         Assertions.assertEquals(0, members.size());
@@ -99,6 +91,9 @@ class MemberServiceTest {
     @Test
     @DisplayName("editMember Test")
     void editMember() {
+
+    }
+
     @Test
     public void 정상적인_회원가입() {
         //given
@@ -176,6 +171,4 @@ class MemberServiceTest {
         assertTrue(result2);
     }
 
-
-    }
 }

@@ -6,12 +6,10 @@ import com.crosscert.firewall.entity.Member;
 import com.crosscert.firewall.service.IPService;
 import com.crosscert.firewall.service.MemberService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -25,7 +23,7 @@ public class MemberController {
 
     @GetMapping("/members")
     public String members(Model model) {
-        List<Member> memberList = memberService.findAll();
+        List<Member> memberList = memberService.findAllFetch();
         List<MemberDTO.Response.Public> members = memberService.changeResDtos(memberList);
 
         model.addAttribute("members", members);

@@ -4,7 +4,6 @@ import com.crosscert.firewall.annotation.LogTrace;
 import com.crosscert.firewall.dto.MemberDTO;
 import com.crosscert.firewall.entity.IP;
 import com.crosscert.firewall.entity.Member;
-import com.crosscert.firewall.entity.Member;
 import com.crosscert.firewall.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -20,19 +19,20 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
 @Transactional
-public class MemberService {
 @Log4j2
 public class MemberService implements UserDetailsService {
+
     private final MemberRepository memberRepository;
 
+    private final PasswordEncoder passwordEncoder;
+
     @Transactional(readOnly = true)
-    public List<Member> findAll() {
+    public List<Member> findAllFetch() {
         return memberRepository.findMemberFetchJoin();
     }
 
@@ -52,12 +52,7 @@ public class MemberService implements UserDetailsService {
         memberRepository.deleteById(id);
     }
 
-
     public List<MemberDTO.Response.Public> changeResDtos(List<Member> memberList) {
-        return memberList.stream()
-    private final PasswordEncoder passwordEncoder;
-
-    public List<MemberDTO.Response.Public> findAll() {
         return memberRepository.findMemberFetchJoin().stream()
                 .map(m -> new MemberDTO.Response.Public(
                         m.getId(),
