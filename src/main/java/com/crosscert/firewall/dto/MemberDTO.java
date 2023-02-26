@@ -2,6 +2,7 @@ package com.crosscert.firewall.dto;
 
 import com.crosscert.firewall.entity.Role;
 import lombok.ToString;
+import lombok.Builder;
 import lombok.Value;
 
 import javax.validation.constraints.NotBlank;
@@ -19,6 +20,7 @@ public enum MemberDTO {;
 //    private interface FireWall { List<FireWall> getFireWall();}
 
     public enum Request{;
+        @Builder
         @Value public static class Create implements Name, Email, Password, MemberRole, DevIP, NetIP{
              String name;
              String email;

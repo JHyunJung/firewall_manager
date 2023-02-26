@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
 
@@ -46,4 +47,9 @@ public class IP extends BaseTimeEntity{
         this.devMember = member;
         this.netMember = member;
     }
+
+    public IP(String ipAddress) {
+        address = new IpAddress(ipAddress);
+    }
+
 }

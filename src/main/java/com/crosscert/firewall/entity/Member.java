@@ -52,4 +52,11 @@ public class Member extends BaseTimeEntity{
         this.netIp = netIp;
     }
 
+    public void setDevIpByAddress(String devIp) {
+        this.devIp = new IP(devIp);
+    }
+
+    public void setNetIpByAddress(String netIp) {
+        this.netIp = new IP(netIp);
+    }
 }
