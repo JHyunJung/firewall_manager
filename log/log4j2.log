@@ -1,0 +1,289 @@
+2023-02-26 21:25:41  INFO [org.hibernate.validator.internal.util.Version] HV000001: Hibernate Validator 6.2.5.Final
+2023-02-26 21:25:41  INFO [com.crosscert.firewall.FirewallApplication] Starting FirewallApplication using Java 11.0.17 on JaeHyunui-MacBookPro.local with PID 57460 (/Users/jhyun/Git/FireWall_manager/build/classes/java/main started by jhyun in /Users/jhyun/Git/FireWall_manager)
+2023-02-26 21:25:41  INFO [com.crosscert.firewall.FirewallApplication] The following 1 profile is active: "dev"
+2023-02-26 21:25:41  INFO [org.springframework.data.repository.config.RepositoryConfigurationDelegate] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-02-26 21:25:42  INFO [org.springframework.data.repository.config.RepositoryConfigurationDelegate] Finished Spring Data repository scanning in 38 ms. Found 4 JPA repository interfaces.
+2023-02-26 21:25:42  INFO [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] Tomcat initialized with port(s): 8080 (http)
+2023-02-26 21:25:42  INFO [org.apache.coyote.http11.Http11NioProtocol] Initializing ProtocolHandler ["http-nio-8080"]
+2023-02-26 21:25:42  INFO [org.apache.catalina.core.StandardService] Starting service [Tomcat]
+2023-02-26 21:25:42  INFO [org.apache.catalina.core.StandardEngine] Starting Servlet engine: [Apache Tomcat/9.0.70]
+2023-02-26 21:25:42  INFO [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]] Initializing Spring embedded WebApplicationContext
+2023-02-26 21:25:42  INFO [org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext] Root WebApplicationContext: initialization completed in 1137 ms
+2023-02-26 21:25:42  INFO [org.hibernate.jpa.internal.util.LogHelper] HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-02-26 21:25:42  INFO [org.hibernate.Version] HHH000412: Hibernate ORM core version 5.6.14.Final
+2023-02-26 21:25:42  INFO [org.hibernate.annotations.common.Version] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-02-26 21:25:43  INFO [com.zaxxer.hikari.HikariDataSource] HikariPool-1 - Starting...
+2023-02-26 21:25:43  INFO [com.zaxxer.hikari.HikariDataSource] HikariPool-1 - Start completed.
+2023-02-26 21:25:43  INFO [org.hibernate.dialect.Dialect] HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2023-02-26 21:25:43 DEBUG [org.hibernate.SQL] 
+    
+    [34malter[0m [34mtable[0m fire_wall 
+       [34mdrop[0m 
+       [34mforeign[0m [34mkey[0m FK6lkcjc18y4re6vvdfed1gldv8
+2023-02-26 21:25:43 DEBUG [org.hibernate.SQL] 
+    
+    [34malter[0m [34mtable[0m fire_wall 
+       [34mdrop[0m 
+       [34mforeign[0m [34mkey[0m FKqlskr1ai6equa37q9ql51i7dl
+2023-02-26 21:25:43 DEBUG [org.hibernate.SQL] 
+    
+    [34malter[0m [34mtable[0m fire_wall 
+       [34mdrop[0m 
+       [34mforeign[0m [34mkey[0m FKpfunuj4pn71pfpqeqrp0e1ixs
+2023-02-26 21:25:43 DEBUG [org.hibernate.SQL] 
+    
+    [34malter[0m [34mtable[0m [34mmember[0m 
+       [34mdrop[0m 
+       [34mforeign[0m [34mkey[0m FKaowsaw541yyf4rf3na3fiot8s
+2023-02-26 21:25:44 DEBUG [org.hibernate.SQL] 
+    
+    [34malter[0m [34mtable[0m [34mmember[0m 
+       [34mdrop[0m 
+       [34mforeign[0m [34mkey[0m FKiw8d74yv6dlu3w1v3cniyqopn
+2023-02-26 21:25:44 DEBUG [org.hibernate.SQL] 
+    
+    [34mdrop[0m [34mtable[0m [34mif[0m [34mexists[0m fire_wall
+2023-02-26 21:25:44 DEBUG [org.hibernate.SQL] 
+    
+    [34mdrop[0m [34mtable[0m [34mif[0m [34mexists[0m ip
+2023-02-26 21:25:44 DEBUG [org.hibernate.SQL] 
+    
+    [34mdrop[0m [34mtable[0m [34mif[0m [34mexists[0m log
+2023-02-26 21:25:44 DEBUG [org.hibernate.SQL] 
+    
+    [34mdrop[0m [34mtable[0m [34mif[0m [34mexists[0m [34mmember[0m
+2023-02-26 21:25:44 DEBUG [org.hibernate.SQL] 
+    
+    [34mcreate[0m [34mtable[0m fire_wall (
+       id [34mbigint[0m [34mnot[0m [34mnull[0m auto_increment,
+        create_date datetime(6) [34mnot[0m [34mnull[0m,
+        modified_date datetime(6) [34mnot[0m [34mnull[0m,
+        end_date [34mdate[0m,
+        is_ended bit,
+        port [34minteger[0m [34mnot[0m [34mnull[0m,
+        destination_ip [34mbigint[0m,
+        member_id [34mbigint[0m,
+        start_ip [34mbigint[0m,
+        [34mprimary[0m [34mkey[0m (id)
+    ) engine=InnoDB
+2023-02-26 21:25:44 DEBUG [org.hibernate.SQL] 
+    
+    [34mcreate[0m [34mtable[0m ip (
+       id [34mbigint[0m [34mnot[0m [34mnull[0m auto_increment,
+        create_date datetime(6) [34mnot[0m [34mnull[0m,
+        modified_date datetime(6) [34mnot[0m [34mnull[0m,
+        address [34mvarchar[0m(255),
+        description [34mvarchar[0m(255),
+        domain [34mvarchar[0m(255),
+        [34mprimary[0m [34mkey[0m (id)
+    ) engine=InnoDB
+2023-02-26 21:25:44 DEBUG [org.hibernate.SQL] 
+    
+    [34mcreate[0m [34mtable[0m log (
+       id [34mbigint[0m [34mnot[0m [34mnull[0m auto_increment,
+        body [34mvarchar[0m(255),
+        [34mmethod[0m [34mvarchar[0m(255) [34mnot[0m [34mnull[0m,
+        param [34mvarchar[0m(255),
+        status [34mvarchar[0m(255) [34mnot[0m [34mnull[0m,
+        url [34mvarchar[0m(255) [34mnot[0m [34mnull[0m,
+        [34mprimary[0m [34mkey[0m (id)
+    ) engine=InnoDB
+2023-02-26 21:25:44 DEBUG [org.hibernate.SQL] 
+    
+    [34mcreate[0m [34mtable[0m [34mmember[0m (
+       id [34mbigint[0m [34mnot[0m [34mnull[0m auto_increment,
+        create_date datetime(6) [34mnot[0m [34mnull[0m,
+        modified_date datetime(6) [34mnot[0m [34mnull[0m,
+        email [34mvarchar[0m(255) [34mnot[0m [34mnull[0m,
+        name [34mvarchar[0m(10) [34mnot[0m [34mnull[0m,
+        password [34mvarchar[0m(255) [34mnot[0m [34mnull[0m,
+        role [34mvarchar[0m(255) [34mnot[0m [34mnull[0m,
+        dev_ip_id [34mbigint[0m,
+        net_ip_id [34mbigint[0m,
+        [34mprimary[0m [34mkey[0m (id)
+    ) engine=InnoDB
+2023-02-26 21:25:44 DEBUG [org.hibernate.SQL] 
+    
+    [34malter[0m [34mtable[0m fire_wall 
+       [34madd[0m [34mconstraint[0m FK6lkcjc18y4re6vvdfed1gldv8 
+       [34mforeign[0m [34mkey[0m (destination_ip) 
+       [34mreferences[0m ip (id)
+2023-02-26 21:25:44 DEBUG [org.hibernate.SQL] 
+    
+    [34malter[0m [34mtable[0m fire_wall 
+       [34madd[0m [34mconstraint[0m FKqlskr1ai6equa37q9ql51i7dl 
+       [34mforeign[0m [34mkey[0m (member_id) 
+       [34mreferences[0m [34mmember[0m (id)
+2023-02-26 21:25:44 DEBUG [org.hibernate.SQL] 
+    
+    [34malter[0m [34mtable[0m fire_wall 
+       [34madd[0m [34mconstraint[0m FKpfunuj4pn71pfpqeqrp0e1ixs 
+       [34mforeign[0m [34mkey[0m (start_ip) 
+       [34mreferences[0m ip (id)
+2023-02-26 21:25:44 DEBUG [org.hibernate.SQL] 
+    
+    [34malter[0m [34mtable[0m [34mmember[0m 
+       [34madd[0m [34mconstraint[0m FKaowsaw541yyf4rf3na3fiot8s 
+       [34mforeign[0m [34mkey[0m (dev_ip_id) 
+       [34mreferences[0m ip (id)
+2023-02-26 21:25:44 DEBUG [org.hibernate.SQL] 
+    
+    [34malter[0m [34mtable[0m [34mmember[0m 
+       [34madd[0m [34mconstraint[0m FKiw8d74yv6dlu3w1v3cniyqopn 
+       [34mforeign[0m [34mkey[0m (net_ip_id) 
+       [34mreferences[0m ip (id)
+2023-02-26 21:25:44  INFO [org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-02-26 21:25:44  INFO [org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-02-26 21:25:44  INFO [com.crosscert.firewall.config.security.WebSecurityConfig] 개발용 Spring Security 설정
+2023-02-26 21:25:44  INFO [org.springframework.security.web.DefaultSecurityFilterChain] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@2932721e, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5a6d4dee, org.springframework.security.web.context.SecurityContextPersistenceFilter@71dfca65, org.springframework.security.web.header.HeaderWriterFilter@43c3354, org.springframework.security.web.authentication.logout.LogoutFilter@5e7ea81b, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@724e0a77, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1e9f6095, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3f465ae, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6447dc25, org.springframework.security.web.session.SessionManagementFilter@743f58c3, org.springframework.security.web.access.ExceptionTranslationFilter@66e62e19, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@74070994]
+2023-02-26 21:25:44  WARN [org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-02-26 21:25:44  INFO [org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping] Adding welcome page template: index
+2023-02-26 21:25:45  INFO [org.apache.coyote.http11.Http11NioProtocol] Starting ProtocolHandler ["http-nio-8080"]
+2023-02-26 21:25:45  INFO [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] Tomcat started on port(s): 8080 (http) with context path ''
+2023-02-26 21:25:45  INFO [com.crosscert.firewall.FirewallApplication] Started FirewallApplication in 4.234 seconds (JVM running for 5.18)
+2023-02-26 21:26:21  INFO [org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean] Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-02-26 21:26:21  INFO [com.zaxxer.hikari.HikariDataSource] HikariPool-1 - Shutdown initiated...
+2023-02-26 21:26:21  INFO [com.zaxxer.hikari.HikariDataSource] HikariPool-1 - Shutdown completed.
+2023-02-26 21:26:24  INFO [org.hibernate.validator.internal.util.Version] HV000001: Hibernate Validator 6.2.5.Final
+2023-02-26 21:26:24  INFO [com.crosscert.firewall.FirewallApplication] Starting FirewallApplication using Java 11.0.17 on JaeHyunui-MacBookPro.local with PID 57598 (/Users/jhyun/Git/FireWall_manager/build/classes/java/main started by jhyun in /Users/jhyun/Git/FireWall_manager)
+2023-02-26 21:26:24  INFO [com.crosscert.firewall.FirewallApplication] The following 1 profile is active: "dev"
+2023-02-26 21:26:25  INFO [org.springframework.data.repository.config.RepositoryConfigurationDelegate] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-02-26 21:26:25  INFO [org.springframework.data.repository.config.RepositoryConfigurationDelegate] Finished Spring Data repository scanning in 27 ms. Found 4 JPA repository interfaces.
+2023-02-26 21:26:25  INFO [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] Tomcat initialized with port(s): 8080 (http)
+2023-02-26 21:26:25  INFO [org.apache.coyote.http11.Http11NioProtocol] Initializing ProtocolHandler ["http-nio-8080"]
+2023-02-26 21:26:25  INFO [org.apache.catalina.core.StandardService] Starting service [Tomcat]
+2023-02-26 21:26:25  INFO [org.apache.catalina.core.StandardEngine] Starting Servlet engine: [Apache Tomcat/9.0.70]
+2023-02-26 21:26:25  INFO [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]] Initializing Spring embedded WebApplicationContext
+2023-02-26 21:26:25  INFO [org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext] Root WebApplicationContext: initialization completed in 828 ms
+2023-02-26 21:26:25  INFO [org.hibernate.jpa.internal.util.LogHelper] HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-02-26 21:26:25  INFO [org.hibernate.Version] HHH000412: Hibernate ORM core version 5.6.14.Final
+2023-02-26 21:26:26  INFO [org.hibernate.annotations.common.Version] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-02-26 21:26:26  INFO [com.zaxxer.hikari.HikariDataSource] HikariPool-1 - Starting...
+2023-02-26 21:26:26  INFO [com.zaxxer.hikari.HikariDataSource] HikariPool-1 - Start completed.
+2023-02-26 21:26:26  INFO [org.hibernate.dialect.Dialect] HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2023-02-26 21:26:26 DEBUG [org.hibernate.SQL] 
+    
+    [34malter[0m [34mtable[0m fire_wall 
+       [34mdrop[0m 
+       [34mforeign[0m [34mkey[0m FK6lkcjc18y4re6vvdfed1gldv8
+2023-02-26 21:26:26 DEBUG [org.hibernate.SQL] 
+    
+    [34malter[0m [34mtable[0m fire_wall 
+       [34mdrop[0m 
+       [34mforeign[0m [34mkey[0m FKqlskr1ai6equa37q9ql51i7dl
+2023-02-26 21:26:26 DEBUG [org.hibernate.SQL] 
+    
+    [34malter[0m [34mtable[0m fire_wall 
+       [34mdrop[0m 
+       [34mforeign[0m [34mkey[0m FKpfunuj4pn71pfpqeqrp0e1ixs
+2023-02-26 21:26:26 DEBUG [org.hibernate.SQL] 
+    
+    [34malter[0m [34mtable[0m [34mmember[0m 
+       [34mdrop[0m 
+       [34mforeign[0m [34mkey[0m FKaowsaw541yyf4rf3na3fiot8s
+2023-02-26 21:26:26 DEBUG [org.hibernate.SQL] 
+    
+    [34malter[0m [34mtable[0m [34mmember[0m 
+       [34mdrop[0m 
+       [34mforeign[0m [34mkey[0m FKiw8d74yv6dlu3w1v3cniyqopn
+2023-02-26 21:26:26 DEBUG [org.hibernate.SQL] 
+    
+    [34mdrop[0m [34mtable[0m [34mif[0m [34mexists[0m fire_wall
+2023-02-26 21:26:26 DEBUG [org.hibernate.SQL] 
+    
+    [34mdrop[0m [34mtable[0m [34mif[0m [34mexists[0m ip
+2023-02-26 21:26:26 DEBUG [org.hibernate.SQL] 
+    
+    [34mdrop[0m [34mtable[0m [34mif[0m [34mexists[0m log
+2023-02-26 21:26:26 DEBUG [org.hibernate.SQL] 
+    
+    [34mdrop[0m [34mtable[0m [34mif[0m [34mexists[0m [34mmember[0m
+2023-02-26 21:26:26 DEBUG [org.hibernate.SQL] 
+    
+    [34mcreate[0m [34mtable[0m fire_wall (
+       id [34mbigint[0m [34mnot[0m [34mnull[0m auto_increment,
+        create_date datetime(6) [34mnot[0m [34mnull[0m,
+        modified_date datetime(6) [34mnot[0m [34mnull[0m,
+        end_date [34mdate[0m,
+        is_ended bit,
+        port [34minteger[0m [34mnot[0m [34mnull[0m,
+        destination_ip [34mbigint[0m,
+        member_id [34mbigint[0m,
+        start_ip [34mbigint[0m,
+        [34mprimary[0m [34mkey[0m (id)
+    ) engine=InnoDB
+2023-02-26 21:26:26 DEBUG [org.hibernate.SQL] 
+    
+    [34mcreate[0m [34mtable[0m ip (
+       id [34mbigint[0m [34mnot[0m [34mnull[0m auto_increment,
+        create_date datetime(6) [34mnot[0m [34mnull[0m,
+        modified_date datetime(6) [34mnot[0m [34mnull[0m,
+        address [34mvarchar[0m(255),
+        description [34mvarchar[0m(255),
+        domain [34mvarchar[0m(255),
+        [34mprimary[0m [34mkey[0m (id)
+    ) engine=InnoDB
+2023-02-26 21:26:26 DEBUG [org.hibernate.SQL] 
+    
+    [34mcreate[0m [34mtable[0m log (
+       id [34mbigint[0m [34mnot[0m [34mnull[0m auto_increment,
+        body [34mvarchar[0m(255),
+        [34mmethod[0m [34mvarchar[0m(255) [34mnot[0m [34mnull[0m,
+        param [34mvarchar[0m(255),
+        status [34mvarchar[0m(255) [34mnot[0m [34mnull[0m,
+        url [34mvarchar[0m(255) [34mnot[0m [34mnull[0m,
+        [34mprimary[0m [34mkey[0m (id)
+    ) engine=InnoDB
+2023-02-26 21:26:26 DEBUG [org.hibernate.SQL] 
+    
+    [34mcreate[0m [34mtable[0m [34mmember[0m (
+       id [34mbigint[0m [34mnot[0m [34mnull[0m auto_increment,
+        create_date datetime(6) [34mnot[0m [34mnull[0m,
+        modified_date datetime(6) [34mnot[0m [34mnull[0m,
+        email [34mvarchar[0m(255) [34mnot[0m [34mnull[0m,
+        name [34mvarchar[0m(10) [34mnot[0m [34mnull[0m,
+        password [34mvarchar[0m(255) [34mnot[0m [34mnull[0m,
+        role [34mvarchar[0m(255) [34mnot[0m [34mnull[0m,
+        dev_ip_id [34mbigint[0m,
+        net_ip_id [34mbigint[0m,
+        [34mprimary[0m [34mkey[0m (id)
+    ) engine=InnoDB
+2023-02-26 21:26:26 DEBUG [org.hibernate.SQL] 
+    
+    [34malter[0m [34mtable[0m fire_wall 
+       [34madd[0m [34mconstraint[0m FK6lkcjc18y4re6vvdfed1gldv8 
+       [34mforeign[0m [34mkey[0m (destination_ip) 
+       [34mreferences[0m ip (id)
+2023-02-26 21:26:26 DEBUG [org.hibernate.SQL] 
+    
+    [34malter[0m [34mtable[0m fire_wall 
+       [34madd[0m [34mconstraint[0m FKqlskr1ai6equa37q9ql51i7dl 
+       [34mforeign[0m [34mkey[0m (member_id) 
+       [34mreferences[0m [34mmember[0m (id)
+2023-02-26 21:26:26 DEBUG [org.hibernate.SQL] 
+    
+    [34malter[0m [34mtable[0m fire_wall 
+       [34madd[0m [34mconstraint[0m FKpfunuj4pn71pfpqeqrp0e1ixs 
+       [34mforeign[0m [34mkey[0m (start_ip) 
+       [34mreferences[0m ip (id)
+2023-02-26 21:26:26 DEBUG [org.hibernate.SQL] 
+    
+    [34malter[0m [34mtable[0m [34mmember[0m 
+       [34madd[0m [34mconstraint[0m FKaowsaw541yyf4rf3na3fiot8s 
+       [34mforeign[0m [34mkey[0m (dev_ip_id) 
+       [34mreferences[0m ip (id)
+2023-02-26 21:26:27 DEBUG [org.hibernate.SQL] 
+    
+    [34malter[0m [34mtable[0m [34mmember[0m 
+       [34madd[0m [34mconstraint[0m FKiw8d74yv6dlu3w1v3cniyqopn 
+       [34mforeign[0m [34mkey[0m (net_ip_id) 
+       [34mreferences[0m ip (id)
+2023-02-26 21:26:27  INFO [org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-02-26 21:26:27  INFO [org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-02-26 21:26:27  INFO [com.crosscert.firewall.config.security.WebSecurityConfig] 개발용 Spring Security 설정
+2023-02-26 21:26:27  INFO [org.springframework.security.web.DefaultSecurityFilterChain] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@2932721e, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5a6d4dee, org.springframework.security.web.context.SecurityContextPersistenceFilter@71dfca65, org.springframework.security.web.header.HeaderWriterFilter@43c3354, org.springframework.security.web.authentication.logout.LogoutFilter@5e7ea81b, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@724e0a77, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1e9f6095, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3f465ae, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6447dc25, org.springframework.security.web.session.SessionManagementFilter@743f58c3, org.springframework.security.web.access.ExceptionTranslationFilter@66e62e19, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@74070994]
+2023-02-26 21:26:27  WARN [org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-02-26 21:26:27  INFO [org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping] Adding welcome page template: index
+2023-02-26 21:26:27  INFO [org.apache.coyote.http11.Http11NioProtocol] Starting ProtocolHandler ["http-nio-8080"]
+2023-02-26 21:26:27  INFO [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] Tomcat started on port(s): 8080 (http) with context path ''
+2023-02-26 21:26:27  INFO [com.crosscert.firewall.FirewallApplication] Started FirewallApplication in 3.275 seconds (JVM running for 4.16)
