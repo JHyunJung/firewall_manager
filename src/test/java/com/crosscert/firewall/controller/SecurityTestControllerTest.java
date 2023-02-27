@@ -27,6 +27,12 @@ class SecurityTestControllerTest {
     MockMvc mockMvc;
 
 
+    void test(){
+        System.out.println("test");
+
+    }
+
+
 //    @Test
 //    @DisplayName("모두 접근 가능한 페이지")
 //    void index() throws Exception {

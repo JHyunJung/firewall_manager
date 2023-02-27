@@ -1,9 +1,7 @@
 package com.crosscert.firewall.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import com.crosscert.firewall.dto.MemberDTO;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -14,6 +12,7 @@ import java.util.List;
 @Builder
 @Entity
 @Getter
+@ToString
 public class Member extends BaseTimeEntity{
 
     @Id
@@ -44,6 +43,14 @@ public class Member extends BaseTimeEntity{
     @Builder.Default
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private List<FireWall> fireWallList = new ArrayList<>();
+
+    public void edit(MemberDTO.Request.EditInfo memberDTO, IP devIp, IP netIp) {
+        this.name = memberDTO.getName();
+        this.email = memberDTO.getEmail();
+        this.role = memberDTO.getRole();
+        this.devIp = devIp;
+        this.netIp = netIp;
+    }
 
     public void setDevIpByAddress(String devIp) {
         this.devIp = new IP(devIp);
