@@ -48,7 +48,7 @@ public class LoginController {
     //이메일 중복체크
     @GetMapping("/checkDuplicateEmail")
     @ResponseBody
-    public ResponseEntity<Object> checkDuplicateEmail(@RequestParam String email) {
+    public ResponseEntity<Object> checkDuplicateEmail(@RequestParam("email") String email) {
         log.info("{}.checkDuplicateEmail",this.getClass());
         Map<String, Object> data = new HashMap<>();
         data.put("result", memberService.isPresentMember(email));
