@@ -26,8 +26,8 @@
                     <td th:text="${m.name}"></td>
                     <td th:text="${m.email}"></td>
                     <td th:text="${m.role}"></td>
-                    <td th:text="${m.devIp}"></td>
-                    <td th:text="${m.netIp}"></td>
+                    <td th:text="${m.devIp != null} ? ${m.devIp} : ''"></td>
+                    <td th:text="${m.netIp != null} ? ${m.netIp} : ''"></td>
                 </tr>
                 </tbody>
             </table>

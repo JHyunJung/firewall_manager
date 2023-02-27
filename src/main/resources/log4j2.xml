@@ -3,7 +3,7 @@
 
     <!-- 해당 설정파일에서 사용하는 프로퍼티-->
     <Properties>
-        <property name="LOGS_PATH">D:\test_logs</property>
+        <property name="LOGS_PATH">log</property>
     </Properties>
 
     <Appenders>

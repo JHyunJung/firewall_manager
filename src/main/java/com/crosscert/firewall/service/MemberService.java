@@ -2,6 +2,7 @@ package com.crosscert.firewall.service;
 
 import com.crosscert.firewall.annotation.LogTrace;
 import com.crosscert.firewall.dto.MemberDTO;
+import com.crosscert.firewall.entity.IP;
 import com.crosscert.firewall.entity.Member;
 import com.crosscert.firewall.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
@@ -18,18 +19,40 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 @Log4j2
 public class MemberService implements UserDetailsService {
+
     private final MemberRepository memberRepository;
 
     private final PasswordEncoder passwordEncoder;
 
-    public List<MemberDTO.Response.Public> findAll() {
+    @Transactional(readOnly = true)
+    public List<Member> findAllFetch() {
+        return memberRepository.findMemberFetchJoin();
+    }
+
+    public Member findById(Long id) {
+        return memberRepository.findById(id).orElseThrow(() -> new RuntimeException("해당 Member 가 없습니다"));
+    }
+
+    public void edit(Member member, MemberDTO.Request.EditInfo memberDTO, IP devIP, IP netIP) {
+        member.edit(memberDTO, devIP, netIP);
+    }
+
+    public Member save(Member member) {
+        return memberRepository.save(member);
+    }
+
+    public void delete(Long id) {
+        memberRepository.deleteById(id);
+    }
+
+    public List<MemberDTO.Response.Public> changeResDtos(List<Member> memberList) {
         return memberRepository.findMemberFetchJoin().stream()
                 .map(m -> new MemberDTO.Response.Public(
                         m.getId(),
@@ -40,6 +63,17 @@ public class MemberService implements UserDetailsService {
                         m.getNetIp().getAddress().getAddress()))
                 .collect(Collectors.toList());
     }
+
+    public MemberDTO.Response.Public changeResDto(Member m) {
+        return new MemberDTO.Response.Public(
+                m.getId(),
+                m.getName(),
+                m.getEmail(),
+                m.getRole(),
+                m.getDevIp().getAddress().getAddress(),
+                m.getNetIp().getAddress().getAddress());
+    }
+
 
     @LogTrace
     public boolean isPresentMember(String email) {
