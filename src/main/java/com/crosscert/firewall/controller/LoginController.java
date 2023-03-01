@@ -1,5 +1,6 @@
 package com.crosscert.firewall.controller;
 
+import com.crosscert.firewall.annotation.LogTrace;
 import com.crosscert.firewall.dto.MemberDTO;
 import com.crosscert.firewall.service.MemberService;
 import lombok.RequiredArgsConstructor;

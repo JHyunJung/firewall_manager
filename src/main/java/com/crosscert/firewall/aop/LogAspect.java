@@ -8,6 +8,7 @@ import org.hibernate.mapping.Join;
 import org.springframework.stereotype.Component;
 
 @Log4j2
+@Component
 @Aspect
 public class LogAspect {
 
@@ -20,12 +21,12 @@ public class LogAspect {
     @Before("execution(* com.crosscert.firewall.controller.*.*(..))")
     public void doRequestTrace(JoinPoint joinPoint){
         Object[] args = joinPoint.getArgs();
-        log.info("[trace] Request {} args={}", joinPoint.getSignature(), args);
+        log.info("[Controller] Request {} args={}", joinPoint.getSignature(), args);
     }
 
-    @AfterReturning("execution(* com.crosscert.firewall.controller.*.*(..))")
-    public void deResponseTrace(JoinPoint joinPoint){
-        Object[] args = joinPoint.getArgs();
-        log.info("[trace] Response {} args={}", joinPoint.getSignature(), args);
+    @AfterReturning(value = "execution(* com.crosscert.firewall.controller.*.*(..))", returning = "returnValue")
+    public void deResponseTrace(Object returnValue){
+
+        log.info("[Controller] Response {}", returnValue);
     }
 }

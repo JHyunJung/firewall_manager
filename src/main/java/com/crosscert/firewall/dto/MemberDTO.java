@@ -49,5 +49,9 @@ public enum MemberDTO {;
             String devIp;
             String netIp;
         }
+
+        @Value public static class Create implements Id{
+            Long id;
+        }
     }
 }

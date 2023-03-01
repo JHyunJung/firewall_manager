@@ -12,15 +12,15 @@ repositories {
 	mavenCentral()
 }
 
-configurations {
-	compileOnly {
-		extendsFrom annotationProcessor
-	}
-	all {
-		//logback과의 충돌 방지
-		exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
-	}
-}
+//configurations {
+//	compileOnly {
+//		extendsFrom annotationProcessor
+//	}
+//	all {
+//		//logback과의 충돌 방지
+//		exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+//	}
+//}
 
 
 dependencies {
@@ -30,7 +30,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 
-	implementation 'org.springframework.boot:spring-boot-starter-log4j2'
+//	implementation 'org.springframework.boot:spring-boot-starter-log4j2'
 
 	implementation 'com.google.code.findbugs:jsr305:3.0.2'
 
