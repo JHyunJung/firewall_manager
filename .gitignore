@@ -245,6 +245,7 @@ application.properties
 
 .gradle
 **/build/
+/build/classes
 !src/**/build/
 
 # Ignore Gradle GUI config
