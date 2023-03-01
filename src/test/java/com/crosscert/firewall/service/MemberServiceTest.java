@@ -89,9 +89,61 @@ class MemberServiceTest {
     }
 
     @Test
-    @DisplayName("editMember Test")
-    void editMember() {
+    @DisplayName("changeResDto Test")
+    void changeResDtoTest() {
+        //given
+        IpAddress ipAddress = new IpAddress("172.12.40.52");
 
+        IP ip = IP.builder()
+                .domain("domain")
+                .description("description")
+                .address(ipAddress)
+                .build();
+
+        Member member = Member.builder()
+                .name("name")
+                .email("testData"  + "@naver.com")
+                .password("123456")
+                .role(Role.MEMBER)
+                .devIp(ip)
+                .netIp(ip)
+                .fireWallList(new ArrayList<>())
+                .build();
+
+        //when
+        MemberDTO.Response.Public publicDto = memberService.changeResDto(member);
+
+        //then
+        assertEquals("name",publicDto.getName());
+        assertEquals("testData@naver.com",publicDto.getEmail());
+        assertEquals(Role.MEMBER,publicDto.getRole());
+        assertEquals("172.12.40.52",publicDto.getDevIp());
+        assertEquals("172.12.40.52",publicDto.getNetIp());
+    }
+
+    @Test
+    @DisplayName("changeResDto Without Ip Test")
+    void changeResDtoWithoutIpTest() {
+        //given
+        Member member = Member.builder()
+                .name("name")
+                .email("testData"  + "@naver.com")
+                .password("123456")
+                .role(Role.MEMBER)
+                .devIp(null)
+                .netIp(null)
+                .fireWallList(new ArrayList<>())
+                .build();
+
+        //when
+        MemberDTO.Response.Public publicDto = memberService.changeResDto(member);
+
+        //then
+        assertEquals("name",publicDto.getName());
+        assertEquals("testData@naver.com",publicDto.getEmail());
+        assertEquals(Role.MEMBER,publicDto.getRole());
+        assertEquals("",publicDto.getDevIp());
+        assertEquals("",publicDto.getNetIp());
     }
 
     @Test

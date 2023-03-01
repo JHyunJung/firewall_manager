@@ -54,26 +54,21 @@ public class MemberService implements UserDetailsService {
 
     public List<MemberDTO.Response.Public> changeResDtos(List<Member> memberList) {
         return memberRepository.findMemberFetchJoin().stream()
-                .map(m -> new MemberDTO.Response.Public(
-                        m.getId(),
-                        m.getName(),
-                        m.getEmail(),
-                        m.getRole(),
-                        m.getDevIp().getAddress().getAddress(),
-                        m.getNetIp().getAddress().getAddress()))
+                .map(this::changeResDto)
                 .collect(Collectors.toList());
     }
 
     public MemberDTO.Response.Public changeResDto(Member m) {
+        String devIp = m.getDevIp() != null ? m.getDevIp().getAddress().getAddress() : "";
+        String netIp = m.getNetIp() != null ? m.getNetIp().getAddress().getAddress() : "";
         return new MemberDTO.Response.Public(
                 m.getId(),
                 m.getName(),
                 m.getEmail(),
                 m.getRole(),
-                m.getDevIp().getAddress().getAddress(),
-                m.getNetIp().getAddress().getAddress());
+                devIp,
+                netIp);
     }
-
 
     @LogTrace
     public boolean isPresentMember(String email) {
