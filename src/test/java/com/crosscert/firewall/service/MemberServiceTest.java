@@ -71,8 +71,8 @@ class MemberServiceTest {
         List<Member> memberList = memberService.findAllFetch();
 
         //then
-        Assertions.assertEquals(5, memberList.size());
-        Assertions.assertTrue(members.equals(memberList));
+        assertEquals(5, memberList.size());
+        assertEquals(members, memberList);
     }
 
     @Test
@@ -86,12 +86,6 @@ class MemberServiceTest {
 
         //then
         Assertions.assertEquals(0, members.size());
-    }
-
-    @Test
-    @DisplayName("editMember Test")
-    void editMember() {
-
     }
 
     @Test
@@ -129,6 +123,7 @@ class MemberServiceTest {
                 .netIp("172.77.0.2")
                 .role(Role.MEMBER)
                 .build();
+
         memberService.signup(createDto);
 
         MemberDTO.Request.Create createDto2 = MemberDTO.Request.Create.builder()
@@ -163,12 +158,10 @@ class MemberServiceTest {
         String email2 = "test4@crosscert.com";   //이메일 중복
 
         // When
-        boolean result = memberService.isPresentMember(email);
-        boolean result2 = memberService.isPresentMember(email2);
 
         // Then
-        assertFalse(result);
-        assertTrue(result2);
+        assertFalse(memberService.isPresentMember(email));
+        assertTrue(memberService.isPresentMember(email2));
     }
 
 }
