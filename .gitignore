@@ -245,6 +245,7 @@ application.properties
 
 .gradle
 **/build/
+/build/classes
 !src/**/build/
 
 # Ignore Gradle GUI config
@@ -272,3 +273,4 @@ gradle-app.setting
 # End of https://www.toptal.com/developers/gitignore/api/gradle
 
 .idea
+/log

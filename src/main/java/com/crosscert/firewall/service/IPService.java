@@ -17,8 +17,8 @@ public class IPService {
 
     private final IPRepository ipRepository;
 
-    public Optional<IP> findByAddress(String address) {
-        return ipRepository.findByAddress(createIpAddress(address));
+    public IP findByAddress(IpAddress address) {
+        return ipRepository.findByAddress(address).orElseThrow(() -> new IllegalArgumentException("해당 IP가 존재하지 않습니다"));
     }
 
     public IP save (IP ip) {

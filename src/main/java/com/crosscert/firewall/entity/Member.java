@@ -1,6 +1,5 @@
 package com.crosscert.firewall.entity;
 
-import com.crosscert.firewall.dto.MemberDTO;
 import lombok.*;
 
 import javax.persistence.*;
@@ -44,19 +43,25 @@ public class Member extends BaseTimeEntity{
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private List<FireWall> fireWallList = new ArrayList<>();
 
-    public void edit(MemberDTO.Request.EditInfo memberDTO, IP devIp, IP netIp) {
-        this.name = memberDTO.getName();
-        this.email = memberDTO.getEmail();
-        this.role = memberDTO.getRole();
+    public String getDevIpValue(){
+        return this.devIp == null ? null : devIp.getAddressValue();
+    }
+
+    public String getNetIpValue(){
+        return this.netIp == null ? null : netIp.getAddressValue();
+    }
+
+    public void edit(Role role, IP devIp, IP netIp) {
+        this.role = role;
         this.devIp = devIp;
         this.netIp = netIp;
     }
 
-    public void setDevIpByAddress(String devIp) {
-        this.devIp = new IP(devIp);
+    public void setDevIpByAddress(String devIp, String name) {
+        this.devIp = new IP(devIp, name + " 개발망");
     }
 
-    public void setNetIpByAddress(String netIp) {
-        this.netIp = new IP(netIp);
+    public void setNetIpByAddress(String netIp, String name) {
+        this.netIp = new IP(netIp, name + " 인터넷망");
     }
 }

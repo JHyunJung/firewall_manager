@@ -1,5 +1,6 @@
 package com.crosscert.firewall.controller;
 
+import com.crosscert.firewall.annotation.LogTrace;
 import com.crosscert.firewall.dto.MemberDTO;
 import com.crosscert.firewall.service.MemberService;
 import lombok.RequiredArgsConstructor;
@@ -48,7 +49,7 @@ public class LoginController {
     //이메일 중복체크
     @GetMapping("/checkDuplicateEmail")
     @ResponseBody
-    public ResponseEntity<Object> checkDuplicateEmail(@RequestParam String email) {
+    public ResponseEntity<Object> checkDuplicateEmail(@RequestParam("email") String email) {
         log.info("{}.checkDuplicateEmail",this.getClass());
         Map<String, Object> data = new HashMap<>();
         data.put("result", memberService.isPresentMember(email));

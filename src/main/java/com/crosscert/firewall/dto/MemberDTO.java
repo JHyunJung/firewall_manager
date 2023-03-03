@@ -31,9 +31,7 @@ public enum MemberDTO {;
         }
 
         @ToString
-        @Value public static class EditInfo implements Name, Email, MemberRole, DevIP, NetIP {
-            String name;
-            String email;
+        @Value public static class Edit implements MemberRole, DevIP, NetIP {
             Role role;
             String devIp;
             String netIp;
@@ -45,6 +43,17 @@ public enum MemberDTO {;
             Long id;
             String name;
             String email;
+            Role role;
+            String devIp;
+            String netIp;
+        }
+
+        @Value public static class Create implements Id{
+            Long id;
+        }
+
+        @Value public static class Edit implements Id, MemberRole, DevIP, NetIP{
+            Long id;
             Role role;
             String devIp;
             String netIp;

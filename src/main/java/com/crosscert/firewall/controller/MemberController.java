@@ -23,8 +23,10 @@ public class MemberController {
 
     @GetMapping("/members")
     public String members(Model model) {
-        List<Member> memberList = memberService.findAllFetch();
-        List<MemberDTO.Response.Public> members = memberService.changeResDtos(memberList);
+        List<MemberDTO.Response.Public> members = memberService.findAllFetch()
+                .stream()
+                .map(this::convertToPublicDto)
+                .collect(Collectors.toList());
 
         model.addAttribute("members", members);
         return "members";
@@ -33,13 +35,26 @@ public class MemberController {
     @GetMapping("/member/{id}")
     public String edit(Model model, @PathVariable("id") Long id) {
         Member member = memberService.findById(id);
-        MemberDTO.Response.Public memberDto = memberService.changeResDto(member);
+        MemberDTO.Response.Public memberDto = convertToPublicDto(member);
 
         List<IP> ipList = ipService.findAll();
-        List<String> addresses = ipList.stream().map(ip -> ip.getAddress().getAddress()).collect(Collectors.toList());
+        List<String> addresses = ipList.stream()
+                .map(IP::getAddressValue)
+                .collect(Collectors.toList());
 
         model.addAttribute("member", memberDto);
         model.addAttribute("addresses", addresses);
         return "memberEdit";
+    }
+
+    private MemberDTO.Response.Public convertToPublicDto(Member member){
+        return new MemberDTO.Response.Public(
+                member.getId(),
+                member.getName(),
+                member.getEmail(),
+                member.getRole(),
+                member.getDevIpValue(),
+                member.getNetIpValue()
+        );
     }
 }

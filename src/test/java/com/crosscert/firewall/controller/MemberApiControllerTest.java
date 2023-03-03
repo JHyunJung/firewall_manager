@@ -21,6 +21,8 @@ import org.springframework.util.MultiValueMap;
 
 import java.util.ArrayList;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -57,7 +59,7 @@ class MemberApiControllerTest {
 
         member = Member.builder()
                 .name("name")
-                .email("hi"+"@naver.com")
+                .email("hi@naver.com")
                 .password("123456")
                 .role(Role.MEMBER)
                 .devIp(ip)
@@ -84,15 +86,14 @@ class MemberApiControllerTest {
             params.add("netIp", "172.12.40.52");
 
             //when then
-            ResultActions result = mockMvc.perform(put("/member/{id}", member.getId())
+            ResultActions result = mockMvc.perform(put("/api/member/{id}", member.getId())
                             .params(params)
                             .accept(MediaType.APPLICATION_JSON))
                     .andExpect(status().isOk());
 
             String responseBody = result.andReturn().getResponse().getContentAsString();
-            Assertions.assertEquals("OK",responseBody);
+            assertEquals("OK", responseBody);
         }
-
 
         @Test
         @DisplayName("멤버 수정 테스트 실패 - ip가 없을 때")
@@ -112,14 +113,10 @@ class MemberApiControllerTest {
                         .params(params)
                         .accept(MediaType.APPLICATION_JSON));
             } catch (Exception e) {
-                Assertions.assertTrue(e.getCause() instanceof NullPointerException);
-                Assertions.assertEquals("해당 IP가 존재하지 않습니다",e.getCause().getMessage());
+                assertTrue(e.getCause() instanceof NullPointerException);
+                assertEquals("해당 IP가 존재하지 않습니다", e.getCause().getMessage());
             }
         }
-
     }
-
-
-
 
 }

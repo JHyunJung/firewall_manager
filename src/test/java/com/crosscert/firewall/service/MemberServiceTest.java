@@ -71,8 +71,8 @@ class MemberServiceTest {
         List<Member> memberList = memberService.findAllFetch();
 
         //then
-        Assertions.assertEquals(5, memberList.size());
-        Assertions.assertTrue(members.equals(memberList));
+        assertEquals(5, memberList.size());
+        assertEquals(members, memberList);
     }
 
     @Test
@@ -86,64 +86,6 @@ class MemberServiceTest {
 
         //then
         Assertions.assertEquals(0, members.size());
-    }
-
-    @Test
-    @DisplayName("changeResDto Test")
-    void changeResDtoTest() {
-        //given
-        IpAddress ipAddress = new IpAddress("172.12.40.52");
-
-        IP ip = IP.builder()
-                .domain("domain")
-                .description("description")
-                .address(ipAddress)
-                .build();
-
-        Member member = Member.builder()
-                .name("name")
-                .email("testData"  + "@naver.com")
-                .password("123456")
-                .role(Role.MEMBER)
-                .devIp(ip)
-                .netIp(ip)
-                .fireWallList(new ArrayList<>())
-                .build();
-
-        //when
-        MemberDTO.Response.Public publicDto = memberService.changeResDto(member);
-
-        //then
-        assertEquals("name",publicDto.getName());
-        assertEquals("testData@naver.com",publicDto.getEmail());
-        assertEquals(Role.MEMBER,publicDto.getRole());
-        assertEquals("172.12.40.52",publicDto.getDevIp());
-        assertEquals("172.12.40.52",publicDto.getNetIp());
-    }
-
-    @Test
-    @DisplayName("changeResDto Without Ip Test")
-    void changeResDtoWithoutIpTest() {
-        //given
-        Member member = Member.builder()
-                .name("name")
-                .email("testData"  + "@naver.com")
-                .password("123456")
-                .role(Role.MEMBER)
-                .devIp(null)
-                .netIp(null)
-                .fireWallList(new ArrayList<>())
-                .build();
-
-        //when
-        MemberDTO.Response.Public publicDto = memberService.changeResDto(member);
-
-        //then
-        assertEquals("name",publicDto.getName());
-        assertEquals("testData@naver.com",publicDto.getEmail());
-        assertEquals(Role.MEMBER,publicDto.getRole());
-        assertEquals("",publicDto.getDevIp());
-        assertEquals("",publicDto.getNetIp());
     }
 
     @Test
@@ -181,6 +123,7 @@ class MemberServiceTest {
                 .netIp("172.77.0.2")
                 .role(Role.MEMBER)
                 .build();
+
         memberService.signup(createDto);
 
         MemberDTO.Request.Create createDto2 = MemberDTO.Request.Create.builder()
@@ -215,12 +158,10 @@ class MemberServiceTest {
         String email2 = "test4@crosscert.com";   //이메일 중복
 
         // When
-        boolean result = memberService.isPresentMember(email);
-        boolean result2 = memberService.isPresentMember(email2);
 
         // Then
-        assertFalse(result);
-        assertTrue(result2);
+        assertFalse(memberService.isPresentMember(email));
+        assertTrue(memberService.isPresentMember(email2));
     }
 
 }
