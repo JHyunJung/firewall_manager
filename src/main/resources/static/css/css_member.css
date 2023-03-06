@@ -19,3 +19,7 @@ html, body {
 .member-container {
     border: 2px solid goldenrod;
 }
+
+.ip-div {
+    width: 500px;
+}

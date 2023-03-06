@@ -1,10 +1,13 @@
 package com.crosscert.firewall.dto;
 
 import com.crosscert.firewall.entity.Role;
+import lombok.ToString;
 import lombok.Builder;
 import lombok.Value;
+
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Positive;
+import java.util.List;
 
 public enum MemberDTO {;
     private interface Id { @Positive Long getId(); }
@@ -16,13 +19,19 @@ public enum MemberDTO {;
     private interface NetIP {@NotBlank String getNetIp();}
 //    private interface FireWall { List<FireWall> getFireWall();}
 
-
     public enum Request{;
         @Builder
         @Value public static class Create implements Name, Email, Password, MemberRole, DevIP, NetIP{
-            String name;
-            String email;
-            String password;
+             String name;
+             String email;
+             String password;
+             Role role;
+             String devIp;
+             String netIp;
+        }
+
+        @ToString
+        @Value public static class Edit implements MemberRole, DevIP, NetIP {
             Role role;
             String devIp;
             String netIp;
@@ -34,6 +43,17 @@ public enum MemberDTO {;
             Long id;
             String name;
             String email;
+            Role role;
+            String devIp;
+            String netIp;
+        }
+
+        @Value public static class Create implements Id{
+            Long id;
+        }
+
+        @Value public static class Edit implements Id, MemberRole, DevIP, NetIP{
+            Long id;
             Role role;
             String devIp;
             String netIp;

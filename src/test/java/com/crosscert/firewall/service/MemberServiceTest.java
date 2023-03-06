@@ -27,6 +27,7 @@ class MemberServiceTest {
 
     @Autowired
     MemberRepository memberRepository;
+
     @Autowired
     IPRepository ipRepository;
 
@@ -49,13 +50,13 @@ class MemberServiceTest {
                 .build();
         ipRepository.save(ip);
 
-        List<MemberDTO.Response.Public> members = new ArrayList<>();
+        List<Member> members = new ArrayList<>();
 
         for (int i = 0; i < 5; i++) {
             Member member = Member.builder()
-                    .name("name"+i)
-                    .email("testData"+i+"@naver.com")
-                    .password("123456"+i)
+                    .name("name" + i)
+                    .email("testData" + i + "@naver.com")
+                    .password("123456" + i)
                     .role(Role.MEMBER)
                     .devIp(ip)
                     .netIp(ip)
@@ -63,32 +64,25 @@ class MemberServiceTest {
                     .build();
 
             memberRepository.save(member);
-
-            members.add(new MemberDTO.Response.Public(
-                    member.getId(),
-                    member.getName(),
-                    member.getEmail(),
-                    member.getRole(),
-                    member.getDevIp().getAddress().getAddress(),
-                    member.getNetIp().getAddress().getAddress()));
+            members.add(member);
         }
 
         //when
-        List<MemberDTO.Response.Public> memberList = memberService.findAll();
+        List<Member> memberList = memberService.findAllFetch();
 
         //then
-        Assertions.assertEquals(5, memberList.size());
-        Assertions.assertTrue(members.equals(memberList));
+        assertEquals(5, memberList.size());
+        assertEquals(members, memberList);
     }
 
     @Test
     @DisplayName("Member FindAll 0명")
-    public void findAll_0() {
+    void findAll_0() {
         //given
         //
 
         //when
-        List<MemberDTO.Response.Public> members = memberService.findAll();
+        List<Member> members = memberService.findAllFetch();
 
         //then
         Assertions.assertEquals(0, members.size());
@@ -129,6 +123,7 @@ class MemberServiceTest {
                 .netIp("172.77.0.2")
                 .role(Role.MEMBER)
                 .build();
+
         memberService.signup(createDto);
 
         MemberDTO.Request.Create createDto2 = MemberDTO.Request.Create.builder()
@@ -163,12 +158,10 @@ class MemberServiceTest {
         String email2 = "test4@crosscert.com";   //이메일 중복
 
         // When
-        boolean result = memberService.isPresentMember(email);
-        boolean result2 = memberService.isPresentMember(email2);
 
         // Then
-        assertFalse(result);
-        assertTrue(result2);
+        assertFalse(memberService.isPresentMember(email));
+        assertTrue(memberService.isPresentMember(email2));
     }
 
 }

@@ -34,9 +34,27 @@ public class IP extends BaseTimeEntity{
 
     @OneToOne(mappedBy = "netIp")
     private Member netMember;
-
-    public IP(String ipAddress) {
-        address = new IpAddress(ipAddress);
+    public IP(String ipAddress, String description) {
+        this.address = new IpAddress(ipAddress);
+        this.description = description;
     }
+    public String getAddressValue(){
+        return this.address == null ? null : this.address.getAddress();
+    }
+
+    public IP(IpAddress address, String domain, String description, Member devMember, Member netMember) {
+        this.address = address;
+        this.domain = domain;
+        this.description = description;
+        this.devMember = devMember;
+        this.netMember = netMember;
+    }
+
+    public void memberUpdate(Member member) {
+        this.devMember = member;
+        this.netMember = member;
+    }
+
+
 
 }
