@@ -27,6 +27,7 @@ public class WebSecurityConfig {
     @Profile("prod")
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
         log.info("운영용 Spring Security 설정");
+        //TODO : 유저 관리는 LEADER 권한만 가능하도록 설정 수정하기
         return httpSecurity
                 .cors().disable()
                 .csrf().disable()
