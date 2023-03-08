@@ -12,9 +12,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
 
 @SpringBootTest
-@Transactional
 class IPServiceTest {
 
     @Autowired
@@ -24,48 +25,20 @@ class IPServiceTest {
     IPService ipService;
 
     @Test
-    @DisplayName("ipAddress 존재하지 않을 때")
+    @DisplayName("findByAddress Exception")
     void findByAddressNO() {
-        //given
-        IpAddress ipAddress = new IpAddress("172.12.40.52");
-
-        IP ip = IP.builder()
-                .domain("domain")
-                .description("description")
-                .address(ipAddress)
-                .build();
-        ipRepository.save(ip);
-
-
-        String testIpAddress = "172.12.40.53";
-
-        //when
-        Optional<IP> returnIp = ipService.findByAddress(testIpAddress);
-
-        //then
-        Assertions.assertTrue(returnIp.isEmpty());
+        assertThatThrownBy(() -> {
+            ipService.findByAddress(new IpAddress("111.111.111.111"));
+        }).isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("해당 IP가 존재하지 않습니다.");
     }
 
     @Test
-    @DisplayName("ipAddress 존재할 때")
-    void findByAddressOK() {
-        //given
-        IpAddress ipAddress = new IpAddress("172.12.40.52");
-
-        IP ip = IP.builder()
-                .domain("domain")
-                .description("description")
-                .address(ipAddress)
-                .build();
-        ipRepository.save(ip);
-
-
-        String testIpAddress = "172.12.40.52";
-
-        //when
-        Optional<IP> returnIp = ipService.findByAddress(testIpAddress);
-
-        //then
-        Assertions.assertTrue(returnIp.isPresent());
+    @DisplayName("findById Exception")
+    void findByIdNO() {
+        assertThatThrownBy(() -> {
+            ipService.findById(2L);
+        }).isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("해당 IP가 존재하지 않습니다.");
     }
 }

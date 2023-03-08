@@ -18,7 +18,8 @@ public class IPService {
     private final IPRepository ipRepository;
 
     public IP findByAddress(IpAddress address) {
-        return ipRepository.findByAddress(address).orElseThrow(() -> new IllegalArgumentException("해당 IP가 존재하지 않습니다"));
+        return ipRepository.findByAddress(address)
+                .orElseThrow(() -> new IllegalArgumentException("해당 IP가 존재하지 않습니다."));
     }
 
     public IP save (IP ip) {
@@ -27,7 +28,7 @@ public class IPService {
 
     public IP findById(Long id) {
         return ipRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("없는 아이디 입니다."));
+                .orElseThrow(() -> new IllegalArgumentException("해당 IP가 존재하지 않습니다."));
     }
 
     public void delete(Long id) {
@@ -37,10 +38,4 @@ public class IPService {
     public List<IP> findAll() {
         return ipRepository.findAll();
     }
-
-    private IpAddress createIpAddress(String address) {
-        IpAddress ipAddress = new IpAddress(address);
-        return ipAddress;
-    }
-
 }
