@@ -7,9 +7,7 @@ import com.crosscert.firewall.entity.Member;
 import com.crosscert.firewall.entity.Role;
 import com.crosscert.firewall.repository.IPRepository;
 import com.crosscert.firewall.repository.MemberRepository;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -44,6 +42,12 @@ class MemberServiceTest {
             memberService.findById(100L);
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("해당 Member가 없습니다.");
+    }
+
+    @BeforeEach
+    void clean(){
+        memberRepository.deleteAll();
+        ipRepository.deleteAll();
     }
 
     @Test

@@ -47,10 +47,20 @@ class MemberApiControllerTest {
     @Autowired
     IPService ipService;
 
+    @Autowired
+    MemberRepository memberRepository;
+
+    @Autowired
+    IPRepository ipRepository;
+
     private Member member;
 
     @BeforeEach
     void init() {
+
+        memberRepository.deleteAll();
+        ipRepository.deleteAll();;
+
         IpAddress ipAddress = new IpAddress("172.12.40.52");
 
         IP ip = IP.builder()
