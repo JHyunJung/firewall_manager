@@ -17,7 +17,6 @@ class LogAspectTest {
     @Autowired
     MemberService memberService;
 
-
     @Test
     @DisplayName("Log_aop_테스트")
     public void Log_aop_테스트(){

@@ -40,8 +40,10 @@ public class MemberService implements UserDetailsService {
         return memberRepository.findMemberFetchJoin();
     }
 
+    @Transactional(readOnly = true)
     public Member findById(Long id) {
-        return memberRepository.findById(id).orElseThrow(() -> new RuntimeException("해당 Member 가 없습니다"));
+        return memberRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("해당 Member가 없습니다."));
     }
 
     public void edit(Member member, Role role, IP devIP, IP netIP) {
@@ -62,7 +64,7 @@ public class MemberService implements UserDetailsService {
 
         //중복 회원 검증
         if(isPresentMember(memberDTO.getEmail())){
-            throw new IllegalStateException("이미 존재하는 회원입니다.");
+            throw new IllegalArgumentException("이미 존재하는 회원입니다.");
         }
 
         //DTO -> Entity
@@ -72,21 +74,10 @@ public class MemberService implements UserDetailsService {
                 .password(passwordEncoder.encode(memberDTO.getPassword()))
                 .role(memberDTO.getRole()).build();
 
-        //가입시 개발망 IP정보, 인터넷망 IP정보가 있을 경우 함께 저장
-        if(isNotEmptyIpAddress(memberDTO.getDevIp())){
-            member.setDevIpByAddress(memberDTO.getDevIp(), memberDTO.getName());
-        }
-        if(isNotEmptyIpAddress(memberDTO.getNetIp())){
-            member.setNetIpByAddress(memberDTO.getNetIp(), memberDTO.getName());
-        }
-
+        member.setDevIpByAddress(memberDTO.getDevIp(), memberDTO.getName());
+        member.setNetIpByAddress(memberDTO.getNetIp(), memberDTO.getName());
         memberRepository.save(member);
     }
-
-    public boolean isNotEmptyIpAddress(String ipAddress) {
-        return ipAddress != null && !ipAddress.equals("");
-    }
-
 
     //스프링시큐리티 로그인
     @Override
@@ -97,7 +88,7 @@ public class MemberService implements UserDetailsService {
         return new User(member.getEmail(), member.getPassword(), authorities);
     }
 
-    @Transactional
+
     public void deleteByEmail(String email) {
         memberRepository.deleteByEmail(email);
     }
