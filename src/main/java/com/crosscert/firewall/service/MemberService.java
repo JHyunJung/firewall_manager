@@ -74,21 +74,10 @@ public class MemberService implements UserDetailsService {
                 .password(passwordEncoder.encode(memberDTO.getPassword()))
                 .role(memberDTO.getRole()).build();
 
-        //가입시 개발망 IP정보, 인터넷망 IP정보가 있을 경우 함께 저장
-        if(isNotEmptyIpAddress(memberDTO.getDevIp())){
-            member.setDevIpByAddress(memberDTO.getDevIp(), memberDTO.getName());
-        }
-        if(isNotEmptyIpAddress(memberDTO.getNetIp())){
-            member.setNetIpByAddress(memberDTO.getNetIp(), memberDTO.getName());
-        }
-
+        member.setDevIpByAddress(memberDTO.getDevIp(), memberDTO.getName());
+        member.setNetIpByAddress(memberDTO.getNetIp(), memberDTO.getName());
         memberRepository.save(member);
     }
-
-    public boolean isNotEmptyIpAddress(String ipAddress) {
-        return ipAddress != null && !ipAddress.equals("");
-    }
-
 
     //스프링시큐리티 로그인
     @Override

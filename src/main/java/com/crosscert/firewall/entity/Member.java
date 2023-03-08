@@ -58,10 +58,12 @@ public class Member extends BaseTimeEntity{
     }
 
     public void setDevIpByAddress(String devIp, String who) {
+        if(devIp == null || devIp.isBlank()) return;
         this.devIp = new IP(devIp, who + " 개발망");
     }
 
     public void setNetIpByAddress(String netIp, String who) {
+        if(netIp == null || netIp.isBlank()) return;
         this.netIp = new IP(netIp, who + " 인터넷망");
     }
 }
