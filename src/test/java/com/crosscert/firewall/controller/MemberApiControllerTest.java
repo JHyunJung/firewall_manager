@@ -1,11 +1,17 @@
 package com.crosscert.firewall.controller;
 
+import com.crosscert.firewall.controller.api.MemberApiController;
+import com.crosscert.firewall.dto.MemberDTO;
 import com.crosscert.firewall.entity.IP;
 import com.crosscert.firewall.entity.IpAddress;
 import com.crosscert.firewall.entity.Member;
 import com.crosscert.firewall.entity.Role;
 import com.crosscert.firewall.repository.IPRepository;
 import com.crosscert.firewall.repository.MemberRepository;
+import com.crosscert.firewall.service.IPService;
+import com.crosscert.firewall.service.MemberService;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,31 +24,28 @@ import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
+import org.springframework.web.util.NestedServletException;
 
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @ExtendWith(SpringExtension.class)
 @AutoConfigureMockMvc
 @SpringBootTest
-@Transactional
 class MemberApiControllerTest {
 
     @Autowired
     MockMvc mockMvc;
 
     @Autowired
-    MemberRepository memberRepository;
+    MemberService memberService;
 
     @Autowired
-    IPRepository ipRepository;
-
-    @Autowired
-    MemberApiController memberController;
+    IPService ipService;
 
     private Member member;
 
@@ -55,7 +58,19 @@ class MemberApiControllerTest {
                 .description("description")
                 .address(ipAddress)
                 .build();
-        ipRepository.save(ip);
+
+        IP updatedIp1 = IP.builder()
+                .domain("domain")
+                .description("description")
+                .address(new IpAddress("222.222.222.222"))
+                .build();
+
+        IP updatedIp2 = IP.builder()
+                .domain("domain")
+                .description("description")
+                .address(new IpAddress("123.123.123.123"))
+                .build();
+
 
         member = Member.builder()
                 .name("name")
@@ -67,7 +82,9 @@ class MemberApiControllerTest {
                 .fireWallList(new ArrayList<>())
                 .build();
 
-        memberRepository.save(member);
+        ipService.save(updatedIp1);
+        ipService.save(updatedIp2);
+        memberService.save(member);
     }
 
     @Nested
@@ -78,44 +95,40 @@ class MemberApiControllerTest {
         void ok() throws Exception {
 
             //given
-            MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
-            params.add("name", "testName");
-            params.add("email", "test@naver.com");
-            params.add("role", "LEADER");
-            params.add("devIp", "172.12.40.52");
-            params.add("netIp", "172.12.40.52");
-
+            MemberDTO.Request.Edit editDto = new MemberDTO.Request.Edit(
+                    Role.LEADER, "222.222.222.222", "123.123.123.123"
+            );
+            ObjectMapper mapper = new ObjectMapper();
             //when then
             ResultActions result = mockMvc.perform(put("/api/member/{id}", member.getId())
-                            .params(params)
-                            .accept(MediaType.APPLICATION_JSON))
-                    .andExpect(status().isOk());
+                            .contentType(MediaType.APPLICATION_JSON)
+                            .content(mapper.writeValueAsString(editDto)));
 
-            String responseBody = result.andReturn().getResponse().getContentAsString();
-            assertEquals("OK", responseBody);
+            result.andExpect(status().isOk())
+                    .andExpect(jsonPath("role").value("LEADER"))
+                    .andExpect(jsonPath("devIp").value("222.222.222.222"))
+                    .andExpect(jsonPath("netIp").value("123.123.123.123"));
         }
 
         @Test
         @DisplayName("멤버 수정 테스트 실패 - ip가 없을 때")
-        void fail() {
+        void fail() throws Exception {
 
-            //given
-            MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
-            params.add("name", "testName");
-            params.add("email", "test@naver.com");
-            params.add("role", "LEADER");
-            params.add("devIp", "172.12.40.51");
-            params.add("netIp", "172.12.40.51");
+            MemberDTO.Request.Edit editDto = new MemberDTO.Request.Edit(
+                    Role.LEADER, "111.111.111.111", null
+            );
 
             //when then
-            try {
-                mockMvc.perform(put("/member/{id}", member.getId())
-                        .params(params)
-                        .accept(MediaType.APPLICATION_JSON));
-            } catch (Exception e) {
-                assertTrue(e.getCause() instanceof NullPointerException);
-                assertEquals("해당 IP가 존재하지 않습니다", e.getCause().getMessage());
-            }
+            ObjectMapper mapper = new ObjectMapper();
+
+            assertThrows(NestedServletException.class, () ->{
+                mockMvc.perform(put("/api/member/{id}", member.getId())
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(mapper.writeValueAsString(editDto)));
+            });
+
+
+//            result.andExpect(status().is4xxClientError());
         }
     }
 

@@ -13,13 +13,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.ResultActions;
+
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @SpringBootTest
 @AutoConfigureMockMvc
-@DisplayName("로그인_테스트")
+@DisplayName("LoginController_테스트")
 public class LoginControllerTest {
 
     @Autowired
@@ -42,7 +44,7 @@ public class LoginControllerTest {
     }
 
     @AfterEach
-    public void afterEach(){
+    public void afterEach() {
         memberService.deleteByEmail("test@crosscert.com");
     }
 
@@ -62,6 +64,23 @@ public class LoginControllerTest {
                         .param("password", "wrong_password"))   //비밀번호 틀림.
                 .andExpect(status().is3xxRedirection())
                 .andExpect(redirectedUrl("/login?error"));
+    }
+
+    @Test
+    @DisplayName("아이디_중복_체크")
+    public void 아이디_중복_체크() throws Exception {
+
+        ResultActions resultActions = mockMvc.perform(get("/checkDuplicateEmail")
+                        .param("email", "test@crosscert.com"))
+                .andExpect(status().is2xxSuccessful());
+
+        resultActions.andExpect(jsonPath("result").value("true"));
+
+        resultActions = mockMvc.perform(get("/checkDuplicateEmail")
+                        .param("email", "test2@crosscert.com"))
+                .andExpect(status().is2xxSuccessful());
+
+        resultActions.andExpect(jsonPath("result").value("false"));
     }
 
 
