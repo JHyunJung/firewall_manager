@@ -38,19 +38,29 @@ class MemberServiceTest {
     PasswordEncoder passwordEncoder;
 
     @Test
-    @DisplayName("Member FindAll 5명")
+    @DisplayName("findById_Exception_테스트")
+    public void findById_Exception_테스트(){
+        assertThatThrownBy(() -> {
+            memberService.findById(3L);
+        }).isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("해당 Member가 없습니다.");
+    }
+
+    @Test
+    @DisplayName("Member FindAll")
     public void findAll() {
         //given
-        IpAddress ipAddress = new IpAddress("172.12.40.52");
+
+        assertEquals(0, memberService.findAllFetch().size());
 
         IP ip = IP.builder()
                 .domain("domain")
                 .description("description")
-                .address(ipAddress)
+                .address(new IpAddress("172.12.40.52"))
                 .build();
         ipRepository.save(ip);
 
-        List<Member> members = new ArrayList<>();
+        List<Member> testMemberList = new ArrayList<>();
 
         for (int i = 0; i < 5; i++) {
             Member member = Member.builder()
@@ -63,29 +73,57 @@ class MemberServiceTest {
                     .fireWallList(new ArrayList<>())
                     .build();
 
-            memberRepository.save(member);
-            members.add(member);
+            testMemberList.add(member);
+            memberService.save(member);
         }
 
         //when
         List<Member> memberList = memberService.findAllFetch();
 
         //then
-        assertEquals(5, memberList.size());
-        assertEquals(members, memberList);
+        assertEquals(testMemberList.size(), memberList.size());
+        assertIterableEquals(testMemberList, memberList);
     }
 
     @Test
-    @DisplayName("Member FindAll 0명")
-    void findAll_0() {
+    @DisplayName("Member_edit_테스트")
+    public void Member_edit_테스트(){
         //given
-        //
 
+        String name = "test";
+        String email = "test@tset.com";
+        String password = "test";
+        IP ip = IP.builder()
+                .domain("domain")
+                .description("description")
+                .address(new IpAddress("172.12.40.52"))
+                .build();
+
+        Member member = Member.builder()
+                .name(name)
+                .email(email)
+                .password(password)
+                .role(Role.MEMBER)
+                .devIp(ip)
+                .netIp(ip)
+                .build();
+
+        Member savedMember = memberService.save(member);
         //when
-        List<Member> members = memberService.findAllFetch();
+        Member foundMember = memberService.findById(savedMember.getId());
+
+        Role updatedRole = Role.LEADER;
+        IP updatedNetIp = new IP("111.111.111.111", "updatedNet");
+        IP updatedDevIp = new IP("111.111.111.112", "updatedDev");
+
+        memberService.edit(foundMember, updatedRole, updatedDevIp, updatedNetIp);
 
         //then
-        Assertions.assertEquals(0, members.size());
+        Member updatedMember = memberService.findById(savedMember.getId());
+
+        assertEquals(updatedMember.getRole(), updatedRole);
+        assertEquals(updatedMember.getDevIpValue(), updatedDevIp.getAddressValue());
+        assertEquals(updatedMember.getNetIpValue(), updatedNetIp.getAddressValue());
     }
 
     @Test
@@ -137,12 +175,13 @@ class MemberServiceTest {
 
         //when & then
         assertThatThrownBy(() -> memberService.signup(createDto))
-                .isInstanceOf(IllegalStateException.class)
+                .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("이미 존재하는 회원입니다.");
     }
 
     @Test
-    public void 이메일중복체크_중복일때_true() {
+    @DisplayName("이메일중복체크")
+    public void 이메일중복체크() {
         // Given
         MemberDTO.Request.Create createDto = MemberDTO.Request.Create.builder()
                 .email("test4@crosscert.com")

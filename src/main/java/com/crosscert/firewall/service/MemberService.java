@@ -40,8 +40,10 @@ public class MemberService implements UserDetailsService {
         return memberRepository.findMemberFetchJoin();
     }
 
+    @Transactional(readOnly = true)
     public Member findById(Long id) {
-        return memberRepository.findById(id).orElseThrow(() -> new RuntimeException("해당 Member 가 없습니다"));
+        return memberRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("해당 Member가 없습니다"));
     }
 
     public void edit(Member member, Role role, IP devIP, IP netIP) {
@@ -62,7 +64,7 @@ public class MemberService implements UserDetailsService {
 
         //중복 회원 검증
         if(isPresentMember(memberDTO.getEmail())){
-            throw new IllegalStateException("이미 존재하는 회원입니다.");
+            throw new IllegalArgumentException("이미 존재하는 회원입니다.");
         }
 
         //DTO -> Entity
@@ -97,7 +99,7 @@ public class MemberService implements UserDetailsService {
         return new User(member.getEmail(), member.getPassword(), authorities);
     }
 
-    @Transactional
+
     public void deleteByEmail(String email) {
         memberRepository.deleteByEmail(email);
     }

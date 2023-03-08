@@ -17,6 +17,7 @@ public class IPService {
 
     private final IPRepository ipRepository;
 
+    @Transactional(readOnly = true)
     public IP findByAddress(IpAddress address) {
         return ipRepository.findByAddress(address)
                 .orElseThrow(() -> new IllegalArgumentException("해당 IP가 존재하지 않습니다."));
@@ -26,6 +27,7 @@ public class IPService {
         return ipRepository.save(ip);
     }
 
+    @Transactional(readOnly = true)
     public IP findById(Long id) {
         return ipRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("해당 IP가 존재하지 않습니다."));
@@ -35,6 +37,7 @@ public class IPService {
         ipRepository.deleteById(id);
     }
 
+    @Transactional(readOnly = true)
     public List<IP> findAll() {
         return ipRepository.findAll();
     }
