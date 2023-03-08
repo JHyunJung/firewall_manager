@@ -41,7 +41,7 @@ class MemberServiceTest {
     @DisplayName("findById_Exception_테스트")
     public void findById_Exception_테스트(){
         assertThatThrownBy(() -> {
-            memberService.findById(3L);
+            memberService.findById(100L);
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("해당 Member가 없습니다.");
     }

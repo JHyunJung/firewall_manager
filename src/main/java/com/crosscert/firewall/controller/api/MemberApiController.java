@@ -1,4 +1,4 @@
-package com.crosscert.firewall.controller;
+package com.crosscert.firewall.controller.api;
 
 import com.crosscert.firewall.dto.MemberDTO;
 import com.crosscert.firewall.entity.IP;

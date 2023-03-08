@@ -43,7 +43,7 @@ public class MemberService implements UserDetailsService {
     @Transactional(readOnly = true)
     public Member findById(Long id) {
         return memberRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("해당 Member가 없습니다"));
+                .orElseThrow(() -> new IllegalArgumentException("해당 Member가 없습니다."));
     }
 
     public void edit(Member member, Role role, IP devIP, IP netIP) {

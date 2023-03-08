@@ -21,7 +21,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-@DisplayName("로그인_테스트")
+@DisplayName("LoginController_테스트")
 public class LoginControllerTest {
 
     @Autowired
