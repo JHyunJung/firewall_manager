@@ -36,7 +36,7 @@ public class WebSecurityConfig {
                     .antMatchers("/css/**").permitAll()
                     .antMatchers("/js/**").permitAll()
                     .antMatchers("/").permitAll()           //홈화면
-                    .antMatchers("/signup").anonymous()     //회원가입
+                    .antMatchers("/signup/**").anonymous()     //회원가입
                     .antMatchers("/login").anonymous()      //로그인
 //                    .antMatchers("/leader/**").hasRole("LEADER")
                 .anyRequest().authenticated() //그 외 로그인 필요
@@ -65,7 +65,7 @@ public class WebSecurityConfig {
                 .antMatchers("/css/**").permitAll()
                 .antMatchers("/js/**").permitAll()
                 .antMatchers("/").permitAll()           //홈화면
-                .antMatchers("/signup").anonymous()     //회원가입
+                .antMatchers("/signup/**").anonymous()     //회원가입
                 .antMatchers("/login").anonymous()      //로그인
                 .anyRequest().permitAll() //개발용 임시 모두허용
                 .and()

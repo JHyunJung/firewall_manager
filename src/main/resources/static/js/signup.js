@@ -4,7 +4,7 @@ function checkEmail(){
     let email = document.getElementById("email").value;
     if(email){
         $.ajax({
-            url: '/checkDuplicateEmail',
+            url: '/signup/checkDuplicateEmail',
             type: 'GET',
             data: { 'email': email },
             success: function(data) {
@@ -48,7 +48,7 @@ function checkIpAddress(ipType){
         console.log('ipType : '+ipType);
         console.log('ipAddress : '+ipAddress);
         $.ajax({
-            url: '/checkDuplicateIpAddress',
+            url: '/signup/checkDuplicateIpAddress',
             type: 'GET',
             data: { 'ipAddress': ipAddress },
             success: function(data) {

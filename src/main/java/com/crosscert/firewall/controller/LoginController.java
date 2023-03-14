@@ -48,7 +48,7 @@ public class LoginController {
 
 
     //이메일 중복체크
-    @GetMapping("/checkDuplicateEmail")
+    @GetMapping("/signup/checkDuplicateEmail")
     @ResponseBody
     public ResponseEntity<Object> checkDuplicateEmail(@RequestParam("email") String email) {
         log.info("{}.checkDuplicateEmail",this.getClass());
@@ -58,7 +58,7 @@ public class LoginController {
     }
 
     //IP주소 중복체크
-    @GetMapping("/checkDuplicateIpAddress")
+    @GetMapping("/signup/checkDuplicateIpAddress")
     @ResponseBody
     public ResponseEntity<Object> checkDuplicateIpAddress(@RequestParam("ipAddress") String ipAddress) {
         log.info("{}.checkDuplicateIpAddress",this.getClass());
