@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout}">
+<head>
+  <meta charset="UTF-8">
+  <title>회원 리스트</title>
+  <link rel="stylesheet" href="/css/css_member.css">
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+</head>
+<body>
+<main layout:fragment="content">
+  <div class="member-wrap">
+    <div class="member-container">
+      <table class="table table-striped table-hover" style="table-layout: fixed">
+        <thead class="table-light">
+        <tr>
+          <th scope="col" style="width: 50px;">번호</th>
+          <th scope="col">이름</th>
+          <th scope="col">이메일</th>
+          <th scope="col">Role</th>
+          <th scope="col" style="width: 350px;">개발망 Ip</th>
+          <th scope="col">인터넷망 Ip</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="m: ${members}">
+          <td th:text="${m.id}"></td>
+          <td th:text="${m.name}"></td>
+          <td th:text="${m.email}"></td>
+          <td th:text="${m.role}"></td>
+          <td th:text="${m.devIp != null} ? ${m.devIp} : ''"></td>
+          <td th:text="${m.netIp != null} ? ${m.netIp} : ''"></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</main>
+
+<script src="/js/bootstrap.bundle.min.js"> </script>
+</body>
+</html>
