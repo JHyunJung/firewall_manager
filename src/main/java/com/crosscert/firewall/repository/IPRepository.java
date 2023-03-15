@@ -11,4 +11,5 @@ public interface IPRepository extends JpaRepository<IP, Long> {
 
     Optional<IP> findByAddress(IpAddress address);
 
+    boolean existsByAddress(IpAddress address);
 }

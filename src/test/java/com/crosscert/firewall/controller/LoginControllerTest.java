@@ -83,5 +83,21 @@ public class LoginControllerTest {
         resultActions.andExpect(jsonPath("result").value("false"));
     }
 
+    @Test
+    @DisplayName("IP_중복_체크")
+    public void IP_중복_체크() throws Exception {
+        ResultActions resultActions = mockMvc.perform(get("/checkDuplicateIpAddress")
+                        .param("ipAddress", "172.77.0.1"))
+                .andExpect(status().is2xxSuccessful());
+
+        resultActions.andExpect(jsonPath("result").value("true"));
+
+        resultActions = mockMvc.perform(get("/checkDuplicateIpAddress")
+                        .param("ipAddress", "172.77.0.3"))
+                .andExpect(status().is2xxSuccessful());
+
+        resultActions.andExpect(jsonPath("result").value("false"));
+    }
+
 
 }
