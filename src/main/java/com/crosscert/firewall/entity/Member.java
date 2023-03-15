@@ -33,11 +33,11 @@ public class Member extends BaseTimeEntity{
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "devIp_id")
-    private IP devIp;
+    private Ip devIp;
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "netIp_id")
-    private IP netIp;
+    private Ip netIp;
 
     @Builder.Default
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
@@ -51,7 +51,7 @@ public class Member extends BaseTimeEntity{
         return this.netIp == null ? null : netIp.getAddressValue();
     }
 
-    public void edit(Role role, IP devIp, IP netIp) {
+    public void edit(Role role, Ip devIp, Ip netIp) {
         this.role = role;
         this.devIp = devIp;
         this.netIp = netIp;
@@ -59,11 +59,11 @@ public class Member extends BaseTimeEntity{
 
     public void setDevIpByAddress(String devIp, String who) {
         if(devIp == null || devIp.isBlank()) return;
-        this.devIp = new IP(devIp, who + " 개발망");
+        this.devIp = new Ip(devIp, who + " 개발망");
     }
 
     public void setNetIpByAddress(String netIp, String who) {
         if(netIp == null || netIp.isBlank()) return;
-        this.netIp = new IP(netIp, who + " 인터넷망");
+        this.netIp = new Ip(netIp, who + " 인터넷망");
     }
 }

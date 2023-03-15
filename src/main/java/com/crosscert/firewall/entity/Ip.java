@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
 
@@ -13,7 +12,7 @@ import javax.persistence.*;
 @Builder
 @AllArgsConstructor
 @Getter
-public class IP extends BaseTimeEntity{
+public class Ip extends BaseTimeEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,7 +33,7 @@ public class IP extends BaseTimeEntity{
 
     @OneToOne(mappedBy = "netIp")
     private Member netMember;
-    public IP(String ipAddress, String description) {
+    public Ip(String ipAddress, String description) {
         this.address = new IpAddress(ipAddress);
         this.description = description;
     }
@@ -42,7 +41,7 @@ public class IP extends BaseTimeEntity{
         return this.address == null ? null : this.address.getAddress();
     }
 
-    public IP(IpAddress address, String domain, String description, Member devMember, Member netMember) {
+    public Ip(IpAddress address, String domain, String description, Member devMember, Member netMember) {
         this.address = address;
         this.domain = domain;
         this.description = description;
