@@ -1,7 +1,7 @@
 package com.crosscert.firewall.controller;
 
 import com.crosscert.firewall.dto.MemberDTO;
-import com.crosscert.firewall.entity.IP;
+import com.crosscert.firewall.entity.Ip;
 import com.crosscert.firewall.entity.IpAddress;
 import com.crosscert.firewall.service.IPService;
 import com.crosscert.firewall.service.MemberService;

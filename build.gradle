@@ -47,6 +47,7 @@ dependencies {
 
 	//jwt
 //	implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
+	implementation 'com.google.guava:guava:31.1-jre'
 
 
 }
