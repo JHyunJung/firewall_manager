@@ -3,6 +3,7 @@ package com.crosscert.firewall.service;
 import com.crosscert.firewall.annotation.LogTrace;
 import com.crosscert.firewall.dto.MemberDTO;
 import com.crosscert.firewall.entity.Ip;
+import com.crosscert.firewall.entity.IpAddress;
 import com.crosscert.firewall.entity.Member;
 import com.crosscert.firewall.entity.Role;
 import com.crosscert.firewall.repository.MemberRepository;
@@ -29,6 +30,7 @@ public class MemberService implements UserDetailsService {
 
     private final MemberRepository memberRepository;
     private final PasswordEncoder passwordEncoder;
+    private final IPService ipService;
 
     public Member save(Member member) {
         return memberRepository.save(member);
@@ -64,6 +66,11 @@ public class MemberService implements UserDetailsService {
         //중복 회원 검증
         if(isPresentMember(memberDTO.getEmail())){
             throw new IllegalArgumentException("이미 존재하는 회원입니다.");
+        }
+
+        //중복 IP주소 검증
+        if (ipService.isPresentIp(new IpAddress(memberDTO.getDevIp())) || ipService.isPresentIp(new IpAddress(memberDTO.getNetIp()))){
+            throw new IllegalArgumentException("이미 존재하는 IP주소 입니다.");
         }
 
         //DTO -> Entity

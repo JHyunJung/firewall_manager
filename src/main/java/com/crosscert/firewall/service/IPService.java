@@ -39,4 +39,8 @@ public class IPService {
     public List<Ip> findAll() {
         return ipRepository.findAll();
     }
+
+    public boolean isPresentIp(IpAddress address) {
+        return ipRepository.existsByAddress(address);
+    }
 }

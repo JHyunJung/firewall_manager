@@ -57,7 +57,7 @@
 
                         <div class="col-12">
                             <label for="password" class="form-label">비밀번호</label>
-                            <input type="password" onfocus="checkEmail();" class="form-control" id="password" name="password" required/>
+                            <input type="password" class="form-control" id="password" name="password" required/>
                             <div class="invalid-feedback">
                                 비밀번호를 올바르게 입력하세요.
                             </div>
@@ -83,13 +83,27 @@
                         </div>
 
                         <div class="col-12">
-                            <label for="devIp" class="form-label">개발망 IP주소 <span class="text-muted">(선택)</span></label>
-                            <input type="text" class="form-control" id="devIp" placeholder="예) 172.77.33.11" name="devIp">
+                            <label for="devIp" class="form-label">개발망 IP주소</label>
+                            <input type="text" onfocusout="checkIpAddress('devIp');" class="form-control" id="devIp" placeholder="예) 172.77.33.11" name="devIp"
+                                   pattern="^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$" required>
+                            <div class="invalid-feedback" >
+                                IP주소를 올바르게 입력하세요.
+                            </div>
+                            <div class="invalid-feedback" id="devIpNotOkMsg" style="display: none;">
+                                중복된 IP주소 입니다.
+                            </div>
                         </div>
 
                         <div class="col-12">
-                            <label for="netIp" class="form-label">인터넷망 IP주소 <span class="text-muted">(선택)</span></label>
-                            <input type="text" class="form-control" id="netIp" placeholder="예) 172.77.33.11" name="netIp">
+                            <label for="netIp" class="form-label">인터넷망 IP주소</label>
+                            <input type="text" onfocusout="checkIpAddress('netIp');" class="form-control" id="netIp" placeholder="예) 172.77.33.11" name="netIp"
+                                   pattern="^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$" required>
+                            <div class="invalid-feedback">
+                                IP주소를 올바르게 입력하세요.
+                            </div>
+                            <div class="invalid-feedback" id="netIpNotOkMsg" style="display: none;">
+                                중복된 IP주소 혹은 입력하신 개발망 IP주소와 동일합니다.
+                            </div>
                         </div>
 
                         <input type="hidden" name="role" value="MEMBER" readonly/><br>
@@ -109,50 +123,6 @@
 <script src="/js/bootstrap.bundle.min.js"></script>
 <script src="/js/form-validation.js"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-<script>
-    const emailNotOkMsg = document.getElementById("emailNotOkMsg");
-    //중복 회원 검증
-    function checkEmail(){
-        let email = document.getElementById("email").value;
-        if(email!==null || email!==''){
-            $.ajax({
-                url: '/checkDuplicateEmail',
-                type: 'GET',
-                data: { 'email': email },
-                success: function(data) {
-                    if(data.result === true) {
-                        console.log("중복된 아이디(이메일)")
-                        emailNotOkMsg.style.display = "block";
-                        document.getElementById("email").value = "";
-                        document.getElementById("email").focus();
-                    }else {
-                        console.log("사용가능한 아이디(이메일)")
-                        emailNotOkMsg.style.display = "none";
-                    }
-                }
-            });
-        }
-    }
-
-
-    //비밀번호 확인 검증
-    const passwordInput = document.getElementById("password");
-    const passwordConfirmInput = document.getElementById("passwordConfirm");
-    const passwordConfirmError = document.getElementById("passwordConfirmError");
-
-    function validatePasswordConfirm() {
-        if (passwordInput.value !== passwordConfirmInput.value) {
-            passwordConfirmInput.classList.add("is-invalid");
-            passwordConfirmError.style.display = "block";
-        } else {
-            passwordConfirmInput.classList.remove("is-invalid");
-            passwordConfirmError.style.display = "none";
-        }
-    }
-
-    passwordInput.addEventListener("input", validatePasswordConfirm);
-    passwordConfirmInput.addEventListener("input", validatePasswordConfirm);
-
-</script>
+<script src="/js/signup.js"></script>
 </body>
 </html>
