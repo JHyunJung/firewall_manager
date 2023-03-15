@@ -72,13 +72,13 @@ public class LoginControllerTest {
     @DisplayName("아이디_중복_체크")
     public void 아이디_중복_체크() throws Exception {
 
-        ResultActions resultActions = mockMvc.perform(get("/checkDuplicateEmail")
+        ResultActions resultActions = mockMvc.perform(get("/signup/checkDuplicateEmail")
                         .param("email", "test@crosscert.com"))
                 .andExpect(status().is2xxSuccessful());
 
         resultActions.andExpect(jsonPath("result").value("true"));
 
-        resultActions = mockMvc.perform(get("/checkDuplicateEmail")
+        resultActions = mockMvc.perform(get("/signup/checkDuplicateEmail")
                         .param("email", "test2@crosscert.com"))
                 .andExpect(status().is2xxSuccessful());
 
@@ -88,13 +88,13 @@ public class LoginControllerTest {
     @Test
     @DisplayName("IP_중복_체크")
     public void IP_중복_체크() throws Exception {
-        ResultActions resultActions = mockMvc.perform(get("/checkDuplicateIpAddress")
+        ResultActions resultActions = mockMvc.perform(get("/signup/checkDuplicateIpAddress")
                         .param("ipAddress", "172.77.0.1"))
                 .andExpect(status().is2xxSuccessful());
 
         resultActions.andExpect(jsonPath("result").value("true"));
 
-        resultActions = mockMvc.perform(get("/checkDuplicateIpAddress")
+        resultActions = mockMvc.perform(get("/signup/checkDuplicateIpAddress")
                         .param("ipAddress", "172.77.0.3"))
                 .andExpect(status().is2xxSuccessful());
 
