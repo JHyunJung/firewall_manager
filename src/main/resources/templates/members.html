@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout}">
 <head>
     <meta charset="UTF-8">
     <title>회원 리스트</title>
@@ -7,6 +9,7 @@
     <link rel="stylesheet" href="/css/bootstrap.min.css">
 </head>
 <body>
+    <main layout:fragment="content">
     <div class="member-wrap">
         <div class="member-container">
             <table class="table table-striped table-hover" style="table-layout: fixed">
@@ -26,13 +29,14 @@
                     <td th:text="${m.name}"></td>
                     <td th:text="${m.email}"></td>
                     <td th:text="${m.role}"></td>
-                    <td th:text="${m.devIp}"></td>
-                    <td th:text="${m.netIp}"></td>
+                    <td th:text="${m.devIp != null} ? ${m.devIp} : ''"></td>
+                    <td th:text="${m.netIp != null} ? ${m.netIp} : ''"></td>
                 </tr>
                 </tbody>
             </table>
         </div>
     </div>
+    </main>
 
 <script src="/js/bootstrap.bundle.min.js"> </script>
 </body>

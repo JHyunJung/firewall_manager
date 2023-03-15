@@ -17,11 +17,11 @@ public class FireWall extends BaseTimeEntity{
 
     @ManyToOne()
     @JoinColumn(name = "start_ip")
-    private IP start;
+    private Ip start;
 
     @ManyToOne
     @JoinColumn(name = "destination_ip")
-    private IP destination;
+    private Ip destination;
 
     @Embedded
     private IpPort port;

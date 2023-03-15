@@ -1,28 +1,60 @@
 package com.crosscert.firewall.controller;
 
 import com.crosscert.firewall.dto.MemberDTO;
+import com.crosscert.firewall.entity.Ip;
+import com.crosscert.firewall.entity.Member;
+import com.crosscert.firewall.service.IPService;
 import com.crosscert.firewall.service.MemberService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 @RequiredArgsConstructor
 public class MemberController {
 
     private final MemberService memberService;
-    private final Environment environment;
+    private final IPService ipService;
 
     @GetMapping("/members")
-    public String getMemberPage(Model model) {
-        List<MemberDTO.Response.Public> members = memberService.findAll();
-        model.addAttribute("members",members);
+    public String members(Model model) {
+        List<MemberDTO.Response.Public> members = memberService.findAllFetch()
+                .stream()
+                .map(this::convertToPublicDto)
+                .collect(Collectors.toList());
+
+        model.addAttribute("members", members);
         return "members";
+    }
+
+    @GetMapping("/member/{id}")
+    public String edit(Model model, @PathVariable("id") Long id) {
+        Member member = memberService.findById(id);
+        MemberDTO.Response.Public memberDto = convertToPublicDto(member);
+
+        List<Ip> ipList = ipService.findAll();
+        List<String> addresses = ipList.stream()
+                .map(Ip::getAddressValue)
+                .collect(Collectors.toList());
+
+        model.addAttribute("member", memberDto);
+        model.addAttribute("addresses", addresses);
+        return "memberEdit";
+    }
+
+    private MemberDTO.Response.Public convertToPublicDto(Member member){
+        return new MemberDTO.Response.Public(
+                member.getId(),
+                member.getName(),
+                member.getEmail(),
+                member.getRole(),
+                member.getDevIpValue(),
+                member.getNetIpValue()
+        );
     }
 }

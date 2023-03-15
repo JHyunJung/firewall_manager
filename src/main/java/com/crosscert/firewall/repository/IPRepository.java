@@ -1,8 +1,14 @@
 package com.crosscert.firewall.repository;
 
-import com.crosscert.firewall.entity.IP;
+import com.crosscert.firewall.entity.Ip;
+import com.crosscert.firewall.entity.IpAddress;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface IPRepository extends JpaRepository<IP, Long> {
+import java.util.Optional;
 
+public interface IPRepository extends JpaRepository<Ip, Long> {
+
+    Optional<Ip> findByAddress(IpAddress address);
+
+    boolean existsByAddress(IpAddress address);
 }

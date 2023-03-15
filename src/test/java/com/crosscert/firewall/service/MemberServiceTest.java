@@ -1,15 +1,14 @@
 package com.crosscert.firewall.service;
 
+import com.crosscert.firewall.config.DatabaseCleanup;
 import com.crosscert.firewall.dto.MemberDTO;
-import com.crosscert.firewall.entity.IP;
+import com.crosscert.firewall.entity.Ip;
 import com.crosscert.firewall.entity.IpAddress;
 import com.crosscert.firewall.entity.Member;
 import com.crosscert.firewall.entity.Role;
 import com.crosscert.firewall.repository.IPRepository;
 import com.crosscert.firewall.repository.MemberRepository;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -27,6 +26,7 @@ class MemberServiceTest {
 
     @Autowired
     MemberRepository memberRepository;
+
     @Autowired
     IPRepository ipRepository;
 
@@ -36,62 +36,101 @@ class MemberServiceTest {
     @Autowired
     PasswordEncoder passwordEncoder;
 
+    @Autowired
+    private DatabaseCleanup databaseCleanup;
+
     @Test
-    @DisplayName("Member FindAll 5명")
+    @DisplayName("findById_Exception_테스트")
+    public void findById_Exception_테스트(){
+        assertThatThrownBy(() -> {
+            memberService.findById(100L);
+        }).isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("해당 Member가 없습니다.");
+    }
+
+    @BeforeEach
+    void clean(){
+        databaseCleanup.execute();
+    }
+
+    @Test
+    @DisplayName("Member FindAll")
     public void findAll() {
         //given
-        IpAddress ipAddress = new IpAddress("172.12.40.52");
 
-        IP ip = IP.builder()
+        assertEquals(0, memberService.findAllFetch().size());
+
+        Ip ip = Ip.builder()
                 .domain("domain")
                 .description("description")
-                .address(ipAddress)
+                .address(new IpAddress("172.12.40.52"))
                 .build();
         ipRepository.save(ip);
 
-        List<MemberDTO.Response.Public> members = new ArrayList<>();
+        List<Member> testMemberList = new ArrayList<>();
 
         for (int i = 0; i < 5; i++) {
             Member member = Member.builder()
-                    .name("name"+i)
-                    .email("testData"+i+"@naver.com")
-                    .password("123456"+i)
+                    .name("name" + i)
+                    .email("testData" + i + "@naver.com")
+                    .password("123456" + i)
                     .role(Role.MEMBER)
                     .devIp(ip)
                     .netIp(ip)
                     .fireWallList(new ArrayList<>())
                     .build();
 
-            memberRepository.save(member);
-
-            members.add(new MemberDTO.Response.Public(
-                    member.getId(),
-                    member.getName(),
-                    member.getEmail(),
-                    member.getRole(),
-                    member.getDevIp().getAddress().getAddress(),
-                    member.getNetIp().getAddress().getAddress()));
+            testMemberList.add(member);
+            memberService.save(member);
         }
 
         //when
-        List<MemberDTO.Response.Public> memberList = memberService.findAll();
+        List<Member> memberList = memberService.findAllFetch();
 
         //then
-        Assertions.assertEquals(5, memberList.size());
-        Assertions.assertTrue(members.equals(memberList));
+        assertEquals(testMemberList.size(), memberList.size());
+        assertIterableEquals(testMemberList, memberList);
     }
 
     @Test
-    @DisplayName("Member FindAll 0명")
-    public void findAll_0() {
+    @DisplayName("Member_edit_테스트")
+    public void Member_edit_테스트(){
         //given
-        //
 
+        String name = "test";
+        String email = "test@tset.com";
+        String password = "test";
+        Ip ip = Ip.builder()
+                .domain("domain")
+                .description("description")
+                .address(new IpAddress("172.12.40.52"))
+                .build();
+
+        Member member = Member.builder()
+                .name(name)
+                .email(email)
+                .password(password)
+                .role(Role.MEMBER)
+                .devIp(ip)
+                .netIp(ip)
+                .build();
+
+        Member savedMember = memberService.save(member);
         //when
-        List<MemberDTO.Response.Public> members = memberService.findAll();
+        Member foundMember = memberService.findById(savedMember.getId());
+
+        Role updatedRole = Role.LEADER;
+        Ip updatedNetIp = new Ip("111.111.111.111", "updatedNet");
+        Ip updatedDevIp = new Ip("111.111.111.112", "updatedDev");
+
+        memberService.edit(foundMember, updatedRole, updatedDevIp, updatedNetIp);
 
         //then
-        Assertions.assertEquals(0, members.size());
+        Member updatedMember = memberService.findById(savedMember.getId());
+
+        assertEquals(updatedMember.getRole(), updatedRole);
+        assertEquals(updatedMember.getDevIpValue(), updatedDevIp.getAddressValue());
+        assertEquals(updatedMember.getNetIpValue(), updatedNetIp.getAddressValue());
     }
 
     @Test
@@ -129,6 +168,7 @@ class MemberServiceTest {
                 .netIp("172.77.0.2")
                 .role(Role.MEMBER)
                 .build();
+
         memberService.signup(createDto);
 
         MemberDTO.Request.Create createDto2 = MemberDTO.Request.Create.builder()
@@ -142,12 +182,13 @@ class MemberServiceTest {
 
         //when & then
         assertThatThrownBy(() -> memberService.signup(createDto))
-                .isInstanceOf(IllegalStateException.class)
+                .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("이미 존재하는 회원입니다.");
     }
 
     @Test
-    public void 이메일중복체크_중복일때_true() {
+    @DisplayName("이메일중복체크")
+    public void 이메일중복체크() {
         // Given
         MemberDTO.Request.Create createDto = MemberDTO.Request.Create.builder()
                 .email("test4@crosscert.com")
@@ -163,12 +204,10 @@ class MemberServiceTest {
         String email2 = "test4@crosscert.com";   //이메일 중복
 
         // When
-        boolean result = memberService.isPresentMember(email);
-        boolean result2 = memberService.isPresentMember(email2);
 
         // Then
-        assertFalse(result);
-        assertTrue(result2);
+        assertFalse(memberService.isPresentMember(email));
+        assertTrue(memberService.isPresentMember(email2));
     }
 
 }

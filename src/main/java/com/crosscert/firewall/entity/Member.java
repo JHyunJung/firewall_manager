@@ -1,9 +1,6 @@
 package com.crosscert.firewall.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -14,6 +11,7 @@ import java.util.List;
 @Builder
 @Entity
 @Getter
+@ToString
 public class Member extends BaseTimeEntity{
 
     @Id
@@ -35,21 +33,37 @@ public class Member extends BaseTimeEntity{
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "devIp_id")
-    private IP devIp;
+    private Ip devIp;
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "netIp_id")
-    private IP netIp;
+    private Ip netIp;
 
     @Builder.Default
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private List<FireWall> fireWallList = new ArrayList<>();
 
-    public void setDevIpByAddress(String devIp) {
-        this.devIp = new IP(devIp);
+    public String getDevIpValue(){
+        return this.devIp == null ? null : devIp.getAddressValue();
     }
 
-    public void setNetIpByAddress(String netIp) {
-        this.netIp = new IP(netIp);
+    public String getNetIpValue(){
+        return this.netIp == null ? null : netIp.getAddressValue();
+    }
+
+    public void edit(Role role, Ip devIp, Ip netIp) {
+        this.role = role;
+        this.devIp = devIp;
+        this.netIp = netIp;
+    }
+
+    public void setDevIpByAddress(String devIp, String who) {
+        if(devIp == null || devIp.isBlank()) return;
+        this.devIp = new Ip(devIp, who + " 개발망");
+    }
+
+    public void setNetIpByAddress(String netIp, String who) {
+        if(netIp == null || netIp.isBlank()) return;
+        this.netIp = new Ip(netIp, who + " 인터넷망");
     }
 }

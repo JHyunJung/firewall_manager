@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<body>
+<div th:fragment="navigation_side" id="layoutSidenav_nav">
+  <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+    <div class="sb-sidenav-menu">
+      <div class="nav">
+        <div class="sb-sidenav-menu-heading">Core</div>
+        <a class="nav-link" th:href="@{/}">
+          <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+          Dashboard
+        </a>
+        <div class="sb-sidenav-menu-heading">메뉴</div>
+        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+          <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+          회원
+          <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+        </a>
+        <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+          <nav class="sb-sidenav-menu-nested nav">
+            <a class="nav-link" th:href="@{/members}">회원목록</a>
+          </nav>
+        </div>
+        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+          <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+          샘플메뉴
+          <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+        </a>
+        <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
+          <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
+              샘플메뉴2
+              <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+            </a>
+            <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
+              <nav class="sb-sidenav-menu-nested nav">
+                <a class="nav-link" th:href="@{/}">샘플메뉴2-1</a>
+                <a class="nav-link" th:href="@{/}">샘플메뉴2-2</a>
+                <a class="nav-link" th:href="@{/}">샘플메뉴2-3</a>
+              </nav>
+            </div>
+            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
+              샘플메뉴3
+              <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+            </a>
+            <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
+              <nav class="sb-sidenav-menu-nested nav">
+                <a class="nav-link" th:href="@{/}">샘플메뉴3-1</a>
+                <a class="nav-link" th:href="@{/}">샘플메뉴3-2</a>
+                <a class="nav-link" th:href="@{/}">샘플메뉴3-3</a>
+              </nav>
+            </div>
+          </nav>
+        </div>
+        <div class="sb-sidenav-menu-heading">Addons</div>
+        <a class="nav-link" th:href="@{/}">
+          <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+          샘플메뉴4
+        </a>
+        <a class="nav-link" th:href="@{/}">
+          <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+          샘플메뉴5
+        </a>
+      </div>
+    </div>
+    <div class="sb-sidenav-footer" sec:authorize="isAuthenticated()">
+      <div class="small">Logged in as:</div>
+      <span sec:authentication="name"/>
+    </div>
+    <div class="sb-sidenav-footer" sec:authorize="isAnonymous()">
+      <div class="small">비로그인 상태</div>
+    </div>
+  </nav>
+</div>
+</body>
+</html>
