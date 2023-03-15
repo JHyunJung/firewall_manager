@@ -1,7 +1,7 @@
 package com.crosscert.firewall.controller.api;
 
 import com.crosscert.firewall.dto.MemberDTO;
-import com.crosscert.firewall.entity.IP;
+import com.crosscert.firewall.entity.Ip;
 import com.crosscert.firewall.entity.IpAddress;
 import com.crosscert.firewall.entity.Member;
 import com.crosscert.firewall.service.IPService;
@@ -38,10 +38,10 @@ public class MemberApiController {
     public ResponseEntity<MemberDTO.Response.Edit> edit(@PathVariable("id") Long id, @RequestBody MemberDTO.Request.Edit memberDTO) {
         Member findMember = memberService.findById(id);
 
-        IP devIP = ipService.findByAddress(new IpAddress(memberDTO.getDevIp()));
-        IP netIP = ipService.findByAddress(new IpAddress(memberDTO.getNetIp()));
+        Ip devIp = ipService.findByAddress(new IpAddress(memberDTO.getDevIp()));
+        Ip netIp = ipService.findByAddress(new IpAddress(memberDTO.getNetIp()));
 
-        memberService.edit(findMember, memberDTO.getRole(), devIP, netIP);
+        memberService.edit(findMember, memberDTO.getRole(), devIp, netIp);
         MemberDTO.Response.Edit resultDto = convertToEditDto(findMember);
         return new ResponseEntity<>(resultDto, HttpStatus.OK);
     }

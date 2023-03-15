@@ -2,7 +2,7 @@ package com.crosscert.firewall.service;
 
 import com.crosscert.firewall.annotation.LogTrace;
 import com.crosscert.firewall.dto.MemberDTO;
-import com.crosscert.firewall.entity.IP;
+import com.crosscert.firewall.entity.Ip;
 import com.crosscert.firewall.entity.IpAddress;
 import com.crosscert.firewall.entity.Member;
 import com.crosscert.firewall.entity.Role;
@@ -21,7 +21,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -31,7 +30,6 @@ public class MemberService implements UserDetailsService {
 
     private final MemberRepository memberRepository;
     private final PasswordEncoder passwordEncoder;
-
     private final IPService ipService;
 
     public Member save(Member member) {
@@ -49,8 +47,8 @@ public class MemberService implements UserDetailsService {
                 .orElseThrow(() -> new IllegalArgumentException("해당 Member가 없습니다."));
     }
 
-    public void edit(Member member, Role role, IP devIP, IP netIP) {
-        member.edit(role, devIP, netIP);
+    public void edit(Member member, Role role, Ip devIp, Ip netIp) {
+        member.edit(role, devIp, netIp);
     }
     public void delete(Long id) {
         memberRepository.deleteById(id);

@@ -1,8 +1,8 @@
 package com.crosscert.firewall.controller;
 
-import com.crosscert.firewall.controller.api.MemberApiController;
+import com.crosscert.firewall.config.DatabaseCleanup;
 import com.crosscert.firewall.dto.MemberDTO;
-import com.crosscert.firewall.entity.IP;
+import com.crosscert.firewall.entity.Ip;
 import com.crosscert.firewall.entity.IpAddress;
 import com.crosscert.firewall.entity.Member;
 import com.crosscert.firewall.entity.Role;
@@ -10,7 +10,6 @@ import com.crosscert.firewall.repository.IPRepository;
 import com.crosscert.firewall.repository.MemberRepository;
 import com.crosscert.firewall.service.IPService;
 import com.crosscert.firewall.service.MemberService;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -21,9 +20,6 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.util.NestedServletException;
 
 import java.util.ArrayList;
@@ -53,29 +49,31 @@ class MemberApiControllerTest {
     @Autowired
     IPRepository ipRepository;
 
+    @Autowired
+    private DatabaseCleanup databaseCleanup;
+
     private Member member;
 
     @BeforeEach
     void init() {
 
-        memberRepository.deleteAll();
-        ipRepository.deleteAll();;
+        databaseCleanup.execute();
 
         IpAddress ipAddress = new IpAddress("172.12.40.52");
 
-        IP ip = IP.builder()
+        Ip ip = Ip.builder()
                 .domain("domain")
                 .description("description")
                 .address(ipAddress)
                 .build();
 
-        IP updatedIp1 = IP.builder()
+        Ip updatedIp1 = Ip.builder()
                 .domain("domain")
                 .description("description")
                 .address(new IpAddress("222.222.222.222"))
                 .build();
 
-        IP updatedIp2 = IP.builder()
+        Ip updatedIp2 = Ip.builder()
                 .domain("domain")
                 .description("description")
                 .address(new IpAddress("123.123.123.123"))

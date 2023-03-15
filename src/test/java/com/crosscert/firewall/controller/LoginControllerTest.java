@@ -1,5 +1,6 @@
 package com.crosscert.firewall.controller;
 
+import com.crosscert.firewall.config.DatabaseCleanup;
 import com.crosscert.firewall.dto.MemberDTO;
 import com.crosscert.firewall.entity.Role;
 import com.crosscert.firewall.repository.MemberRepository;
@@ -30,8 +31,14 @@ public class LoginControllerTest {
     @Autowired
     private MemberService memberService;
 
+    @Autowired
+    private DatabaseCleanup databaseCleanup;
+
     @BeforeEach
     public void beforeEach() {
+
+        databaseCleanup.execute();
+
         MemberDTO.Request.Create createDto = MemberDTO.Request.Create.builder()
                 .email("test@crosscert.com")
                 .name("test")
@@ -41,11 +48,6 @@ public class LoginControllerTest {
                 .role(Role.MEMBER)
                 .build();
         memberService.signup(createDto);
-    }
-
-    @AfterEach
-    public void afterEach() {
-        memberService.deleteByEmail("test@crosscert.com");
     }
 
     @Test

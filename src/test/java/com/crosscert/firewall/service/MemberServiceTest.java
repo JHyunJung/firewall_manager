@@ -1,7 +1,8 @@
 package com.crosscert.firewall.service;
 
+import com.crosscert.firewall.config.DatabaseCleanup;
 import com.crosscert.firewall.dto.MemberDTO;
-import com.crosscert.firewall.entity.IP;
+import com.crosscert.firewall.entity.Ip;
 import com.crosscert.firewall.entity.IpAddress;
 import com.crosscert.firewall.entity.Member;
 import com.crosscert.firewall.entity.Role;
@@ -35,6 +36,9 @@ class MemberServiceTest {
     @Autowired
     PasswordEncoder passwordEncoder;
 
+    @Autowired
+    private DatabaseCleanup databaseCleanup;
+
     @Test
     @DisplayName("findById_Exception_테스트")
     public void findById_Exception_테스트(){
@@ -46,8 +50,7 @@ class MemberServiceTest {
 
     @BeforeEach
     void clean(){
-        memberRepository.deleteAll();
-        ipRepository.deleteAll();
+        databaseCleanup.execute();
     }
 
     @Test
@@ -57,7 +60,7 @@ class MemberServiceTest {
 
         assertEquals(0, memberService.findAllFetch().size());
 
-        IP ip = IP.builder()
+        Ip ip = Ip.builder()
                 .domain("domain")
                 .description("description")
                 .address(new IpAddress("172.12.40.52"))
@@ -97,7 +100,7 @@ class MemberServiceTest {
         String name = "test";
         String email = "test@tset.com";
         String password = "test";
-        IP ip = IP.builder()
+        Ip ip = Ip.builder()
                 .domain("domain")
                 .description("description")
                 .address(new IpAddress("172.12.40.52"))
@@ -117,8 +120,8 @@ class MemberServiceTest {
         Member foundMember = memberService.findById(savedMember.getId());
 
         Role updatedRole = Role.LEADER;
-        IP updatedNetIp = new IP("111.111.111.111", "updatedNet");
-        IP updatedDevIp = new IP("111.111.111.112", "updatedDev");
+        Ip updatedNetIp = new Ip("111.111.111.111", "updatedNet");
+        Ip updatedDevIp = new Ip("111.111.111.112", "updatedDev");
 
         memberService.edit(foundMember, updatedRole, updatedDevIp, updatedNetIp);
 
