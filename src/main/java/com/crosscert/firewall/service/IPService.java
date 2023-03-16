@@ -36,8 +36,8 @@ public class IPService {
     }
 
     @Transactional(readOnly = true)
-    public List<Ip> findAll() {
-        return ipRepository.findAll();
+    public List<IpAddress> findAllWithNoMember() {
+        return ipRepository.findAllWithNoMember();
     }
 
     public boolean isPresentIp(IpAddress address) {

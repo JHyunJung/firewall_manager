@@ -2,6 +2,7 @@ package com.crosscert.firewall.controller;
 
 import com.crosscert.firewall.dto.MemberDTO;
 import com.crosscert.firewall.entity.Ip;
+import com.crosscert.firewall.entity.IpAddress;
 import com.crosscert.firewall.entity.Member;
 import com.crosscert.firewall.service.IPService;
 import com.crosscert.firewall.service.MemberService;
@@ -37,10 +38,9 @@ public class MemberController {
         Member member = memberService.findById(id);
         MemberDTO.Response.Public memberDto = convertToPublicDto(member);
 
-        List<Ip> ipList = ipService.findAll();
+        List<IpAddress> ipList = ipService.findAllWithNoMember();
         List<String> addresses = ipList.stream()
-                .filter(ip -> ip.getDevMember() == null && ip.getNetMember() == null)
-                .map(Ip::getAddressValue)
+                .map(IpAddress::getAddress)
                 .collect(Collectors.toList());
 
         model.addAttribute("member", memberDto);
