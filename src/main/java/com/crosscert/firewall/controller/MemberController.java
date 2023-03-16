@@ -39,6 +39,7 @@ public class MemberController {
 
         List<Ip> ipList = ipService.findAll();
         List<String> addresses = ipList.stream()
+                .filter(ip -> ip.getDevMember() == null && ip.getNetMember() == null)
                 .map(Ip::getAddressValue)
                 .collect(Collectors.toList());
 
