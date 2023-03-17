@@ -3,7 +3,7 @@ package com.crosscert.firewall.service;
 import com.crosscert.firewall.config.DatabaseCleanup;
 import com.crosscert.firewall.entity.Ip;
 import com.crosscert.firewall.entity.IpAddress;
-import com.crosscert.firewall.repository.IPRepository;
+import com.crosscert.firewall.repository.IpRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -19,10 +19,10 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class IpServiceTest {
 
     @Autowired
-    IPRepository ipRepository;
+    IpRepository ipRepository;
 
     @Autowired
-    IPService ipService;
+    IpService ipService;
 
     @Autowired
     DatabaseCleanup databaseCleanup;

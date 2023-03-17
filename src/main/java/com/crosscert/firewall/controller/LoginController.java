@@ -1,9 +1,8 @@
 package com.crosscert.firewall.controller;
 
 import com.crosscert.firewall.dto.MemberDTO;
-import com.crosscert.firewall.entity.Ip;
 import com.crosscert.firewall.entity.IpAddress;
-import com.crosscert.firewall.service.IPService;
+import com.crosscert.firewall.service.IpService;
 import com.crosscert.firewall.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -23,7 +22,7 @@ import java.util.Map;
 public class LoginController {
 
     private final MemberService memberService;
-    private final IPService ipService;
+    private final IpService ipService;
 
     //로그인 페이지
     @GetMapping("/login")

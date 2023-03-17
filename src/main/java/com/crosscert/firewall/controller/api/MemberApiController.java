@@ -4,7 +4,7 @@ import com.crosscert.firewall.dto.MemberDTO;
 import com.crosscert.firewall.entity.Ip;
 import com.crosscert.firewall.entity.IpAddress;
 import com.crosscert.firewall.entity.Member;
-import com.crosscert.firewall.service.IPService;
+import com.crosscert.firewall.service.IpService;
 import com.crosscert.firewall.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 public class MemberApiController {
 
     private final MemberService memberService;
-    private final IPService ipService;
+    private final IpService ipService;
 
 
     @GetMapping("/api/members")
