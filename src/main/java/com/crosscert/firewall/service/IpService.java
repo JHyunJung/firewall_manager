@@ -36,7 +36,7 @@ public class IpService {
     }
 
     @Transactional(readOnly = true)
-    public List<IpAddress> findAllWithoutMember() {
+    public List<Ip> findAllWithoutMember() {
         return ipRepository.findAllWithoutMember();
     }
 
