@@ -16,6 +16,6 @@ public interface IpRepository extends JpaRepository<Ip, Long> {
 
     boolean existsByAddress(IpAddress address);
 
-    @Query("SELECT ip FROM Ip ip LEFT JOIN FETCH ip.devMember LEFT JOIN FETCH ip.netMember WHERE ip.devMember.devIp IS NULL AND ip.netMember.netIp IS NULL")
+    @Query("SELECT ip FROM Ip ip LEFT JOIN FETCH ip.devMember LEFT JOIN FETCH ip.netMember WHERE ip.devMember.devIp IS NULL AND ip.netMember.netIp IS NULL ORDER BY ip.address.address")
     List<Ip> findAllWithoutMember();
 }
