@@ -32,6 +32,7 @@ public class Ip extends BaseTimeEntity{
     private Member devMember;
 
     @OneToOne(mappedBy = "netIp")
+    @JoinColumn(name = "netMember_id")
     private Member netMember;
     public Ip(String ipAddress, String description) {
         this.address = new IpAddress(ipAddress);

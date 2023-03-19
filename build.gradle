@@ -67,12 +67,12 @@ dependencies {
 //	options.annotationProcessorPath = configurations.querydsl
 //}
 
-//configurations {
-//	compileOnly {
-//		extendsFrom annotationProcessor
-//	}
-//	querydsl.extendsFrom compileClasspath
-//}
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+	querydsl.extendsFrom compileClasspath
+}
 //querydsl 추가 끝
 
 
