@@ -2,7 +2,7 @@ package com.crosscert.firewall.service;
 
 import com.crosscert.firewall.entity.Ip;
 import com.crosscert.firewall.entity.IpAddress;
-import com.crosscert.firewall.repository.IPRepository;
+import com.crosscert.firewall.repository.IpRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -11,9 +11,9 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 @Transactional
-public class IPService {
+public class IpService {
 
-    private final IPRepository ipRepository;
+    private final IpRepository ipRepository;
 
     @Transactional(readOnly = true)
     public Ip findByAddress(IpAddress address) {
@@ -36,8 +36,8 @@ public class IPService {
     }
 
     @Transactional(readOnly = true)
-    public List<Ip> findAll() {
-        return ipRepository.findAll();
+    public List<Ip> findAllWithoutMember() {
+        return ipRepository.findAllWithoutMember();
     }
 
     public boolean isPresentIp(IpAddress address) {

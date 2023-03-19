@@ -30,7 +30,7 @@ public class MemberService implements UserDetailsService {
 
     private final MemberRepository memberRepository;
     private final PasswordEncoder passwordEncoder;
-    private final IPService ipService;
+    private final IpService ipService;
 
     public Member save(Member member) {
         return memberRepository.save(member);

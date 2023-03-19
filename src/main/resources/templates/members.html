@@ -10,34 +10,66 @@
 </head>
 <body>
     <main layout:fragment="content">
-    <div class="member-wrap">
-        <div class="member-container">
-            <table class="table table-striped table-hover" style="table-layout: fixed">
-                <thead class="table-light">
-                <tr>
-                    <th scope="col" style="width: 50px;">번호</th>
-                    <th scope="col">이름</th>
-                    <th scope="col">이메일</th>
-                    <th scope="col">Role</th>
-                    <th scope="col" style="width: 350px;">개발망 Ip</th>
-                    <th scope="col">인터넷망 Ip</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr th:each="m: ${members}">
-                    <td th:text="${m.id}"></td>
-                    <td th:text="${m.name}"></td>
-                    <td th:text="${m.email}"></td>
-                    <td th:text="${m.role}"></td>
-                    <td th:text="${m.devIp != null} ? ${m.devIp} : ''"></td>
-                    <td th:text="${m.netIp != null} ? ${m.netIp} : ''"></td>
-                </tr>
-                </tbody>
-            </table>
+        <div class="container-fluid px-4">
+            <h1 class="mt-4">AI Security 연구본부</h1>
+            <ol class="breadcrumb mb-4">
+                <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                <li class="breadcrumb-item active">Tables</li>
+            </ol>
+            <div class="card mb-4">
+                <div class="card-body">
+                    AI Security 연구본부 계정 목록 입니다.
+                </div>
+            </div>
+            <div class="card mb-4">
+                <div class="card-header">
+                    <i class="fas fa-table me-1"></i>
+                    계정 목록
+                </div>
+                <div class="card-body">
+                    <table id="datatablesSimple">
+                        <thead>
+                        <tr>
+                            <th>번호</th>
+                            <th>이름</th>
+                            <th>이메일</th>
+                            <th>권한(ROLE)</th>
+                            <th>개발망 IP</th>
+                            <th>인터넷망 IP</th>
+                            <th>수정</th>
+                        </tr>
+                        </thead>
+                        <tfoot>
+                        <tr>
+                            <th>번호</th>
+                            <th>이름</th>
+                            <th>이메일</th>
+                            <th>권한(ROLE)</th>
+                            <th>개발망 IP</th>
+                            <th>인터넷망 IP</th>
+                            <th>수정</th>
+                        </tr>
+                        </tfoot>
+                        <tbody>
+                        <tr th:each="m: ${members}">
+                            <td th:text="${m.id}"></td>
+                            <td th:text="${m.name}"></td>
+                            <td th:text="${m.email}"></td>
+                            <td th:text="${m.role}"></td>
+                            <td th:text="${m.devIp != null} ? ${m.devIp} : ''"></td>
+                            <td th:text="${m.netIp != null} ? ${m.netIp} : ''"></td>
+                            <td>
+                                <a class="btn btn-primary" th:text="수정하기" th:href="@{/member/{id}(id=${m.id})}"></a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
-    </div>
     </main>
 
 <script src="/js/bootstrap.bundle.min.js"> </script>
+<script src="/js/member.js"> </script>
 </body>
 </html>

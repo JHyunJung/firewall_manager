@@ -6,7 +6,7 @@ import com.crosscert.firewall.entity.Ip;
 import com.crosscert.firewall.entity.IpAddress;
 import com.crosscert.firewall.entity.Member;
 import com.crosscert.firewall.entity.Role;
-import com.crosscert.firewall.repository.IPRepository;
+import com.crosscert.firewall.repository.IpRepository;
 import com.crosscert.firewall.repository.MemberRepository;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +28,7 @@ class MemberServiceTest {
     MemberRepository memberRepository;
 
     @Autowired
-    IPRepository ipRepository;
+    IpRepository ipRepository;
 
     @Autowired
     MemberService memberService;

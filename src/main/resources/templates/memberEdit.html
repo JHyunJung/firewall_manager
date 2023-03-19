@@ -1,57 +1,76 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout}">
 <head>
     <meta charset="UTF-8">
-    <title>회원 수정</title>
+    <title>회원 리스트</title>
     <link rel="stylesheet" href="/css/css_member.css">
     <link rel="stylesheet" href="/css/bootstrap.min.css">
 </head>
 <body>
-    <div class="memberEdit-wrap">
-        <div class="memberEdit-container">
-            <form th:action="@{/member/{id}(id=${member.id})}" th:object="${member}" th:method="PUT">
-                <div>
-                    <label for="name">이름</label>
-                    <input type="text" id=name th:field="*{name}">
-                </div>
-                <div>
-                    <label for="email">이메일</label>
-                    <input type="email" id=email th:field="*{email}">
-                </div>
-                <div>
-                    <label for="role">Role</label>
-                    <input type="text" id=role th:field="*{role}">
-                </div>
-                <div>
-                    <label for="devIp">개발망 Ip</label>
-                    <div class="dropdown ip-div">
-                        <input type="text" class="devIp" id=devIp style="display: none">
-                        <button class="btn btn-outline-primary dropdown-toggle devBtn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                            IP List
-                        </button>
-                        <ul class="dropdown-menu ip-menu-div" aria-labelledby="dropdownMenuButton1" >
-                            <li class="dropdown-item" th:each="address : ${addresses}" th:text="${address}"></li>
-                        </ul>
+<main layout:fragment="content">
+    <div class="container-fluid px-4">
+        <h1 class="mt-4">AI Security 연구본부</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+            <li class="breadcrumb-item active">Tables</li>
+        </ol>
+        <div class="card mb-4">
+            <div class="card-body">
+                AI Security 연구본부 계정 수정
+            </div>
+        </div>
+        <div class="card mb-4">
+            <div class="card-header">
+                <i class="fas fa-table me-1"></i>
+                계정 수정
+            </div>
+            <div class="card-body">
+                <form th:action="@{/member/{id}(id=${member.id})}" th:object="${member}" th:method="PUT">
+                    <div>
+                        <label for="name">이름</label>
+                        <input type="text" id=name th:field="*{name}">
                     </div>
-                </div>
-                <div>
-                    <label for="netIp">인터넷망 Ip</label>
-                    <div class="dropdown ip-div">
-                        <input type="text" class="netIp" id=netIp style="display: none">
-                        <button class="btn btn-outline-primary dropdown-toggle netBtn" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
-                            IP List
-                        </button>
-                        <ul class="dropdown-menu ip-menu-net" aria-labelledby="dropdownMenuButton1" >
-                            <li class="dropdown-item" th:each="address : ${addresses}" th:text="${address}"></li>
-                        </ul>
+                    <div>
+                        <label for="email">이메일</label>
+                        <input type="email" id=email th:field="*{email}">
                     </div>
-                </div>
-                <button type="submit" class="btn btn-primary">정보 수정</button>
-            </form>
+                    <div>
+                        <label for="role">Role</label>
+                        <input type="text" id=role th:field="*{role}">
+                    </div>
+                    <div>
+                        <label for="devIp">개발망 Ip</label>
+                        <div class="dropdown ip-div">
+                            <input type="text" class="devIp" id=devIp style="display: none">
+                            <button class="btn btn-outline-primary dropdown-toggle devBtn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                IP List
+                            </button>
+                            <ul class="dropdown-menu ip-menu-div" aria-labelledby="dropdownMenuButton1" >
+                                <li class="dropdown-item" th:each="address : ${addresses}" th:text="${address}"></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="netIp">인터넷망 Ip</label>
+                        <div class="dropdown ip-div">
+                            <input type="text" class="netIp" id=netIp style="display: none">
+                            <button class="btn btn-outline-primary dropdown-toggle netBtn" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+                                IP List
+                            </button>
+                            <ul class="dropdown-menu ip-menu-net" aria-labelledby="dropdownMenuButton1" >
+                                <li class="dropdown-item" th:each="address : ${addresses}" th:text="${address}"></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">정보 수정</button>
+                </form>
+            </div>
         </div>
     </div>
-
-    <script src="/js/bootstrap.bundle.min.js"> </script>
-    <script src="/js/member.js"> </script>
+</main>
+<script src="/js/bootstrap.bundle.min.js"> </script>
+<script src="/js/member.js"> </script>
 </body>
 </html>

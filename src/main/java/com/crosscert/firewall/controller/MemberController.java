@@ -2,8 +2,9 @@ package com.crosscert.firewall.controller;
 
 import com.crosscert.firewall.dto.MemberDTO;
 import com.crosscert.firewall.entity.Ip;
+import com.crosscert.firewall.entity.IpAddress;
 import com.crosscert.firewall.entity.Member;
-import com.crosscert.firewall.service.IPService;
+import com.crosscert.firewall.service.IpService;
 import com.crosscert.firewall.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -19,7 +20,7 @@ import java.util.stream.Collectors;
 public class MemberController {
 
     private final MemberService memberService;
-    private final IPService ipService;
+    private final IpService ipService;
 
     @GetMapping("/members")
     public String members(Model model) {
@@ -37,7 +38,7 @@ public class MemberController {
         Member member = memberService.findById(id);
         MemberDTO.Response.Public memberDto = convertToPublicDto(member);
 
-        List<Ip> ipList = ipService.findAll();
+        List<Ip> ipList = ipService.findAllWithoutMember();
         List<String> addresses = ipList.stream()
                 .map(Ip::getAddressValue)
                 .collect(Collectors.toList());
