@@ -2,7 +2,6 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version '2.7.7'
 	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
-//	id 'com.ewerk.gradle.plugins.querydsl' version '1.0.10'
 }
 
 group = 'com.crosscert'
@@ -40,18 +39,17 @@ dependencies {
 	runtimeOnly 'com.mysql:mysql-connector-j'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+
 	implementation "io.springfox:springfox-swagger2:3.0.0"
 	implementation "io.springfox:springfox-swagger-ui:3.0.0"
-
-
-	implementation "com.querydsl:querydsl-jpa:5.0.0"
-	implementation "com.querydsl:querydsl-apt:5.0.0"
-
 
 	//스프링시큐리티
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.security:spring-security-test'
 	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
+
+	implementation 'com.google.guava:guava:31.1-jre'
 
 	//jwt
 //	implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
@@ -68,6 +66,7 @@ dependencies {
 //compileQuerydsl{
 //	options.annotationProcessorPath = configurations.querydsl
 //}
+
 //configurations {
 //	compileOnly {
 //		extendsFrom annotationProcessor
