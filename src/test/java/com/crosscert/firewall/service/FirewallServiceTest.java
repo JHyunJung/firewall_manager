@@ -2,9 +2,8 @@ package com.crosscert.firewall.service;
 
 import com.crosscert.firewall.entity.FireWall;
 import com.crosscert.firewall.entity.IP;
-import com.crosscert.firewall.entity.IpPort;
 import com.crosscert.firewall.entity.search.SearchFirewall;
-import com.crosscert.firewall.repository.FirewallRepository;
+import com.crosscert.firewall.repository.FireWallRepository;
 import javafx.beans.binding.ObjectExpression;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -23,7 +22,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 class FirewallServiceTest {
 
     @Autowired
-    FirewallRepository firewallRepository;
+    FireWallRepository firewallRepository;
 
     @Autowired
     FirewallService firewallService;
