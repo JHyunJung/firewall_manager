@@ -1,9 +1,15 @@
 package com.crosscert.firewall.controller;
 
+import com.crosscert.firewall.dto.FireWallDTO;
+import com.crosscert.firewall.entity.FireWall;
 import com.crosscert.firewall.service.FireWallService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 
 @RequiredArgsConstructor
@@ -15,13 +21,29 @@ public class FireWallController {
 
 
     @GetMapping("/firewalls")
-    public String fireWalls(){
+    public String fireWalls(Model model) {
 
-//        Page<FireWall> fireWallPage = fireWallService.findAll(0, 10);
-//        PageInfo pageInfo = new PageInfo(0, 10, (int) fireWallPage.getTotalElements(), fireWallPage.getTotalElements());
-//
-//        model.addAttribute("members", members);
+        List<FireWallDTO.Response.Public> list = fireWallService.findAll()
+                .stream()
+                .map(this::convertToPublicDto)
+                .collect(Collectors.toList());
+
+
+        model.addAttribute("firewalls", list);
+
         return "firewalls";
     }
 
+
+    public FireWallDTO.Response.Public convertToPublicDto(FireWall fireWall) {
+        return new FireWallDTO.Response.Public(
+                fireWall.getId(),
+                fireWall.getStart().getAddressValue(),
+                fireWall.getDestination().getAddressValue(),
+                fireWall.getPort().getPort(),
+                fireWall.getMember().getName(),
+                fireWall.getEndDate().toString(),
+                fireWall.getIsEnded()
+        );
+    }
 }

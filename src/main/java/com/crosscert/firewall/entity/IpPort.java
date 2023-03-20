@@ -1,11 +1,13 @@
 package com.crosscert.firewall.entity;
 
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Embeddable;
 import java.util.Objects;
 
 @NoArgsConstructor
+@Getter
 @Embeddable
 public class IpPort {
 

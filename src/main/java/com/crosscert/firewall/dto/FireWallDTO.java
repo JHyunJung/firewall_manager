@@ -17,7 +17,6 @@ public enum FireWallDTO {;
     private interface Ended { boolean isEnded(); }
     private interface Member { String getMember(); }
 
-
     public enum Request{;
 
         @Value
@@ -32,19 +31,18 @@ public enum FireWallDTO {;
 
     public enum Response{;
 
-        @Builder
         @Value
         public static class Create implements Id{
             Long id;
         }
 
-        @Builder
         @Value
-        public static class Public implements Id, Start, Destination, Port, EndDate, Ended{
+        public static class Public implements Id, Start, Destination, Port, EndDate, Ended, Member{
             Long id;
             String start;
             String destination;
             int port;
+            String member;
             String endDate;
             boolean ended;
         }

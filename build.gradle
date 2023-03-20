@@ -1,26 +1,29 @@
+buildscript {
+	ext {
+		queryDslVersion = "5.0.0"
+	}
+}
+
 plugins {
 	id 'java'
 	id 'org.springframework.boot' version '2.7.7'
 	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+	id 'com.ewerk.gradle.plugins.querydsl' version '1.0.10'
 }
 
 group = 'com.crosscert'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
 repositories {
 	mavenCentral()
 }
-
-//configurations {
-//	compileOnly {
-//		extendsFrom annotationProcessor
-//	}
-//	all {
-//		//logback과의 충돌 방지
-//		exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
-//	}
-//}
 
 
 dependencies {
@@ -40,6 +43,8 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
+	implementation "com.querydsl:querydsl-jpa:${queryDslVersion}"
+	annotationProcessor "com.querydsl:querydsl-apt:${queryDslVersion}"
 
 	implementation "io.springfox:springfox-swagger2:3.0.0"
 	implementation "io.springfox:springfox-swagger-ui:3.0.0"
@@ -56,24 +61,20 @@ dependencies {
 
 }
 
-//querydsl {
-//	jpa = true
-//	querydslSourcesDir = querydslDir
-//}
-//sourceSets {
-//	main.java.srcDir querydslDir
-//}
-//compileQuerydsl{
-//	options.annotationProcessorPath = configurations.querydsl
-//}
-
+def querydslDir = "$buildDir/generated/querydsl"
+querydsl {
+	jpa = true
+	querydslSourcesDir = querydslDir
+}
+sourceSets {
+	main.java.srcDir querydslDir
+}
 configurations {
-	compileOnly {
-		extendsFrom annotationProcessor
-	}
 	querydsl.extendsFrom compileClasspath
 }
-//querydsl 추가 끝
+compileQuerydsl{
+	options.annotationProcessorPath = configurations.querydsl
+}
 
 
 tasks.named('test') {

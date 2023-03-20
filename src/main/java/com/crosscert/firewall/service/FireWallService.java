@@ -9,30 +9,37 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Transactional
 @Service
 @RequiredArgsConstructor
 public class FireWallService {
 
-    private final FireWallRepository firewallRepository;
+    private final FireWallRepository fireWallRepository;
 
     public FireWall save(FireWall firewall) {
-        return firewallRepository.save(firewall);
+        return fireWallRepository.save(firewall);
     }
 
     public FireWall findById(Long id){
-        return firewallRepository.findById(id)
+        return fireWallRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("해당 방확벽이 존재하지 않습니다."));
     }
 
     public void delete(Long id){
-        firewallRepository.deleteById(id);
+        fireWallRepository.deleteById(id);
+    }
+
+    @Transactional(readOnly = true)
+    public List<FireWall> findAll(){
+        return fireWallRepository.findAll();
     }
 
     @Transactional(readOnly = true)
     public Page<FireWall> findAll(int page, int size) {
         PageRequest pageRequest = PageRequest.of(page, size, Sort.by("createDate").descending());
-        return firewallRepository.findAllByOrderByCreateDateDesc(pageRequest);
+        return fireWallRepository.findAllByOrderByCreateDateDesc(pageRequest);
     }
 
 

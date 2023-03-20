@@ -66,12 +66,4 @@ public class LoginController {
         return ResponseEntity.ok(data);
     }
 
-    @GetMapping("/login2")
-    public String find(){
-        Ip ip = ipService.findById(1L);
-        return "test";
-
-
-    }
-
 }
