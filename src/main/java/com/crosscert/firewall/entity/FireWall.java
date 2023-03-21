@@ -4,6 +4,8 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -17,15 +19,14 @@ public class FireWall extends BaseTimeEntity{
     private Long id;
 
     @ManyToOne()
-    @JoinColumn(name = "start_ip")
+    @JoinColumn(name = "start_ip_id")
     private Ip start;
 
-    @ManyToOne
-    @JoinColumn(name = "destination_ip")
-    private Ip destination;
+    @Column
+    private String destination;
 
-    @Embedded
-    private IpPort port;
+    @OneToMany(mappedBy = "fireWall")
+    private List<IpPort> port = new ArrayList<>();
 
     @Column
     private LocalDate endDate;

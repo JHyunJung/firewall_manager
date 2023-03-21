@@ -1,6 +1,7 @@
 package com.crosscert.firewall.dto;
 
 import com.crosscert.firewall.entity.Role;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 import lombok.Builder;
 import lombok.Value;
@@ -29,11 +30,13 @@ public enum MemberDTO {;
              String netIp;
         }
 
-        @ToString
-        @Value public static class Edit implements MemberRole, DevIp, NetIp {
+        @Value
+//        @Builder
+        public static class Edit implements MemberRole, DevIp, NetIp {
             Role role;
             String devIp;
             String netIp;
+
         }
     }
 

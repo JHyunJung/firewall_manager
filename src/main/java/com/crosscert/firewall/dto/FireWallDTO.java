@@ -1,6 +1,7 @@
 package com.crosscert.firewall.dto;
 
 import com.crosscert.firewall.entity.Ip;
+import com.crosscert.firewall.entity.IpPort;
 import com.crosscert.firewall.entity.Role;
 import lombok.Builder;
 import lombok.Value;
@@ -11,8 +12,8 @@ import java.util.Map;
 public enum FireWallDTO {;
     private interface Id { Long getId();}
     private interface Start { String getStart(); }
-    private interface Destination { String getStart(); }
-    private interface Port { int getPort(); }
+    private interface Destination { String getDestination(); }
+    private interface Port { List<IpPort> getPort(); }
     private interface EndDate { String getEndDate(); }
     private interface Ended { boolean isEnded(); }
     private interface Member { String getMember(); }
@@ -23,7 +24,7 @@ public enum FireWallDTO {;
         public static class Create implements Start, Destination, Port, EndDate, Member{
             String start;
             String destination;
-            int port;
+            List<IpPort> port;
             String endDate;
             String member;
         }
@@ -37,11 +38,9 @@ public enum FireWallDTO {;
         }
 
         @Value
-        public static class Public implements Id, Start, Destination, Port, EndDate, Ended, Member{
+        public static class Public implements Id, Start, EndDate, Ended, Member{
             Long id;
             String start;
-            String destination;
-            int port;
             String member;
             String endDate;
             boolean ended;

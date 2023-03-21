@@ -1,17 +1,30 @@
 package com.crosscert.firewall.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Embeddable;
+import javax.persistence.*;
 import java.util.Objects;
 
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Getter
-@Embeddable
-public class IpPort {
+@Entity
+public class IpPort extends BaseTimeEntity{
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column
     private int port;
+
+    @ManyToOne
+    @JoinColumn(name = "firewall_id")
+    private FireWall fireWall;
 
     public IpPort (int port){
         if(!isPortRange(port)){

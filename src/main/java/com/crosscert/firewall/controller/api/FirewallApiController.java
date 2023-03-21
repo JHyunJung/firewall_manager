@@ -1,16 +1,15 @@
 package com.crosscert.firewall.controller.api;
 
-import com.crosscert.firewall.Utill.RtnValue;
 import com.crosscert.firewall.dto.FireWallDTO;
-import com.crosscert.firewall.entity.FireWall;
 import com.crosscert.firewall.service.FireWallService;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController

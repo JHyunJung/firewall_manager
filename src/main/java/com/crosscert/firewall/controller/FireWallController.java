@@ -39,8 +39,6 @@ public class FireWallController {
         return new FireWallDTO.Response.Public(
                 fireWall.getId(),
                 fireWall.getStart().getAddressValue(),
-                fireWall.getDestination().getAddressValue(),
-                fireWall.getPort().getPort(),
                 fireWall.getMember().getName(),
                 fireWall.getEndDate().toString(),
                 fireWall.getIsEnded()

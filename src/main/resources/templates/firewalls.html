@@ -21,30 +21,15 @@
                 <tr>
                     <th>번호</th>
                     <th>출발지</th>
-                    <th>목적지</th>
-                    <th>포트</th>
                     <th>사용자</th>
                     <th>종료일</th>
                     <th>종료 여부</th>
                 </tr>
                 </thead>
-                <tfoot>
-                <tr>
-                    <th>번호</th>
-                    <th>출발지</th>
-                    <th>목적지</th>
-                    <th>포트</th>
-                    <th>사용자</th>
-                    <th>종료일</th>
-                    <th>종료 여부</th>
-                </tr>
-                </tfoot>
                 <tbody>
                 <tr th:each="f: ${firewalls}">
                     <td th:text="${f.id}"></td>
                     <td th:text="${f.start}"></td>
-                    <td th:text="${f.destination}"></td>
-                    <td th:text="${f.port}"></td>
                     <td th:text="${f.member}"></td>
                     <td th:text="${f.endDate}"></td>
                     <td th:text="${f.isEnded}"></td>
