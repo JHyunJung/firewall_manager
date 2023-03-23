@@ -68,10 +68,10 @@ public class MemberService implements UserDetailsService {
             throw new IllegalArgumentException("이미 존재하는 회원입니다.");
         }
 
-        //중복 IP주소 검증
-        if (ipService.isPresentIp(new IpAddress(memberDTO.getDevIp())) || ipService.isPresentIp(new IpAddress(memberDTO.getNetIp()))){
-            throw new IllegalArgumentException("이미 존재하는 IP주소 입니다.");
-        }
+//        //중복 IP주소 검증
+//        if (ipService.isPresentIp(new IpAddress(memberDTO.getDevIp())) || ipService.isPresentIp(new IpAddress(memberDTO.getNetIp()))){
+//            throw new IllegalArgumentException("이미 존재하는 IP주소 입니다.");
+//        }
 
         //DTO -> Entity
         Member member = Member.builder()
@@ -80,8 +80,8 @@ public class MemberService implements UserDetailsService {
                 .password(passwordEncoder.encode(memberDTO.getPassword()))
                 .role(memberDTO.getRole()).build();
 
-        member.setDevIpByAddress(memberDTO.getDevIp(), memberDTO.getName());
-        member.setNetIpByAddress(memberDTO.getNetIp(), memberDTO.getName());
+//        member.setDevIpByAddress(memberDTO.getDevIp(), memberDTO.getName());
+//        member.setNetIpByAddress(memberDTO.getNetIp(), memberDTO.getName());
         memberRepository.save(member);
     }
 

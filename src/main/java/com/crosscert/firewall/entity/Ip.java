@@ -49,9 +49,9 @@ public class Ip extends BaseTimeEntity{
         this.netMember = netMember;
     }
 
-    public void memberUpdate(Member member) {
-        this.devMember = member;
-        this.netMember = member;
+
+    public void editDescription(String description){
+        this.description = description;
     }
 
 
