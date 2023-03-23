@@ -8,10 +8,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -39,10 +37,11 @@ public class LoginController {
 
     //회원가입 진행
     @PostMapping("/signup")
-    public String signup(MemberDTO.Request.Create memberDTO){
+    public String signup(MemberDTO.Request.Create memberDTO, Model model){
         log.info("{}.signup",this.getClass());
         memberService.signup(memberDTO);
-        return "redirect:/login";
+        model.addAttribute("signupSuccess", "회원가입 성공!");
+        return "login";
     }
 
 

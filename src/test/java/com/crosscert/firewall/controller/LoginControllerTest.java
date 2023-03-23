@@ -2,8 +2,11 @@ package com.crosscert.firewall.controller;
 
 import com.crosscert.firewall.config.DatabaseCleanup;
 import com.crosscert.firewall.dto.MemberDTO;
+import com.crosscert.firewall.entity.Ip;
+import com.crosscert.firewall.entity.IpAddress;
 import com.crosscert.firewall.entity.Role;
 import com.crosscert.firewall.repository.MemberRepository;
+import com.crosscert.firewall.service.IpService;
 import com.crosscert.firewall.service.MemberService;
 import org.aspectj.lang.annotation.Before;
 import org.junit.jupiter.api.AfterEach;
@@ -30,6 +33,9 @@ public class LoginControllerTest {
 
     @Autowired
     private MemberService memberService;
+    @Autowired
+    private IpService ipService;
+
 
     @Autowired
     private DatabaseCleanup databaseCleanup;
@@ -40,7 +46,7 @@ public class LoginControllerTest {
         databaseCleanup.execute();
 
         MemberDTO.Request.Create createDto = new MemberDTO.Request.Create(
-                "test", "test@crosscert.com", "password", Role.MEMBER, "172.77.0.1", "172.77.0.2");
+                "test", "test@crosscert.com", "password", Role.MEMBER);
         memberService.signup(createDto);
     }
 
@@ -82,6 +88,12 @@ public class LoginControllerTest {
     @Test
     @DisplayName("IP_중복_체크")
     public void IP_중복_체크() throws Exception {
+
+        //when
+        Ip ip = new Ip("172.77.0.1","description");
+        ipService.save(ip);
+
+
         ResultActions resultActions = mockMvc.perform(get("/signup/checkDuplicateIpAddress")
                         .param("ipAddress", "172.77.0.1"))
                 .andExpect(status().is2xxSuccessful());
