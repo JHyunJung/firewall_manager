@@ -39,14 +39,8 @@ public class LoginControllerTest {
 
         databaseCleanup.execute();
 
-        MemberDTO.Request.Create createDto = MemberDTO.Request.Create.builder()
-                .email("test@crosscert.com")
-                .name("test")
-                .password("password")
-                .devIp("172.77.0.1")
-                .netIp("172.77.0.2")
-                .role(Role.MEMBER)
-                .build();
+        MemberDTO.Request.Create createDto = new MemberDTO.Request.Create(
+                "test", "test@crosscert.com", "password", Role.MEMBER, "172.77.0.1", "172.77.0.2");
         memberService.signup(createDto);
     }
 

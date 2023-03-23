@@ -1,10 +1,7 @@
 package com.crosscert.firewall.dto;
 
 import com.crosscert.firewall.entity.Role;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
-import lombok.Builder;
-import lombok.Value;
+import lombok.*;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Positive;
@@ -20,8 +17,10 @@ public enum MemberDTO {;
 //    private interface FireWall { List<FireWall> getFireWall();}
 
     public enum Request{;
-        @Builder
-        @Value public static class Create implements Name, Email, Password, MemberRole, DevIp, NetIp {
+        @NoArgsConstructor
+        @AllArgsConstructor
+        @Getter
+        public static class Create implements Name, Email, Password, MemberRole, DevIp, NetIp{
              String name;
              String email;
              String password;
@@ -30,18 +29,21 @@ public enum MemberDTO {;
              String netIp;
         }
 
-        @Value
-//        @Builder
+        @NoArgsConstructor
+        @AllArgsConstructor
+        @Getter
         public static class Edit implements MemberRole, DevIp, NetIp {
             Role role;
             String devIp;
             String netIp;
-
         }
     }
 
     public enum Response{;
-        @Value public static class Public implements Id, Name, Email, MemberRole, DevIp, NetIp {
+        @NoArgsConstructor
+        @AllArgsConstructor
+        @Getter
+        public static class Public implements Id, Name, Email, MemberRole, DevIp, NetIp {
             Long id;
             String name;
             String email;
@@ -50,11 +52,17 @@ public enum MemberDTO {;
             String netIp;
         }
 
-        @Value public static class Create implements Id{
+        @NoArgsConstructor
+        @AllArgsConstructor
+        @Getter
+        public static class Create implements Id{
             Long id;
         }
 
-        @Value public static class Edit implements Id, MemberRole, DevIp, NetIp {
+        @NoArgsConstructor
+        @AllArgsConstructor
+        @Getter
+        public static class Edit implements Id, MemberRole, DevIp, NetIp {
             Long id;
             Role role;
             String devIp;
