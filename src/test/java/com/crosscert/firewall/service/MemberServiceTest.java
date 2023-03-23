@@ -41,7 +41,7 @@ class MemberServiceTest {
 
     @Test
     @DisplayName("findById_Exception_테스트")
-    public void findById_Exception_테스트(){
+    public void findById_Exception_테스트() {
         assertThatThrownBy(() -> {
             memberService.findById(100L);
         }).isInstanceOf(IllegalArgumentException.class)
@@ -49,7 +49,7 @@ class MemberServiceTest {
     }
 
     @BeforeEach
-    void clean(){
+    void clean() {
         databaseCleanup.execute();
     }
 
@@ -94,7 +94,7 @@ class MemberServiceTest {
 
     @Test
     @DisplayName("Member_edit_테스트")
-    public void Member_edit_테스트(){
+    public void Member_edit_테스트() {
         //given
 
         String name = "test";
@@ -136,49 +136,31 @@ class MemberServiceTest {
     @Test
     public void 정상적인_회원가입() {
         //given
-        MemberDTO.Request.Create createDto = MemberDTO.Request.Create.builder()
-                .email("test@crosscert.com")
-                .name("test")
-                .password("password")
-                .devIp("172.77.0.1")
-                .netIp("172.77.0.2")
-                .role(Role.MEMBER)
-                .build();
+        MemberDTO.Request.Create createDto = new MemberDTO.Request.Create(
+                "test", "test@crosscert.com", "password", Role.MEMBER, "172.77.0.1", "172.77.0.2");
 
         //when
         memberService.signup(createDto);
 
         //then
         Member findMember = memberRepository.findByEmail(createDto.getEmail()).orElseThrow(() -> new IllegalStateException("회원정보 없음"));
-        assertEquals(createDto.getName(),findMember.getName());
+        assertEquals(createDto.getName(), findMember.getName());
         assertTrue(passwordEncoder.matches(createDto.getPassword(), findMember.getPassword()));
-        assertEquals(createDto.getDevIp(),findMember.getDevIp().getAddress().getAddress());
-        assertEquals(createDto.getNetIp(),findMember.getNetIp().getAddress().getAddress());
-        assertEquals(createDto.getRole(),findMember.getRole());
+        assertEquals(createDto.getDevIp(), findMember.getDevIp().getAddress().getAddress());
+        assertEquals(createDto.getNetIp(), findMember.getNetIp().getAddress().getAddress());
+        assertEquals(createDto.getRole(), findMember.getRole());
     }
 
     @Test
     public void 중복회원가입시_IllegalStateException() {
         //given
-        MemberDTO.Request.Create createDto = MemberDTO.Request.Create.builder()
-                .email("test2@crosscert.com")
-                .name("test2")
-                .password("password1")
-                .devIp("172.77.0.1")
-                .netIp("172.77.0.2")
-                .role(Role.MEMBER)
-                .build();
+        MemberDTO.Request.Create createDto = new MemberDTO.Request.Create(
+                "test2", "test2@crosscert.com", "password", Role.MEMBER, "172.77.0.1", "172.77.0.2");
 
         memberService.signup(createDto);
 
-        MemberDTO.Request.Create createDto2 = MemberDTO.Request.Create.builder()
-                .email("test2@crosscert.com")   //이메일(아이디) 중복
-                .name("test3")
-                .password("password3")
-                .devIp("172.77.0.3")
-                .netIp("172.77.0.4")
-                .role(Role.MEMBER)
-                .build();
+        MemberDTO.Request.Create createDto2 = new MemberDTO.Request.Create(
+                "test3", "test2@crosscert.com", "password3", Role.MEMBER, "172.77.0.3", "172.77.0.4");
 
         //when & then
         assertThatThrownBy(() -> memberService.signup(createDto))
@@ -190,17 +172,13 @@ class MemberServiceTest {
     @DisplayName("이메일중복체크")
     public void 이메일중복체크() {
         // Given
-        MemberDTO.Request.Create createDto = MemberDTO.Request.Create.builder()
-                .email("test4@crosscert.com")
-                .name("test4")
-                .password("password4")
-                .devIp("172.77.0.1")
-                .netIp("172.77.0.2")
-                .role(Role.MEMBER)
-                .build();
+        MemberDTO.Request.Create createDto =
+                new MemberDTO.Request.Create(
+                        "test4", "test4@crosscert.com", "password3", Role.MEMBER, "172.77.0.1", "172.77.0.2");
+
         memberService.signup(createDto);
 
-        String email =  "test5@crosscert.com";
+        String email = "test5@crosscert.com";
         String email2 = "test4@crosscert.com";   //이메일 중복
 
         // When

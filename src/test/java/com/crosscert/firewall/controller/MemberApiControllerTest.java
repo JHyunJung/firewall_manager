@@ -106,6 +106,8 @@ class MemberApiControllerTest {
             MemberDTO.Request.Edit editDto = new MemberDTO.Request.Edit(
                     Role.LEADER, "222.222.222.222", "123.123.123.123"
             );
+
+
             ObjectMapper mapper = new ObjectMapper();
             //when then
             ResultActions result = mockMvc.perform(put("/api/member/{id}", member.getId())
