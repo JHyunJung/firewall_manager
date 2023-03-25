@@ -26,7 +26,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @Transactional
 @Log4j2
-public class MemberService implements UserDetailsService {
+public class MemberService {
 
     private final MemberRepository memberRepository;
     private final PasswordEncoder passwordEncoder;
@@ -68,11 +68,6 @@ public class MemberService implements UserDetailsService {
             throw new IllegalArgumentException("이미 존재하는 회원입니다.");
         }
 
-//        //중복 IP주소 검증
-//        if (ipService.isPresentIp(new IpAddress(memberDTO.getDevIp())) || ipService.isPresentIp(new IpAddress(memberDTO.getNetIp()))){
-//            throw new IllegalArgumentException("이미 존재하는 IP주소 입니다.");
-//        }
-
         //DTO -> Entity
         Member member = Member.builder()
                 .name(memberDTO.getName())
@@ -84,16 +79,6 @@ public class MemberService implements UserDetailsService {
 //        member.setNetIpByAddress(memberDTO.getNetIp(), memberDTO.getName());
         memberRepository.save(member);
     }
-
-    //스프링시큐리티 로그인
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Member member = memberRepository.findByEmail(username).orElseThrow(() -> new UsernameNotFoundException("없는 회원 정보 입니다."));
-        List<GrantedAuthority> authorities = new ArrayList<>();
-        authorities.add(new SimpleGrantedAuthority(member.getRole().name()));
-        return new User(member.getEmail(), member.getPassword(), authorities);
-    }
-
 
     public void deleteByEmail(String email) {
         memberRepository.deleteByEmail(email);
