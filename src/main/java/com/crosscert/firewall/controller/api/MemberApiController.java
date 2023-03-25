@@ -38,8 +38,23 @@ public class MemberApiController {
     public ResponseEntity<MemberDTO.Response.Edit> edit(@PathVariable("id") Long id, @RequestBody MemberDTO.Request.Edit memberDTO) {
         Member findMember = memberService.findById(id);
 
-        Ip devIp = ipService.findByAddress(new IpAddress(memberDTO.getDevIp()));
-        Ip netIp = ipService.findByAddress(new IpAddress(memberDTO.getNetIp()));
+        Ip devIp;
+        Ip netIp;
+
+        //개발망IP
+        if(memberDTO.getDevIp().equals(findMember.getDevIpValue())){
+            devIp = findMember.getDevIp();
+        }else {
+            devIp = ipService.allocateIp(memberDTO.getDevIp(),findMember.getName()+" 개발망");
+            findMember.getDevIp().editDescription(null);
+        }
+        //인터넷망IP
+        if(memberDTO.getNetIp().equals(findMember.getNetIpValue())){
+            netIp = findMember.getNetIp();
+        }else {
+            netIp = ipService.allocateIp(memberDTO.getNetIp(),findMember.getName()+" 인터넷망");
+            findMember.getNetIp().editDescription(null);
+        }
 
         memberService.edit(findMember, memberDTO.getRole(), devIp, netIp);
         MemberDTO.Response.Edit resultDto = convertToEditDto(findMember);
@@ -60,6 +75,7 @@ public class MemberApiController {
     private MemberDTO.Response.Edit convertToEditDto(Member member){
         return new MemberDTO.Response.Edit(
                 member.getId(),
+                member.getName(),
                 member.getRole(),
                 member.getDevIpValue(),
                 member.getNetIpValue()

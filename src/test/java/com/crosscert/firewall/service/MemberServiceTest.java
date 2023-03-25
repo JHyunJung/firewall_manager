@@ -137,7 +137,7 @@ class MemberServiceTest {
     public void 정상적인_회원가입() {
         //given
         MemberDTO.Request.Create createDto = new MemberDTO.Request.Create(
-                "test", "test@crosscert.com", "password", Role.MEMBER, "172.77.0.1", "172.77.0.2");
+                "test", "test@crosscert.com", "password", Role.MEMBER);
 
         //when
         memberService.signup(createDto);
@@ -146,8 +146,6 @@ class MemberServiceTest {
         Member findMember = memberRepository.findByEmail(createDto.getEmail()).orElseThrow(() -> new IllegalStateException("회원정보 없음"));
         assertEquals(createDto.getName(), findMember.getName());
         assertTrue(passwordEncoder.matches(createDto.getPassword(), findMember.getPassword()));
-        assertEquals(createDto.getDevIp(), findMember.getDevIp().getAddress().getAddress());
-        assertEquals(createDto.getNetIp(), findMember.getNetIp().getAddress().getAddress());
         assertEquals(createDto.getRole(), findMember.getRole());
     }
 
@@ -155,12 +153,12 @@ class MemberServiceTest {
     public void 중복회원가입시_IllegalStateException() {
         //given
         MemberDTO.Request.Create createDto = new MemberDTO.Request.Create(
-                "test2", "test2@crosscert.com", "password", Role.MEMBER, "172.77.0.1", "172.77.0.2");
+                "test2", "test2@crosscert.com", "password", Role.MEMBER);
 
         memberService.signup(createDto);
 
         MemberDTO.Request.Create createDto2 = new MemberDTO.Request.Create(
-                "test3", "test2@crosscert.com", "password3", Role.MEMBER, "172.77.0.3", "172.77.0.4");
+                "test3", "test2@crosscert.com", "password3", Role.MEMBER);
 
         //when & then
         assertThatThrownBy(() -> memberService.signup(createDto))
@@ -174,7 +172,7 @@ class MemberServiceTest {
         // Given
         MemberDTO.Request.Create createDto =
                 new MemberDTO.Request.Create(
-                        "test4", "test4@crosscert.com", "password3", Role.MEMBER, "172.77.0.1", "172.77.0.2");
+                        "test4", "test4@crosscert.com", "password3", Role.MEMBER);
 
         memberService.signup(createDto);
 

@@ -43,4 +43,24 @@ public class IpService {
     public boolean isPresentIp(IpAddress address) {
         return ipRepository.existsByAddress(address);
     }
+
+    //DB에 없으면 신규 IP 생성 / 있으면 다른 회원이 미사용중일때만 가능
+    public Ip allocateIp(String address, String description){
+        IpAddress ipAddress = new IpAddress(address);
+
+        //DB에 없을 경우 신규 생성
+        if(!isPresentIp(ipAddress)) {
+            return new Ip(address,description);
+        }
+
+        //DB에 있을 경우 다른 회원이 미사용중일때만 가능
+        Ip findIp = findByAddress(ipAddress);
+        if(findIp.getDevMember() == null && findIp.getNetMember() == null){
+            findIp.editDescription(description);
+            return findIp;
+        }else{
+            throw new IllegalArgumentException("해당 IP는 다른 이용자가 사용중입니다.");
+        }
+
+    }
 }

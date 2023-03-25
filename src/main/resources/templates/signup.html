@@ -82,32 +82,7 @@
                             </div>
                         </div>
 
-                        <div class="col-12">
-                            <label for="devIp" class="form-label">개발망 IP주소</label>
-                            <input type="text" onfocusout="checkIpAddress('devIp');" class="form-control" id="devIp" placeholder="예) 172.77.33.11" name="devIp"
-                                   pattern="^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$" required>
-                            <div class="invalid-feedback" >
-                                IP주소를 올바르게 입력하세요.
-                            </div>
-                            <div class="invalid-feedback" id="devIpNotOkMsg" style="display: none;">
-                                중복된 IP주소 입니다.
-                            </div>
-                        </div>
-
-                        <div class="col-12">
-                            <label for="netIp" class="form-label">인터넷망 IP주소</label>
-                            <input type="text" onfocusout="checkIpAddress('netIp');" class="form-control" id="netIp" placeholder="예) 172.77.33.11" name="netIp"
-                                   pattern="^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$" required>
-                            <div class="invalid-feedback">
-                                IP주소를 올바르게 입력하세요.
-                            </div>
-                            <div class="invalid-feedback" id="netIpNotOkMsg" style="display: none;">
-                                중복된 IP주소 혹은 입력하신 개발망 IP주소와 동일합니다.
-                            </div>
-                        </div>
-
                         <input type="hidden" name="role" value="MEMBER" readonly/><br>
-
                     </div>
 
                     <hr class="my-4">
