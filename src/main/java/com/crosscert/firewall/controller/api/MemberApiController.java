@@ -46,14 +46,14 @@ public class MemberApiController {
             devIp = findMember.getDevIp();
         }else {
             devIp = ipService.allocateIp(memberDTO.getDevIp(),findMember.getName()+" 개발망");
-            findMember.getDevIp().editDescription(null);
+            findMember.editDevIpDescription(null);
         }
         //인터넷망IP
         if(memberDTO.getNetIp().equals(findMember.getNetIpValue())){
             netIp = findMember.getNetIp();
         }else {
             netIp = ipService.allocateIp(memberDTO.getNetIp(),findMember.getName()+" 인터넷망");
-            findMember.getNetIp().editDescription(null);
+            findMember.editNetIpDescription(null);
         }
 
         memberService.edit(findMember, memberDTO.getRole(), devIp, netIp);

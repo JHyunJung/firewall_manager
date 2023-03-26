@@ -49,11 +49,7 @@ public class Ip extends BaseTimeEntity{
         this.netMember = netMember;
     }
 
-
-    public void editDescription(String description){
+    public void setDescription(String description) {
         this.description = description;
     }
-
-
-
 }

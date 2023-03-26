@@ -56,7 +56,7 @@ public class IpService {
         //DB에 있을 경우 다른 회원이 미사용중일때만 가능
         Ip findIp = findByAddress(ipAddress);
         if(findIp.getDevMember() == null && findIp.getNetMember() == null){
-            findIp.editDescription(description);
+            findIp.setDescription(description);
             return findIp;
         }else{
             throw new IllegalArgumentException("해당 IP는 다른 이용자가 사용중입니다.");
