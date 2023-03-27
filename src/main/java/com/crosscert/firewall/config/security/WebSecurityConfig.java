@@ -27,7 +27,6 @@ public class WebSecurityConfig {
     @Profile("prod")
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
         log.info("운영용 Spring Security 설정");
-        //TODO : 유저 관리는 LEADER 권한만 가능하도록 설정 수정하기
         return httpSecurity
                 .cors().disable()
                 .csrf().disable()
@@ -38,7 +37,8 @@ public class WebSecurityConfig {
                     .antMatchers("/").permitAll()           //홈화면
                     .antMatchers("/signup/**").anonymous()     //회원가입
                     .antMatchers("/login").anonymous()      //로그인
-//                    .antMatchers("/leader/**").hasRole("LEADER")
+                    .antMatchers("/api/member/**").hasAuthority("LEADER")
+                    .antMatchers("/member/**").hasAuthority("LEADER")    //  /members(회원목록 조회)는 MEMBER 권한도 허용
                 .anyRequest().authenticated() //그 외 로그인 필요
                 .and()
                 .formLogin()

@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layouts/layout}">
+      layout:decorate="~{layouts/layout}"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>회원 리스트</title>
@@ -36,7 +37,7 @@
                             <th>권한(ROLE)</th>
                             <th>개발망 IP</th>
                             <th>인터넷망 IP</th>
-                            <th>수정</th>
+                            <th sec:authorize="hasAuthority('LEADER')">수정</th>
                         </tr>
                         </thead>
                         <tfoot>
@@ -47,7 +48,7 @@
                             <th>권한(ROLE)</th>
                             <th>개발망 IP</th>
                             <th>인터넷망 IP</th>
-                            <th>수정</th>
+                            <th sec:authorize="hasAuthority('LEADER')">수정</th>
                         </tr>
                         </tfoot>
                         <tbody>
@@ -58,7 +59,7 @@
                             <td th:text="${m.role}"></td>
                             <td th:text="${m.devIp != null} ? ${m.devIp} : ''"></td>
                             <td th:text="${m.netIp != null} ? ${m.netIp} : ''"></td>
-                            <td>
+                            <td sec:authorize="hasAuthority('LEADER')">
                                 <a class="btn btn-primary" th:text="수정하기" th:href="@{/member/{id}(id=${m.id})}"></a>
                             </td>
                         </tr>

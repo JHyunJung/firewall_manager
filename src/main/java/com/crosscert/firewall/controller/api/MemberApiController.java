@@ -16,13 +16,14 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequiredArgsConstructor
+@RequestMapping("/api")
 public class MemberApiController {
 
     private final MemberService memberService;
     private final IpService ipService;
 
 
-    @GetMapping("/api/members")
+    @GetMapping("/member/list") // 현재 미사용 API
     public ResponseEntity<List<MemberDTO.Response.Public>> findAll(){
 
         List<Member> memberList = memberService.findAllFetch();
@@ -34,7 +35,7 @@ public class MemberApiController {
     }
 
 
-    @PutMapping("/api/member/{id}")
+    @PutMapping("/member/{id}")
     public ResponseEntity<MemberDTO.Response.Edit> edit(@PathVariable("id") Long id, @RequestBody MemberDTO.Request.Edit memberDTO) {
         Member findMember = memberService.findById(id);
 
