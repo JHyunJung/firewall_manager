@@ -60,7 +60,7 @@ public class MemberService {
     }
 
     @Transactional
-    public void signup(MemberDTO.Request.Create memberDTO) {
+    public boolean signup(MemberDTO.Request.Create memberDTO) {
         log.info("{}.signup",this.getClass());
 
         //중복 회원 검증
@@ -78,6 +78,8 @@ public class MemberService {
 //        member.setDevIpByAddress(memberDTO.getDevIp(), memberDTO.getName());
 //        member.setNetIpByAddress(memberDTO.getNetIp(), memberDTO.getName());
         memberRepository.save(member);
+
+        return true;
     }
 
     public void deleteByEmail(String email) {

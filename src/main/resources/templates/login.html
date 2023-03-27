@@ -40,8 +40,8 @@
                                     </div>
                                     <div class="card-footer text-center py-3">
                                         <!-- alert 창 -->
-                                        <div th:if="${signupSuccess}" class="alert alert-success alert-dismissible fade show" role="alert">
-                                            <span th:text="${signupSuccess}"></span>
+                                        <div th:if="${signupResult == true }" class="alert alert-success alert-dismissible fade show" role="alert">
+                                            <span>회원가입 성공!</span>
                                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                         </div>
                                         <div class="small"><a th:href="@{/signup}">회원가입</a></div>
