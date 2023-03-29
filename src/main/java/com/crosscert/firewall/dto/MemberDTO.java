@@ -21,14 +21,12 @@ public enum MemberDTO {;
         @NoArgsConstructor
         @AllArgsConstructor
         @Getter
-        public static class Create implements Name, Email, Password, MemberRole, DevIp, NetIp{
+        @Setter
+        public static class Create implements Name, Email, Password, MemberRole{
              String name;
              String email;
              String password;
              Role role;
-             String devIp;
-             String netIp;
-
         }
 
         @NoArgsConstructor
@@ -70,8 +68,10 @@ public enum MemberDTO {;
         @Getter
         @Setter
         @Builder
-        public static class Edit implements Id, MemberRole, DevIp, NetIp {
+        public static class Edit implements Id, Name, MemberRole, DevIp, NetIp {
+
             Long id;
+            String name;
             Role role;
             String devIp;
             String netIp;

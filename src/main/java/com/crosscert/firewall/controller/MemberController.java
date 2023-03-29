@@ -4,6 +4,7 @@ import com.crosscert.firewall.dto.MemberDTO;
 import com.crosscert.firewall.entity.Ip;
 import com.crosscert.firewall.entity.IpAddress;
 import com.crosscert.firewall.entity.Member;
+import com.crosscert.firewall.entity.Role;
 import com.crosscert.firewall.service.IpService;
 import com.crosscert.firewall.service.MemberService;
 import lombok.RequiredArgsConstructor;
@@ -38,13 +39,16 @@ public class MemberController {
         Member member = memberService.findById(id);
         MemberDTO.Response.Public memberDto = convertToPublicDto(member);
 
-        List<Ip> ipList = ipService.findAllWithoutMember();
-        List<String> addresses = ipList.stream()
-                .map(Ip::getAddressValue)
-                .collect(Collectors.toList());
+//        List<Ip> ipList = ipService.findAllWithoutMember();
+//        List<String> addresses = ipList.stream()
+//                .map(Ip::getAddressValue)
+//                .collect(Collectors.toList());
 
+
+
+        model.addAttribute("roles", Role.values());
         model.addAttribute("member", memberDto);
-        model.addAttribute("addresses", addresses);
+//        model.addAttribute("addresses", addresses);
         return "memberEdit";
     }
 

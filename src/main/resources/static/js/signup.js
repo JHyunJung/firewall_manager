@@ -41,35 +41,37 @@ function validatePasswordConfirm() {
 passwordInput.addEventListener("input", validatePasswordConfirm);
 passwordConfirmInput.addEventListener("input", validatePasswordConfirm);
 
-function checkIpAddress(ipType){
-    let ipAddress = document.getElementById(ipType).value;
-    let ipNotOkMsg = document.getElementById(ipType+"NotOkMsg");
-    if(ipAddress){
-        console.log('ipType : '+ipType);
-        console.log('ipAddress : '+ipAddress);
-        $.ajax({
-            url: '/signup/checkDuplicateIpAddress',
-            type: 'GET',
-            data: { 'ipAddress': ipAddress },
-            success: function(data) {
-                if(data.result === true) {
-                    console.log("이미 등록된 IP주소")
-                    ipNotOkMsg.style.display = "block";
-                    document.getElementById(ipType).value = "";
-                    document.getElementById(ipType).focus();
-                }else {
-                    console.log("사용가능한 IP주소")
-                    ipNotOkMsg.style.display = "none";
-                }
-            }
-        });
 
-        if (document.getElementById('devIp').value === document.getElementById('netIp').value){
-            document.getElementById("netIpNotOkMsg").style.display = "block";
-            document.getElementById('netIp').value = "";
-            document.getElementById('netIp').focus();
-        }
-    }
-
-
-}
+//
+// function checkIpAddress(ipType){
+//     let ipAddress = document.getElementById(ipType).value;
+//     let ipNotOkMsg = document.getElementById(ipType+"NotOkMsg");
+//     if(ipAddress){
+//         console.log('ipType : '+ipType);
+//         console.log('ipAddress : '+ipAddress);
+//         $.ajax({
+//             url: '/signup/checkDuplicateIpAddress',
+//             type: 'GET',
+//             data: { 'ipAddress': ipAddress },
+//             success: function(data) {
+//                 if(data.result === true) {
+//                     console.log("이미 등록된 IP주소")
+//                     ipNotOkMsg.style.display = "block";
+//                     document.getElementById(ipType).value = "";
+//                     document.getElementById(ipType).focus();
+//                 }else {
+//                     console.log("사용가능한 IP주소")
+//                     ipNotOkMsg.style.display = "none";
+//                 }
+//             }
+//         });
+//
+//         if (document.getElementById('devIp').value === document.getElementById('netIp').value){
+//             document.getElementById("netIpNotOkMsg").style.display = "block";
+//             document.getElementById('netIp').value = "";
+//             document.getElementById('netIp').focus();
+//         }
+//     }
+//
+//
+// }

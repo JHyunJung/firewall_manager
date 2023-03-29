@@ -23,54 +23,63 @@
         </div>
         <div class="card mb-4">
             <div class="card-header">
-                <i class="fas fa-table me-1"></i>
+                <i class="bi bi-person-circle"></i>
                 계정 수정
             </div>
             <div class="card-body">
-                <form th:action="@{/member/{id}(id=${member.id})}" th:object="${member}" th:method="PUT">
-                    <div>
-                        <label for="name">이름</label>
-                        <input type="text" id=name th:field="*{name}">
-                    </div>
-                    <div>
-                        <label for="email">이메일</label>
-                        <input type="email" id=email th:field="*{email}">
-                    </div>
-                    <div>
-                        <label for="role">Role</label>
-                        <input type="text" id=role th:field="*{role}">
-                    </div>
-                    <div>
-                        <label for="devIp">개발망 Ip</label>
-                        <div class="dropdown ip-div">
-                            <input type="text" class="devIp" id=devIp style="display: none">
-                            <button class="btn btn-outline-primary dropdown-toggle devBtn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                IP List
-                            </button>
-                            <ul class="dropdown-menu ip-menu-div" aria-labelledby="dropdownMenuButton1" >
-                                <li class="dropdown-item" th:each="address : ${addresses}" th:text="${address}"></li>
-                            </ul>
+<!--                <form class="needs-validation" novalidate th:object="${member}" th:action="@{/api/v1/member/{id}(id=${member.id})}">-->
+                <form id="edit-form" class="needs-validation" novalidate th:object="${member}">
+                    <div class="row g-3">
+                        <div class="col-12">
+                            <label for="email" class="form-label">아이디(이메일)</label>
+                            <input type="email" class="form-control" id="email" name="email" th:field="*{email}" readonly>
+                        </div>
+
+                        <div class="col-12">
+                            <label for="name" class="form-label">이름</label>
+                            <input type="text" class="form-control" id="name" name="name" th:field="*{name}" readonly>
+                        </div>
+
+                        <div class="col-12">
+                            <label for="name" class="form-label">권한(ROLE)</label>
+                            <select th:field="*{role}" class="form-select">
+                                <option th:each="role : ${roles}" th:value="${role}" th:text="${role}" id=role name="role"></option>
+                            </select>
+                        </div>
+
+                        <div class="col-12">
+                            <label for="devIp" class="form-label">개발망 IP주소</label>
+                            <input type="text" class="form-control" id="devIp" placeholder="예) 172.77.33.11" name="devIp"
+                                   pattern="^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$" th:field="*{devIp}" required>
+                            <div class="invalid-feedback" >
+                                IP주소를 올바르게 입력하세요.
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <label for="netIp" class="form-label">인터넷망 IP주소</label>
+                            <input type="text" class="form-control" id="netIp" placeholder="예) 172.77.33.11" name="netIp"
+                                   pattern="^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$" th:field="*{netIp}" required>
+                            <div class="invalid-feedback">
+                                IP주소를 올바르게 입력하세요.
+                            </div>
                         </div>
                     </div>
-                    <div>
-                        <label for="netIp">인터넷망 Ip</label>
-                        <div class="dropdown ip-div">
-                            <input type="text" class="netIp" id=netIp style="display: none">
-                            <button class="btn btn-outline-primary dropdown-toggle netBtn" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
-                                IP List
-                            </button>
-                            <ul class="dropdown-menu ip-menu-net" aria-labelledby="dropdownMenuButton1" >
-                                <li class="dropdown-item" th:each="address : ${addresses}" th:text="${address}"></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <button type="submit" class="btn btn-primary">정보 수정</button>
+
+                    <hr class="my-4">
+
+                    <button class="w-100 btn btn-primary btn-lg" type="submit">수정하기</button>
                 </form>
             </div>
         </div>
     </div>
+    <script th:inline="javascript">
+        const memberId = [[${member.id}]];
+    </script>
+    <script src="/js/member.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="/js/form-validation.js"></script>
+    <script src="/js/bootstrap.bundle.min.js"></script> <!--TODO: 이거를 레이아웃에 넣으면 메뉴바 사람아이콘이 무반응이다. -->
 </main>
-<script src="/js/bootstrap.bundle.min.js"> </script>
-<script src="/js/member.js"> </script>
 </body>
 </html>
