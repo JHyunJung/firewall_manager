@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout}">
+<head>
+  <meta charset="UTF-8">
+  <title>방화벽 리스트</title>
+  <link rel="stylesheet" href="/css/css_member.css">
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+</head>
+<body>
+<main layout:fragment="content">
+  <div class="container-fluid px-4">
+    <h1 class="mt-4">AI Security 연구본부</h1>
+    <ol class="breadcrumb mb-4">
+      <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+      <li class="breadcrumb-item active">Tables</li>
+    </ol>
+    <div class="card mb-4">
+      <div class="card-body">
+        새로운 방화벽 등록
+      </div>
+    </div>
+    <div class="card mb-4">
+      <div class="card-header">
+        <i class="fas fa-table me-1"></i>
+        방화벽 등록
+      </div>
+      <div class="card-body">
+        <form th:action="@{/firewall}" th:object="${firewall}" th:method="POST">
+          <div>
+            <label for="description">내용</label>
+            <input type="text" id=description>
+          </div>
+          <div>
+            <label for="start">출발지</label>
+            <input type="email" id=start>
+          </div>
+          <div>
+            <label for="destination">도착지</label>
+            <input type="text" id=destination>
+          </div>
+          <div>
+            <label for="ports">포트</label>
+            <input type="text" id=ports>
+          </div>
+          <div>
+            <label >종료일</label>
+
+          </div>
+          <button type="submit" class="btn btn-primary">방화벽 생성</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</main>
+<script src="/js/bootstrap.bundle.min.js"> </script>
+<script src="/js/member.js"> </script>
+</body>
+</html>

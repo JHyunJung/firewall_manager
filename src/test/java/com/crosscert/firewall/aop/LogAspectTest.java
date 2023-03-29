@@ -24,5 +24,4 @@ class LogAspectTest {
         memberService.isPresentMember("test@test.com");
     }
 
-
 }

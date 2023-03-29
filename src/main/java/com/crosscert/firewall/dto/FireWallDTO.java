@@ -1,62 +1,61 @@
 package com.crosscert.firewall.dto;
 
-import com.crosscert.firewall.entity.Ip;
-import com.crosscert.firewall.entity.IpPort;
-import com.crosscert.firewall.entity.Role;
-import lombok.Builder;
-import lombok.Value;
+import com.crosscert.firewall.entity.*;
+import lombok.*;
 
+import java.time.LocalDate;
 import java.util.List;
-import java.util.Map;
 
 public enum FireWallDTO {;
     private interface Id { Long getId();}
     private interface Start { String getStart(); }
     private interface Destination { String getDestination(); }
     private interface Port { List<IpPort> getPort(); }
-    private interface EndDate { String getEndDate(); }
+    private interface EndDate { LocalDate getEndDate(); }
     private interface Ended { boolean isEnded(); }
-    private interface Member { String getMember(); }
+    private interface MemberId { Long getMemberId(); }
+    private interface MemberName { String getMemberName(); }
+    private interface Description { String getDescription(); }
 
     public enum Request{;
 
-        @Value
-        public static class Create implements Start, Destination, Port, EndDate, Member{
+        @NoArgsConstructor
+        @AllArgsConstructor
+        @Getter
+        public static class Create implements Start, Destination, Port, EndDate, MemberId {
             String start;
             String destination;
             List<IpPort> port;
-            String endDate;
-            String member;
+            LocalDate endDate;
+            Long memberId;
+
         }
     }
 
     public enum Response{;
 
-        @Value
+        @NoArgsConstructor
+        @AllArgsConstructor
+        @Getter
+        @Setter
+        @Builder
         public static class Create implements Id{
             Long id;
         }
 
-        @Value
-        public static class Public implements Id, Start, EndDate, Ended, Member{
+        @NoArgsConstructor
+        @AllArgsConstructor
+        @Getter
+        @Setter
+        @Builder
+        public static class Public implements Id, Start, Destination, EndDate, Ended, MemberName, Description {
             Long id;
             String start;
-            String member;
-            String endDate;
+            String destination;
+            String memberName;
+            String description;
+            LocalDate endDate;
             boolean ended;
         }
-
-//        public static class ListPage<T> implements Id, Start, Destination, Port, EndDate, Ended{
-//
-//            private Map<String, Object> pageInfo;
-//            private List<T> content;
-//
-//            Long id;
-//            String start;
-//            String destination;
-//            String port;
-//            String endDate;
-//            boolean ended;
-//        }
     }
 }

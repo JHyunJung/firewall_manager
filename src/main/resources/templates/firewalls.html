@@ -10,33 +10,57 @@
 </head>
 <body>
 <main layout:fragment="content">
+    <div class="container-fluid px-4">
+        <h1 class="mt-4">AI Security 연구본</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+            <li class="breadcrumb-item active">Tables</li>
+        </ol>
+        <div class="card mb-4">
+            <div class="card-body">
+                AI Security 연구본부 방화벽 목록 입니다.
+                <a class="btn btn-primary" th:text="생성하기" th:href="@{/firewall}"></a>
+            </div>
+        </div>
     <div class="card mb-4">
         <div class="card-header">
             <i class="fas fa-table me-1"></i>
             DataTable Example
         </div>
         <div class="card-body">
+
             <table id="datatablesSimple">
                 <thead>
                 <tr>
                     <th>번호</th>
                     <th>출발지</th>
                     <th>사용자</th>
+                    <th>내용</th>
                     <th>종료일</th>
                     <th>종료 여부</th>
+                    <th>수정</th>
+                    <th>삭제</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr th:each="f: ${firewalls}">
                     <td th:text="${f.id}"></td>
                     <td th:text="${f.start}"></td>
-                    <td th:text="${f.member}"></td>
+                    <td th:text="${f.memberName}"></td>
+                    <td th:text="${f.description}"></td>
                     <td th:text="${f.endDate}"></td>
-                    <td th:text="${f.isEnded}"></td>
+                    <td th:text="${f.ended} ? '해제 중' : '종료' "></td>
+                    <td>
+                        <a class="btn btn-primary" th:text="수정하기" th:href="@{/firewall/{id}(id=${f.id})}"></a>
+                    </td>
+                    <td>
+                        <a class="btn btn-danger" th:text="삭제하기" th:href="@{/firewall/{id}(id=${f.id})}"></a>
+                    </td>
                 </tr>
                 </tbody>
             </table>
         </div>
+    </div>
     </div>
 </main>
 

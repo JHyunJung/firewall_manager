@@ -37,6 +37,10 @@ public class IpPort extends BaseTimeEntity{
         return port >= 0 && port <= 65535;
     }
 
+    public void setFireWall(FireWall fireWall){
+        this.fireWall = fireWall;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
