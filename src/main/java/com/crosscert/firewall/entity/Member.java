@@ -1,5 +1,7 @@
 package com.crosscert.firewall.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 
 import javax.persistence.*;
@@ -31,17 +33,27 @@ public class Member extends BaseTimeEntity{
     @Enumerated(EnumType.STRING)
     private Role role;
 
+    @JsonBackReference
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "devIp_id")
     private Ip devIp;
 
+    @JsonBackReference
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "netIp_id")
     private Ip netIp;
 
+    @JsonManagedReference
     @Builder.Default
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private List<FireWall> fireWallList = new ArrayList<>();
+
+
+
+    public void addFireWall(FireWall fireWall){
+        this.fireWallList.add(fireWall);
+        fireWall.setMember(this);
+    }
 
     public String getDevIpValue(){
         return this.devIp == null ? null : devIp.getAddressValue();

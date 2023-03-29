@@ -1,5 +1,7 @@
 package com.crosscert.firewall.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -28,15 +30,27 @@ public class Ip extends BaseTimeEntity{
     @Column
     private String description;
 
+    @JsonManagedReference
     @OneToOne(mappedBy = "devIp")
     private Member devMember;
 
+    @JsonBackReference
     @OneToOne(mappedBy = "netIp")
+    @JoinColumn(name = "netMember_id")
     private Member netMember;
     public Ip(String ipAddress, String description) {
         this.address = new IpAddress(ipAddress);
         this.description = description;
     }
+
+    public Ip(IpAddress ipAddress){
+        this.address = ipAddress;
+    }
+
+    public static Ip of(String ipAddress){
+        return new Ip(new IpAddress(ipAddress));
+    }
+
     public String getAddressValue(){
         return this.address == null ? null : this.address.getAddress();
     }

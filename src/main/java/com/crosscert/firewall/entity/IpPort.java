@@ -1,15 +1,30 @@
 package com.crosscert.firewall.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Embeddable;
+import javax.persistence.*;
 import java.util.Objects;
 
 @NoArgsConstructor
-@Embeddable
-public class IpPort {
+@AllArgsConstructor
+@Builder
+@Getter
+@Entity
+public class IpPort extends BaseTimeEntity{
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column
     private int port;
+
+    @ManyToOne
+    @JoinColumn(name = "firewall_id")
+    private FireWall fireWall;
 
     public IpPort (int port){
         if(!isPortRange(port)){
@@ -20,6 +35,10 @@ public class IpPort {
 
     private boolean isPortRange(int port){
         return port >= 0 && port <= 65535;
+    }
+
+    public void setFireWall(FireWall fireWall){
+        this.fireWall = fireWall;
     }
 
     @Override

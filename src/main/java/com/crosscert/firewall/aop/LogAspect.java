@@ -12,21 +12,21 @@ import org.springframework.stereotype.Component;
 @Aspect
 public class LogAspect {
 
-    @Before("@annotation(com.crosscert.firewall.annotation.LogTrace)")
-    public void doTrace(JoinPoint joinPoint){
-        Object[] args = joinPoint.getArgs();
-        log.info("[trace] {} args={}", joinPoint.getSignature(), args);
-    }
-
-    @Before("execution(* com.crosscert.firewall.controller.*.*(..))")
-    public void doRequestTrace(JoinPoint joinPoint){
-        Object[] args = joinPoint.getArgs();
-        log.info("[Controller] Request {} args={}", joinPoint.getSignature(), args);
-    }
-
-    @AfterReturning(value = "execution(* com.crosscert.firewall.controller.*.*(..))", returning = "returnValue")
-    public void deResponseTrace(Object returnValue){
-
-        log.info("[Controller] Response {}", returnValue);
-    }
+//    @Before("@annotation(com.crosscert.firewall.annotation.LogTrace)")
+//    public void doTrace(JoinPoint joinPoint){
+//        Object[] args = joinPoint.getArgs();
+//        log.info("[trace] {} args={}", joinPoint.getSignature(), args);
+//    }
+//
+//    @Before("execution(* com.crosscert.firewall.controller.*.*(..))")
+//    public void doRequestTrace(JoinPoint joinPoint){
+//        Object[] args = joinPoint.getArgs();
+//        log.info("[Controller] Request {} args={}", joinPoint.getSignature(), args);
+//    }
+//
+//    @AfterReturning(value = "execution(* com.crosscert.firewall.controller.*.*(..))", returning = "returnValue")
+//    public void deResponseTrace(Object returnValue){
+//
+//        log.info("[Controller] Response {}", returnValue);
+//    }
 }

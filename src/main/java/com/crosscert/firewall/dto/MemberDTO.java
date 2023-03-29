@@ -1,5 +1,6 @@
 package com.crosscert.firewall.dto;
 
+import com.crosscert.firewall.entity.FireWall;
 import com.crosscert.firewall.entity.Role;
 import lombok.*;
 
@@ -42,6 +43,8 @@ public enum MemberDTO {;
         @NoArgsConstructor
         @AllArgsConstructor
         @Getter
+        @Setter
+        @Builder
         public static class Public implements Id, Name, Email, MemberRole, DevIp, NetIp {
             Long id;
             String name;
@@ -54,6 +57,8 @@ public enum MemberDTO {;
         @NoArgsConstructor
         @AllArgsConstructor
         @Getter
+        @Setter
+        @Builder
         public static class Create implements Id{
             Long id;
         }
@@ -61,7 +66,10 @@ public enum MemberDTO {;
         @NoArgsConstructor
         @AllArgsConstructor
         @Getter
+        @Setter
+        @Builder
         public static class Edit implements Id, Name, MemberRole, DevIp, NetIp {
+
             Long id;
             String name;
             Role role;

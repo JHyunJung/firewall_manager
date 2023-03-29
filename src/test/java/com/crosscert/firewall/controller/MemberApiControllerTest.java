@@ -136,9 +136,6 @@ class MemberApiControllerTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(mapper.writeValueAsString(editDto)));
             });
-
-
-//            result.andExpect(status().is4xxClientError());
         }
     }
 
