@@ -14,6 +14,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.EntityManager;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -186,4 +187,43 @@ class MemberServiceTest {
         assertTrue(memberService.isPresentMember(email2));
     }
 
+    @Test
+    @DisplayName("내 IP 변경 테스트")
+    public void 내IP변경() {
+        // Given
+        MemberDTO.Request.Create createDto =
+                new MemberDTO.Request.Create(
+                        "test", "test@crosscert.com", "password", Role.MEMBER);
+        memberService.signup(createDto);
+
+        // When
+        Member findMember = memberService.findByEmail("test@crosscert.com");
+        Ip devIp = new Ip("1.1.1.1","test 개발망");
+        Ip netIp = new Ip("2.2.2.2","test 인터넷망");
+        memberService.editMyIp(findMember, devIp, netIp);
+
+        // Then
+        Member updatedMember = memberService.findByEmail("test@crosscert.com");
+        assertEquals("1.1.1.1",updatedMember.getDevIpValue());
+        assertEquals("2.2.2.2",updatedMember.getNetIpValue());
+    }
+
+    @Test
+    @DisplayName("내 비밃번호 변경 테스트")
+    public void 내비밀번호변경() {
+        // Given
+        MemberDTO.Request.Create createDto =
+                new MemberDTO.Request.Create(
+                        "test", "test@crosscert.com", "password", Role.MEMBER);
+        memberService.signup(createDto);
+
+        // When
+        Member findMember = memberService.findByEmail("test@crosscert.com");
+        String newPassword = "newPassword";
+        memberService.editMyPw(findMember,newPassword);
+
+        // Then
+        Member updatedMember = memberService.findByEmail("test@crosscert.com");
+        assertTrue(passwordEncoder.matches("newPassword", updatedMember.getPassword()));
+    }
 }
