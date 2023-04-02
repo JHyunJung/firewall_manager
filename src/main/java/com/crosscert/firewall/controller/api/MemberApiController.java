@@ -62,6 +62,14 @@ public class MemberApiController {
         return new ResponseEntity<>(resultDto, HttpStatus.OK);
     }
 
+    @PutMapping("/member/resetPassword/{id}")
+    public ResponseEntity<MemberDTO.Response.Edit> resetPassword(@PathVariable("id") Long id, @RequestBody MemberDTO.Request.EditPassword memberDTO) {
+        Member findMember = memberService.findById(id);
+        memberService.editPw(findMember,memberDTO.getNewPassword());
+        MemberDTO.Response.Edit resultDto = convertToEditDto(findMember);
+        return new ResponseEntity<>(resultDto, HttpStatus.OK);
+    }
+
     private MemberDTO.Response.Public convertToPublicDto(Member member){
         return new MemberDTO.Response.Public(
                 member.getId(),

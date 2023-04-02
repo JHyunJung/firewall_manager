@@ -3,23 +3,15 @@ package com.crosscert.firewall.service;
 import com.crosscert.firewall.annotation.LogTrace;
 import com.crosscert.firewall.dto.MemberDTO;
 import com.crosscert.firewall.entity.Ip;
-import com.crosscert.firewall.entity.IpAddress;
 import com.crosscert.firewall.entity.Member;
 import com.crosscert.firewall.entity.Role;
 import com.crosscert.firewall.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -99,12 +91,12 @@ public class MemberService {
     }
 
     @Transactional
-    public void editMyIp(Member member, Ip devIp, Ip netIp) {
+    public void editIp(Member member, Ip devIp, Ip netIp) {
         member.editIp(devIp,netIp);
     }
 
     @Transactional
-    public void editMyPw(Member member, String newPassword) {
+    public void editPw(Member member, String newPassword) {
         member.editPw(passwordEncoder.encode(newPassword));
     }
 }

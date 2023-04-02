@@ -12,11 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Log4j2
 @RestController
@@ -41,7 +37,7 @@ public class AccountApiController {
         }
 
         //비밀번호 변경
-        memberService.editMyPw(findMember,newPassword);
+        memberService.editPw(findMember,newPassword);
         MemberDTO.Response.Edit resultDto = convertToEditDto(findMember);
         return new ResponseEntity<>(resultDto, HttpStatus.OK);
     }
@@ -70,7 +66,7 @@ public class AccountApiController {
             findMember.editNetIpDescription(null);
         }
 
-        memberService.editMyIp(findMember, devIp, netIp);
+        memberService.editIp(findMember, devIp, netIp);
         MemberDTO.Response.Edit resultDto = convertToEditDto(findMember);
         return new ResponseEntity<>(resultDto, HttpStatus.OK);
     }

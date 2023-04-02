@@ -14,7 +14,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.EntityManager;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -200,7 +199,7 @@ class MemberServiceTest {
         Member findMember = memberService.findByEmail("test@crosscert.com");
         Ip devIp = new Ip("1.1.1.1","test 개발망");
         Ip netIp = new Ip("2.2.2.2","test 인터넷망");
-        memberService.editMyIp(findMember, devIp, netIp);
+        memberService.editIp(findMember, devIp, netIp);
 
         // Then
         Member updatedMember = memberService.findByEmail("test@crosscert.com");
@@ -220,7 +219,7 @@ class MemberServiceTest {
         // When
         Member findMember = memberService.findByEmail("test@crosscert.com");
         String newPassword = "newPassword";
-        memberService.editMyPw(findMember,newPassword);
+        memberService.editPw(findMember,newPassword);
 
         // Then
         Member updatedMember = memberService.findByEmail("test@crosscert.com");
