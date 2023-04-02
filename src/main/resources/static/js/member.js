@@ -43,24 +43,24 @@ form.addEventListener("submit", (event) => {
 });
 
 function resetPassword(){
-    var resetPassword = prompt("\'"+memberName+"\' 초기화 비밀번호 입력 (4자 이상)");
+    var password = prompt("\'"+memberName+"\' 초기화 비밀번호 입력 (4자 이상)");
 
-    if(resetPassword === null) {
+    if(password === null) {
         alert("취소하셨습니다.");
         return;
-    }else if(resetPassword.length < 4){
+    }else if(password.length < 4){
         alert("초기화 비밀번호는 4자 이상 입력해주세요.")
         return;
     }
 
-    if(!confirm("\'"+resetPassword+"\'으로 비밀번호 초기화 진행하시겠습니까?")){
+    if(!confirm("\'"+password+"\'으로 비밀번호 초기화 진행하시겠습니까?")){
         alert("취소하셨습니다.");
         return;
     }
 
     const url = '/api/member/resetPassword/'+id;
     const data = {
-        newPassword: resetPassword
+        password: password
     };
 
     fetch(url, {

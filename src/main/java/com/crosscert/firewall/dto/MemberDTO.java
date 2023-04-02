@@ -52,6 +52,13 @@ public enum MemberDTO {;
             String password;
             String newPassword;
         }
+
+        @NoArgsConstructor
+        @AllArgsConstructor
+        @Getter
+        public static class ResetPassword implements Password{
+            String password;
+        }
     }
 
     public enum Response{;
