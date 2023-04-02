@@ -4,30 +4,29 @@
       layout:decorate="~{layouts/layout}">
 <head>
     <meta charset="UTF-8">
-    <title>회원 리스트</title>
+    <title>내 IP 수정</title>
     <link rel="stylesheet" href="/css/bootstrap.min.css">
 </head>
 <body>
 <main layout:fragment="content">
     <div class="container-fluid px-4">
-        <h1 class="mt-4">AI Security 연구본부</h1>
+        <h1 class="mt-4">내 IP 정보 수정</h1>
         <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
             <li class="breadcrumb-item active">Tables</li>
         </ol>
         <div class="card mb-4">
             <div class="card-body">
-                AI Security 연구본부 계정 수정
+                내 IP 수정
             </div>
         </div>
         <div class="card mb-4">
             <div class="card-header">
                 <i class="bi bi-person-circle"></i>
-                계정 수정
+                내 IP 수정
             </div>
             <div class="card-body">
-<!--                <form class="needs-validation" novalidate th:object="${member}" th:action="@{/api/v1/member/{id}(id=${member.id})}">-->
-                <form id="edit-form" class="needs-validation" novalidate th:object="${member}">
+                <form id="myip-form" class="needs-validation" novalidate th:object="${member}">
                     <div class="row g-3">
                         <div class="col-12">
                             <label for="email" class="form-label">아이디(이메일)</label>
@@ -41,9 +40,7 @@
 
                         <div class="col-12">
                             <label for="name" class="form-label">권한(ROLE)</label>
-                            <select th:field="*{role}" class="form-select">
-                                <option th:each="role : ${roles}" th:value="${role}" th:text="${role}" id=role name="role"></option>
-                            </select>
+                            <input type="text" class="form-control" id="role" name="role" th:field="*{role}" readonly>
                         </div>
 
                         <div class="col-12">
@@ -72,10 +69,7 @@
             </div>
         </div>
     </div>
-    <script th:inline="javascript">
-        const memberId = [[${member.id}]];
-    </script>
-    <script src="/js/member.js"></script>
+    <script src="/js/myip.js"></script>
 </main>
 </body>
 </html>

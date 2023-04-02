@@ -74,4 +74,13 @@ public class Member extends BaseTimeEntity{
     public void editNetIpDescription(String description) {
         if(this.netIp != null) this.netIp.setDescription(description);
     }
+
+    public void editIp(Ip devIp, Ip netIp) {
+        this.devIp = devIp;
+        this.netIp = netIp;
+    }
+
+    public void editPw(String encodedPassword) {
+        this.password = encodedPassword;
+    }
 }

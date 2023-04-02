@@ -29,6 +29,8 @@ public class LoginService implements UserDetailsService {
 
     private final MemberRepository memberRepository;
 
+    private final PasswordEncoder passwordEncoder;
+
     //스프링시큐리티 로그인
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -36,6 +38,12 @@ public class LoginService implements UserDetailsService {
         List<GrantedAuthority> authorities = new ArrayList<>();
         authorities.add(new SimpleGrantedAuthority(member.getRole().name()));
         return new User(member.getEmail(), member.getPassword(), authorities);
+    }
+
+    //비밀번호 일치 검증 (필요시 사용 용도)
+    public boolean authenticate(String username, String currentPassword) {
+        UserDetails userDetails = loadUserByUsername(username);
+        return passwordEncoder.matches(currentPassword, userDetails.getPassword());
     }
 }
 

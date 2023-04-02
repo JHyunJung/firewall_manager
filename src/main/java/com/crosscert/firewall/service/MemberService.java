@@ -47,6 +47,12 @@ public class MemberService {
                 .orElseThrow(() -> new IllegalArgumentException("해당 Member가 없습니다."));
     }
 
+    @Transactional(readOnly = true)
+    public Member findByEmail(String email) {
+        return memberRepository.findByEmail(email)
+                .orElseThrow(() -> new IllegalArgumentException("해당 Member가 없습니다."));
+    }
+
     public void edit(Member member, Role role, Ip devIp, Ip netIp) {
         member.edit(role, devIp, netIp);
     }
@@ -62,6 +68,12 @@ public class MemberService {
     @Transactional
     public boolean signup(MemberDTO.Request.Create memberDTO) {
         log.info("{}.signup",this.getClass());
+
+        //MEMBER로만 가입되도록 백단 보안 처리
+        if(memberDTO.getRole()!=Role.MEMBER){
+            log.error("강제 LEADER 가입 시도 발생");
+            throw new IllegalArgumentException("해당 권한은 선택할 수 없습니다.");
+        }
 
         //중복 회원 검증
         if(isPresentMember(memberDTO.getEmail())){
@@ -84,6 +96,16 @@ public class MemberService {
 
     public void deleteByEmail(String email) {
         memberRepository.deleteByEmail(email);
+    }
+
+    @Transactional
+    public void editMyIp(Member member, Ip devIp, Ip netIp) {
+        member.editIp(devIp,netIp);
+    }
+
+    @Transactional
+    public void editMyPw(Member member, String newPassword) {
+        member.editPw(passwordEncoder.encode(newPassword));
     }
 }
 

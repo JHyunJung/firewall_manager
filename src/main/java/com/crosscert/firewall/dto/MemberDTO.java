@@ -36,6 +36,22 @@ public enum MemberDTO {;
             String devIp;
             String netIp;
         }
+
+        @NoArgsConstructor
+        @AllArgsConstructor
+        @Getter
+        public static class EditMyIp implements DevIp, NetIp {
+            String devIp;
+            String netIp;
+        }
+
+        @NoArgsConstructor
+        @AllArgsConstructor
+        @Getter
+        public static class EditPassword implements Password{
+            String password;
+            String newPassword;
+        }
     }
 
     public enum Response{;

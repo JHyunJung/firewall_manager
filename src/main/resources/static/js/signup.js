@@ -21,14 +21,22 @@ function checkEmail(){
         });
     }
 }
-
-
 //비밀번호 확인 검증
+
 const passwordInput = document.getElementById("password");
+const passwordInputError = document.getElementById("passwordError");
 const passwordConfirmInput = document.getElementById("passwordConfirm");
 const passwordConfirmError = document.getElementById("passwordConfirmError");
 
 function validatePasswordConfirm() {
+    if (passwordInput.value.length < 8 || passwordInput.value.length > 16) {
+        passwordInputError.classList.add("is-invalid");
+        passwordInputError.style.display = "block";
+    } else {
+        passwordInputError.classList.remove("is-invalid");
+        passwordInputError.style.display = "none";
+    }
+
     if (passwordInput.value !== passwordConfirmInput.value) {
         passwordConfirmInput.classList.add("is-invalid");
         passwordConfirmError.style.display = "block";
