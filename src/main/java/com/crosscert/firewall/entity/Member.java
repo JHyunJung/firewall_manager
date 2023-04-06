@@ -80,7 +80,7 @@ public class Member extends BaseTimeEntity{
         this.netIp = netIp;
     }
 
-    public void editPw(String encodedPassword) {
+    public void editPassword(String encodedPassword) {
         this.password = encodedPassword;
     }
 }

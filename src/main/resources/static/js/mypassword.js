@@ -25,8 +25,8 @@ function validatePasswordConfirm() {
 passwordInput.addEventListener("input", validatePasswordConfirm);
 passwordConfirmInput.addEventListener("input", validatePasswordConfirm);
 
-const mypwform = document.getElementById("mypw-form");
-mypwform.addEventListener("submit", function(event) {
+const myPasswordForm = document.getElementById("mypassword-form");
+myPasswordForm.addEventListener("submit", function(event) {
     event.preventDefault();
     const password = document.getElementById("password").value;
     const newPassword = document.getElementById("newPassword").value;
@@ -34,11 +34,11 @@ mypwform.addEventListener("submit", function(event) {
 
     if(newPassword!=newPasswordConfirm){
         event.stopPropagation();
-        mypwform.classList.add("was-validated");
+        myPasswordForm.classList.add("was-validated");
         return;
     }
 
-    if (mypwform.checkValidity()) {
+    if (myPasswordForm.checkValidity()) {
         const url = '/api/myinfo/password';
         const data = {
             password: password,
@@ -67,6 +67,6 @@ mypwform.addEventListener("submit", function(event) {
 
     } else {
         event.stopPropagation();
-        mypwform.classList.add("was-validated");
+        myPasswordForm.classList.add("was-validated");
     }
 });

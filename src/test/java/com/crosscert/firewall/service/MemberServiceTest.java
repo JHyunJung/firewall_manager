@@ -219,7 +219,7 @@ class MemberServiceTest {
         // When
         Member findMember = memberService.findByEmail("test@crosscert.com");
         String newPassword = "newPassword";
-        memberService.editPw(findMember,newPassword);
+        memberService.editPassword(findMember,newPassword);
 
         // Then
         Member updatedMember = memberService.findByEmail("test@crosscert.com");

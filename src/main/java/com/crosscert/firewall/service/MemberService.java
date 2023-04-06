@@ -96,8 +96,8 @@ public class MemberService {
     }
 
     @Transactional
-    public void editPw(Member member, String newPassword) {
-        member.editPw(passwordEncoder.encode(newPassword));
+    public void editPassword(Member member, String newPassword) {
+        member.editPassword(passwordEncoder.encode(newPassword));
     }
 }
 

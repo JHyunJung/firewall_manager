@@ -2,7 +2,6 @@ package com.crosscert.firewall.controller.api;
 
 import com.crosscert.firewall.dto.MemberDTO;
 import com.crosscert.firewall.entity.Ip;
-import com.crosscert.firewall.entity.IpAddress;
 import com.crosscert.firewall.entity.Member;
 import com.crosscert.firewall.service.IpService;
 import com.crosscert.firewall.service.MemberService;
@@ -65,7 +64,7 @@ public class MemberApiController {
     @PutMapping("/member/resetPassword/{id}")
     public ResponseEntity<MemberDTO.Response.Edit> resetPassword(@PathVariable("id") Long id, @RequestBody MemberDTO.Request.ResetPassword memberDTO) {
         Member findMember = memberService.findById(id);
-        memberService.editPw(findMember,memberDTO.getPassword());
+        memberService.editPassword(findMember,memberDTO.getPassword());
         MemberDTO.Response.Edit resultDto = convertToEditDto(findMember);
         return new ResponseEntity<>(resultDto, HttpStatus.OK);
     }

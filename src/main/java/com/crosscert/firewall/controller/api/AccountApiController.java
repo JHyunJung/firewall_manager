@@ -26,7 +26,7 @@ public class AccountApiController {
     private final LoginService loginService;
 
     @PutMapping("/myinfo/password")
-    public ResponseEntity<MemberDTO.Response.Edit> editMyPw(@AuthenticationPrincipal UserDetails userDetails, @RequestBody MemberDTO.Request.EditPassword memberDTO) {
+    public ResponseEntity<MemberDTO.Response.Edit> editMyPassword(@AuthenticationPrincipal UserDetails userDetails, @RequestBody MemberDTO.Request.EditPassword memberDTO) {
         Member findMember = memberService.findByEmail(userDetails.getUsername());
         String currentPassword = memberDTO.getPassword();
         String newPassword = memberDTO.getNewPassword();
@@ -37,7 +37,7 @@ public class AccountApiController {
         }
 
         //비밀번호 변경
-        memberService.editPw(findMember,newPassword);
+        memberService.editPassword(findMember,newPassword);
         MemberDTO.Response.Edit resultDto = convertToEditDto(findMember);
         return new ResponseEntity<>(resultDto, HttpStatus.OK);
     }
