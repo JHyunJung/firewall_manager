@@ -28,7 +28,7 @@ public class AccountApiController {
     @PutMapping("/myinfo/password")
     public ResponseEntity<MemberDTO.Response.Edit> editMyPassword(@AuthenticationPrincipal UserDetails userDetails, @RequestBody MemberDTO.Request.EditPassword memberDTO) {
         Member findMember = memberService.findByEmail(userDetails.getUsername());
-        String currentPassword = memberDTO.getPassword();
+        String currentPassword = memberDTO.getCurrentPassword();
         String newPassword = memberDTO.getNewPassword();
 
         if (!loginService.authenticate(userDetails.getUsername(), currentPassword)) {
