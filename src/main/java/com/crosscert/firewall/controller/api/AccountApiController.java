@@ -47,26 +47,11 @@ public class AccountApiController {
     public ResponseEntity<MemberDTO.Response.Edit> editMyIp(@AuthenticationPrincipal UserDetails userDetails, @RequestBody MemberDTO.Request.EditMyIp memberDTO) {
         //현재 접속 계정의 정보
         Member findMember = memberService.findByEmail(userDetails.getUsername());
+        Ip devIp = ipService.assignMemberDevIp(findMember,memberDTO.getDevIp());
+        Ip netIp = ipService.assignMemberNetIp(findMember,memberDTO.getNetIp());
 
-        Ip devIp;
-        Ip netIp;
+        memberService.editIp(findMember,devIp,netIp);
 
-        //개발망IP
-        if(memberDTO.getDevIp().equals(findMember.getDevIpValue())){
-            devIp = findMember.getDevIp();
-        }else {
-            devIp = ipService.allocateIp(memberDTO.getDevIp(),findMember.getName()+" 개발망");
-            findMember.editDevIpDescription(null);
-        }
-        //인터넷망IP
-        if(memberDTO.getNetIp().equals(findMember.getNetIpValue())){
-            netIp = findMember.getNetIp();
-        }else {
-            netIp = ipService.allocateIp(memberDTO.getNetIp(),findMember.getName()+" 인터넷망");
-            findMember.editNetIpDescription(null);
-        }
-
-        memberService.editIp(findMember, devIp, netIp);
         MemberDTO.Response.Edit resultDto = convertToEditDto(findMember);
         return new ResponseEntity<>(resultDto, HttpStatus.OK);
     }

@@ -2,6 +2,7 @@ package com.crosscert.firewall.service;
 
 import com.crosscert.firewall.entity.Ip;
 import com.crosscert.firewall.entity.IpAddress;
+import com.crosscert.firewall.entity.Member;
 import com.crosscert.firewall.repository.IpRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -62,5 +63,21 @@ public class IpService {
             throw new IllegalArgumentException("해당 IP는 다른 이용자가 사용중입니다.");
         }
 
+    }
+
+    public Ip assignMemberDevIp(Member member, String devIp) {
+        if(!devIp.equals(member.getDevIpValue())){
+            member.editDevIpDescription(null);
+            return allocateIp(devIp,member.getName()+" 개발망");
+        }
+        return member.getDevIp();
+    }
+
+    public Ip assignMemberNetIp(Member member, String netIp) {
+        if(!netIp.equals(member.getNetIpValue())){
+            member.editNetIpDescription(null);
+            return allocateIp(netIp,member.getName()+" 인터넷망");
+        }
+        return member.getNetIp();
     }
 }
