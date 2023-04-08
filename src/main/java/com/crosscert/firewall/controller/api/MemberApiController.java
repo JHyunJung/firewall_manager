@@ -21,6 +21,8 @@ public class MemberApiController {
     private final MemberService memberService;
     private final IpService ipService;
 
+    //초기화 비밀번호 값
+    private final String resetPasswordValue = "cross12#$";
 
     @GetMapping("/member/list") // 현재 미사용 API
     public ResponseEntity<List<MemberDTO.Response.Public>> findAll(){
@@ -62,9 +64,9 @@ public class MemberApiController {
     }
 
     @PutMapping("/member/resetPassword/{id}")
-    public ResponseEntity<MemberDTO.Response.Edit> resetPassword(@PathVariable("id") Long id, @RequestBody MemberDTO.Request.ResetPassword memberDTO) {
+    public ResponseEntity<MemberDTO.Response.Edit> resetPassword(@PathVariable("id") Long id) {
         Member findMember = memberService.findById(id);
-        memberService.editPassword(findMember,memberDTO.getNewPassword());
+        memberService.editPassword(findMember,resetPasswordValue);
         MemberDTO.Response.Edit resultDto = convertToEditDto(findMember);
         return new ResponseEntity<>(resultDto, HttpStatus.OK);
     }
