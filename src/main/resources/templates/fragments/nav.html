@@ -19,7 +19,8 @@
     <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
       <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-        <li><a class="dropdown-item" href="#!">Settings</a></li>
+        <li sec:authorize="isAuthenticated()"><a class="dropdown-item" th:href="@{/myinfo/ip}">내 IP 변경</a></li>
+        <li sec:authorize="isAuthenticated()"><a class="dropdown-item" th:href="@{/myinfo/password}">비밀번호 변경</a></li>
         <li><a class="dropdown-item" href="#!">Activity Log</a></li>
         <li><hr class="dropdown-divider" /></li>
         <li sec:authorize="isAuthenticated()"><a class="dropdown-item" th:href="@{/logout}">Logout</a></li>

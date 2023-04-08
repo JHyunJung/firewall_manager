@@ -39,8 +39,8 @@ public class LoginController {
     @PostMapping("/signup")
     public String signup(MemberDTO.Request.Create memberDTO, Model model){
         log.info("{}.signup",this.getClass());
-        memberService.signup(memberDTO);
-        model.addAttribute("signupSuccess", "회원가입 성공!");
+        boolean result = memberService.signup(memberDTO);
+        model.addAttribute("signupResult", result);
         return "login";
     }
 

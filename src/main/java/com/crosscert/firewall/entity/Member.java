@@ -78,4 +78,21 @@ public class Member extends BaseTimeEntity{
         if(netIp == null || netIp.isBlank()) return;
         this.netIp = new Ip(netIp, who + " 인터넷망");
     }
+
+    public void editDevIpDescription(String description) {
+        if(this.devIp != null) this.devIp.setDescription(description);
+    }
+
+    public void editNetIpDescription(String description) {
+        if(this.netIp != null) this.netIp.setDescription(description);
+    }
+
+    public void editIp(Ip devIp, Ip netIp) {
+        this.devIp = devIp;
+        this.netIp = netIp;
+    }
+
+    public void editPassword(String encodedPassword) {
+        this.password = encodedPassword;
+    }
 }

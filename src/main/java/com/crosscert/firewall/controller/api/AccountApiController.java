@@ -4,41 +4,49 @@ import com.crosscert.firewall.dto.MemberDTO;
 import com.crosscert.firewall.entity.Ip;
 import com.crosscert.firewall.entity.Member;
 import com.crosscert.firewall.service.IpService;
+import com.crosscert.firewall.service.LoginService;
 import com.crosscert.firewall.service.MemberService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
+@Log4j2
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api")
-public class MemberApiController {
+public class AccountApiController {
 
     private final MemberService memberService;
     private final IpService ipService;
 
-    //초기화 비밀번호 값
-    private final String resetPasswordValue = "cross12#$";
+    private final LoginService loginService;
 
-    @GetMapping("/member/list") // 현재 미사용 API
-    public ResponseEntity<List<MemberDTO.Response.Public>> findAll(){
+    @PutMapping("/myinfo/password")
+    public ResponseEntity<MemberDTO.Response.Edit> editMyPassword(@AuthenticationPrincipal UserDetails userDetails, @RequestBody MemberDTO.Request.EditPassword memberDTO) {
+        Member findMember = memberService.findByEmail(userDetails.getUsername());
+        String currentPassword = memberDTO.getCurrentPassword();
+        String newPassword = memberDTO.getNewPassword();
 
-        List<Member> memberList = memberService.findAllFetch();
-        List<MemberDTO.Response.Public> resultList = memberList.stream()
-                .map(this::convertToPublicDto)
-                .collect(Collectors.toList());
+        if (!loginService.authenticate(userDetails.getUsername(), currentPassword)) {
+            //현재 비밀번호 미일치
+            throw new IllegalArgumentException("현재 비밀번호가 일치하지 않습니다.");
+        }
 
-        return new ResponseEntity<>(resultList, HttpStatus.OK);
+        //비밀번호 변경
+        memberService.editPassword(findMember,newPassword);
+        MemberDTO.Response.Edit resultDto = convertToEditDto(findMember);
+        return new ResponseEntity<>(resultDto, HttpStatus.OK);
     }
 
 
-    @PutMapping("/member/{id}")
-    public ResponseEntity<MemberDTO.Response.Edit> edit(@PathVariable("id") Long id, @RequestBody MemberDTO.Request.Edit memberDTO) {
-        Member findMember = memberService.findById(id);
+    @PutMapping("/myinfo/ip")
+    public ResponseEntity<MemberDTO.Response.Edit> editMyIp(@AuthenticationPrincipal UserDetails userDetails, @RequestBody MemberDTO.Request.EditMyIp memberDTO) {
+        //현재 접속 계정의 정보
+        Member findMember = memberService.findByEmail(userDetails.getUsername());
 
         Ip devIp;
         Ip netIp;
@@ -58,28 +66,9 @@ public class MemberApiController {
             findMember.editNetIpDescription(null);
         }
 
-        memberService.edit(findMember, memberDTO.getRole(), devIp, netIp);
+        memberService.editIp(findMember, devIp, netIp);
         MemberDTO.Response.Edit resultDto = convertToEditDto(findMember);
         return new ResponseEntity<>(resultDto, HttpStatus.OK);
-    }
-
-    @PutMapping("/member/resetPassword/{id}")
-    public ResponseEntity<MemberDTO.Response.Edit> resetPassword(@PathVariable("id") Long id) {
-        Member findMember = memberService.findById(id);
-        memberService.editPassword(findMember,resetPasswordValue);
-        MemberDTO.Response.Edit resultDto = convertToEditDto(findMember);
-        return new ResponseEntity<>(resultDto, HttpStatus.OK);
-    }
-
-    private MemberDTO.Response.Public convertToPublicDto(Member member){
-        return new MemberDTO.Response.Public(
-                member.getId(),
-                member.getName(),
-                member.getEmail(),
-                member.getRole(),
-                member.getDevIpValue(),
-                member.getNetIpValue()
-        );
     }
 
     private MemberDTO.Response.Edit convertToEditDto(Member member){

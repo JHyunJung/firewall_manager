@@ -17,6 +17,9 @@ public enum MemberDTO {;
     private interface NetIp {@NotBlank String getNetIp();}
 //    private interface FireWall { List<FireWall> getFireWall();}
 
+    private interface CurrentPassword { @Positive String getCurrentPassword(); }
+    private interface NewPassword { @Positive String getNewPassword(); }
+
     public enum Request{;
         @NoArgsConstructor
         @AllArgsConstructor
@@ -36,6 +39,29 @@ public enum MemberDTO {;
             Role role;
             String devIp;
             String netIp;
+        }
+
+        @NoArgsConstructor
+        @AllArgsConstructor
+        @Getter
+        public static class EditMyIp implements DevIp, NetIp {
+            String devIp;
+            String netIp;
+        }
+
+        @NoArgsConstructor
+        @AllArgsConstructor
+        @Getter
+        public static class EditPassword implements CurrentPassword, NewPassword{
+            String currentPassword;
+            String newPassword;
+        }
+
+        @NoArgsConstructor
+        @AllArgsConstructor
+        @Getter
+        public static class ResetPassword implements NewPassword{
+            String newPassword;
         }
     }
 

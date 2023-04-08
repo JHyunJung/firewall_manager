@@ -10,6 +10,7 @@ import com.crosscert.firewall.repository.IpRepository;
 import com.crosscert.firewall.repository.MemberRepository;
 import com.crosscert.firewall.service.IpService;
 import com.crosscert.firewall.service.MemberService;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -137,6 +138,23 @@ class MemberApiControllerTest {
                         .content(mapper.writeValueAsString(editDto)));
             });
         }
+
+        @Test
+        @DisplayName("비밀번호 초기화 테스트")
+        void resetPassword() throws Exception {
+            //given
+            MemberDTO.Request.ResetPassword editDto = new MemberDTO.Request.ResetPassword("1234");
+
+            ObjectMapper mapper = new ObjectMapper();
+            //when then
+            ResultActions result = mockMvc.perform(put("/api/member/resetPassword/{id}", member.getId())
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .content(mapper.writeValueAsString(editDto)));
+
+            result.andExpect(status().isOk());
+        }
     }
+
+
 
 }
