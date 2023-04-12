@@ -22,7 +22,7 @@ public class MemberApiController {
     private final IpService ipService;
 
     //초기화 비밀번호 값
-    private final String resetPasswordValue = "cross12#$";
+    private final String RESET_PASSWORD = "cross12#$";
 
     @GetMapping("/member/list") // 현재 미사용 API
     public ResponseEntity<List<MemberDTO.Response.Public>> findAll(){
@@ -38,25 +38,10 @@ public class MemberApiController {
 
     @PutMapping("/member/{id}")
     public ResponseEntity<MemberDTO.Response.Edit> edit(@PathVariable("id") Long id, @RequestBody MemberDTO.Request.Edit memberDTO) {
+        //수정하려는 계정의 정보
         Member findMember = memberService.findById(id);
-
-        Ip devIp;
-        Ip netIp;
-
-        //개발망IP
-        if(memberDTO.getDevIp().equals(findMember.getDevIpValue())){
-            devIp = findMember.getDevIp();
-        }else {
-            devIp = ipService.allocateIp(memberDTO.getDevIp(),findMember.getName()+" 개발망");
-            findMember.editDevIpDescription(null);
-        }
-        //인터넷망IP
-        if(memberDTO.getNetIp().equals(findMember.getNetIpValue())){
-            netIp = findMember.getNetIp();
-        }else {
-            netIp = ipService.allocateIp(memberDTO.getNetIp(),findMember.getName()+" 인터넷망");
-            findMember.editNetIpDescription(null);
-        }
+        Ip devIp = ipService.assignMemberDevIp(findMember,memberDTO.getDevIp());
+        Ip netIp = ipService.assignMemberNetIp(findMember,memberDTO.getNetIp());
 
         memberService.edit(findMember, memberDTO.getRole(), devIp, netIp);
         MemberDTO.Response.Edit resultDto = convertToEditDto(findMember);
@@ -66,7 +51,7 @@ public class MemberApiController {
     @PutMapping("/member/resetPassword/{id}")
     public ResponseEntity<MemberDTO.Response.Edit> resetPassword(@PathVariable("id") Long id) {
         Member findMember = memberService.findById(id);
-        memberService.editPassword(findMember,resetPasswordValue);
+        memberService.editPassword(findMember, RESET_PASSWORD);
         MemberDTO.Response.Edit resultDto = convertToEditDto(findMember);
         return new ResponseEntity<>(resultDto, HttpStatus.OK);
     }
